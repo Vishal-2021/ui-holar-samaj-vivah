@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- <meta charset="utf-8">
+  <title>HolarSamajVivah</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico"> -->
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Join the most trusted matrimonial platform to find your perfect match. Start your journey today!"/>
+  <title>Holar Vivah</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    link[rel="icon"] {
+      border-radius: 50%;
+      width: 64px;
+      height: 64px;
+    }
+  </style>
+ 
+  <link rel="icon" type="image/png" href="logo-H.png" sizes="64x64">
+
+
+  <style>
+ 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f8f8f8;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 15px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      position: relative;
+      z-index: 10;
+    }
+
+    .header-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 600;
+      color: #ff6f61;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #ff6f61;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      color: #333;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #ff6f61;
+    }
+
+    
+
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: white;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 100;
+    }
+
+    .nav-overlay a {
+      margin: 15px 0;
+      font-size: 1.5rem;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .nav-overlay a:hover {
+      color: #ff6f61;
+    }
+
+    .nav-overlay.show {
+      display: flex;
+    }
+
+    .hero {
+      background-image: url('https://cdn0.weddingwire.in/article/5050/3_2/1280/jpg/40505-marathibride-rohitnagwekar-lead.jpeg');
+      background-size: cover;
+      background-position: center;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 0 20px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      max-width: 800px;
+    }
+    input:focus {
+  border-color: #ddd;
+  outline: none;
+}
+
+
+    .search-bar {
+      width: 100%;
+      max-width: 600px;
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-bar input {
+      padding: 15px;
+      width: 80%;
+      font-size: 1.1rem;
+      border: 2px solid #ddd;
+      border-radius: 30px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .search-bar input:focus {
+      border-color: #ff6f61;
+    }
+
+    .how-it-works {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 60px 20px;
+      background-color: #fff;
+      flex-wrap: wrap;
+    }
+
+    .how-it-works div {
+      text-align: center;
+      width: 30%;
+      margin-bottom: 30px;
+    }
+
+    .how-it-works h3 {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .how-it-works p {
+      font-size: 1rem;
+      color: #666;
+    }
+
+    .success-stories {
+      background-color: #f8f8f8;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .success-stories h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .testimonial-container {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .testimonial {
+      width: 30%;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      margin-bottom: 20px;
+    }
+
+    .testimonial:hover {
+      transform: scale(1.05);
+    }
+
+    .testimonial p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .testimonial strong {
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    footer a {
+      color: #ff6f61;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .search-expand {
+      position: relative;
+      display: flex;
+      align-items: center;
+      transition: width 0.3s ease;
+      margin-left: auto;
+      flex-grow: 1; 
+      justify-content: flex-end;
+    }
+
+    .search-icon {
+      font-size: 1.5rem;
+      color: #ff6f61;
+      cursor: pointer;
+      margin-left: 20px;
+      margin-right: 9px;
+    }
+
+    .search-input {
+      width: 0;
+      opacity: 0;
+      padding: 8px 15px;
+      font-size: 1rem;
+      margin-left: 10px;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      transition: width 0.3s ease, opacity 0.3s ease;
+    }
+
+    .search-input.show {
+      width: 100%;
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .how-it-works div,
+      .testimonial {
+        width: 90%;
+      }
+    }
+  </style>
+  
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>

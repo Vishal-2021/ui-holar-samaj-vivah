@@ -1,0 +1,41 @@
+<header>
+  <div class="header-container">
+    <!-- <div id="logo" class="logo">Holar Samaj <b style="font-size: large">vivah</b></div> -->
+
+    <div id="logo" class="logo" style="text-align: center;">
+        <span style="font-family: 'Cinzel', serif; font-size: 30px; font-weight: bold; color: #ff6f61; letter-spacing: 1px;">
+          Holar Vivah
+        </span><br/>
+    </div>
+      
+
+
+
+    <!-- Search Toggle -->
+    <div class="search-expand">
+      <i id="backArrow" class="fas fa-arrow-left search-icon" style="display: none;" (click)="toggleSearch()"></i>
+      <input type="text" class="search-input" placeholder="Search matches...">
+      <i id="searchIcon" class="fas fa-search search-icon"  (click)="toggleSearch()"></i>
+    </div>
+
+    <button id="menuToggle" class="menu-toggle" (click)="toggleMenu()">☰</button>
+
+    <nav>
+     <a  routerLink="/Home">Home</a>
+     <!--   <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a> -->
+      <a  routerLink="/auth/login" class="cta-btn-login">Login</a>
+      <a routerLink="/auth/register-basic" class="cta-btn">Join Now</a>
+    </nav>
+  </div>
+
+  <div id="navOverlay" class="nav-overlay">
+ <a routerLink="/Home" onclick="toggleMenu()">Home</a>
+  <!--    <a href="#" onclick="toggleMenu()">About</a>
+    <a href="#" onclick="toggleMenu()">Services</a>
+    <a href="#" onclick="toggleMenu()">Contact</a> -->
+    <a  routerLink="/auth/login" class="cta-btn-login" onclick="toggleMenu()">Login</a>
+    <a routerLink="/auth/register-basic" class="cta-btn" onclick="toggleMenu()">Join Now</a>
+  </div>
+</header>

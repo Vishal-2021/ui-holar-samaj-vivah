@@ -1,0 +1,4 @@
+app-login,app-forgot-password,app-register-basic,app-register-details{
+    display: flex;
+    justify-content: center;
+}
