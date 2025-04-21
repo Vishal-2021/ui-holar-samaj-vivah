@@ -1,46 +1,60 @@
-
+/* Main Form Container */
 .form-container {
     width: 100%;
     max-width: 450px;
     background: white;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    margin-top: 9px;
-    margin-bottom: 9px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin: 9px auto;
 }
-h2 {
+
+/* Form Header */
+.form-container h2 {
     color: #ff6f61;
     text-align: center;
     margin-bottom: 25px;
     font-size: 28px;
 }
+
+/* Form Groups */
 .form-group {
     margin-bottom: 20px;
+    position: relative;
 }
-label {
+
+.form-group label {
     display: block;
     margin-bottom: 8px;
     color: #555;
     font-weight: 500;
 }
-input[type="email"],
-input[type="tel"],
-input[type="password"],
-input[type="text"] {
+
+/* Input Fields */
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="password"],
+.form-group input[type="text"] {
     width: 100%;
     padding: 12px 15px;
     border: 1px solid #ddd;
     border-radius: 6px;
     font-size: 16px;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
 }
-input:focus {
+
+.form-group input.invalid {
+    border-color: #ff4444;
+}
+
+.form-group input:focus {
     border-color: #ff6f61;
     outline: none;
     box-shadow: 0 0 0 3px rgba(255, 111, 97, 0.2);
 }
-button {
+
+/* Button Styles */
+.form-container button {
     background: #ff6f61;
     color: white;
     border: none;
@@ -50,40 +64,111 @@ button {
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
     margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
-button:hover {
+
+.form-container button:hover:not(:disabled) {
     background: #e65a50;
     transform: translateY(-2px);
 }
+
+.form-container button:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+    transform: none !important;
+    opacity: 0.8;
+}
+
+/* Terms and Conditions */
 .terms-container {
     margin: 20px 0;
 }
+
 .terms {
     display: flex;
     align-items: center;
     color: #666;
 }
+
 .terms input[type="checkbox"] {
     width: auto;
     margin-right: 10px;
-    transform: scale(1.2); /* Makes checkbox slightly larger */
+    transform: scale(1.2);
+    cursor: pointer;
 }
+
+.terms input[type="checkbox"].invalid {
+    outline: 1px solid #ff4444;
+}
+
 .terms label {
-    margin-bottom: -3px;
+    margin-bottom: 0;
     display: inline;
     font-weight: normal;
     cursor: pointer;
 }
+
+/* Error Messages */
+.error-message {
+    color: #ff4444;
+    background: #ffeeee;
+    padding: 12px 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 14px;
+    border-left: 4px solid #ff4444;
+}
+
+.validation-error {
+    color: #ff4444;
+    font-size: 13px;
+    margin-top: 6px;
+    display: block;
+}
+
+/* Loading Spinner */
+.spinner {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive Design */
 @media (max-width: 480px) {
     .form-container {
         padding: 25px 20px;
+        margin: 5px auto;
     }
-    h2 {
+
+    .form-container h2 {
         font-size: 24px;
+        margin-bottom: 20px;
     }
-    input, button {
+
+    .form-group input,
+    .form-container button {
         padding: 10px 12px;
+        font-size: 15px;
+    }
+
+    .error-message {
+        padding: 10px 12px;
+        font-size: 13px;
     }
 }
