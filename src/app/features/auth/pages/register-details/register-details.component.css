@@ -1,12 +1,13 @@
+
 .form-container {
     max-width: 800px;
-    margin: 0 auto;
+    margin: auto;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     padding: 30px;
-    margin: 9px;
-
+    margin-top: 9px;
+    margin-bottom: 10px;
   }
   
   .progress-bar {
@@ -250,5 +251,8 @@
     .photo-preview {
       width: 100px;
       height: 100px;
+    }
+    .form-container{
+      margin: 9px 15px 10px;
     }
   }
