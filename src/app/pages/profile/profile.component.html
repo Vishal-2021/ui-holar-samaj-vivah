@@ -1,0 +1,184 @@
+<div class="container">
+
+<form class="profile-card" method="post" enctype="multipart/form-data">
+
+<!-- LEFT -->
+<div class="profile-left">
+  <h3>Upload Photo</h3>
+  <img id="profilePreview" src="https://via.placeholder.com/160">
+  <input type="file" name="profile_photo" accept="image/*" onchange="previewImage(event)">
+  <button type="submit">Save Profile</button>
+</div>
+
+<!-- RIGHT -->
+<div class="profile-right">
+
+<!-- BASIC DETAILS -->
+<div class="section-title">Basic Details</div>
+
+<div class="form-row">
+  <div>
+    <label>Created For</label>
+    <select name="created_for">
+      <option>Self</option>
+      <option>Son</option>
+      <option>Daughter</option>
+    </select>
+  </div>
+  <div>
+    <label>Full Name</label>
+    <input type="text" name="full_name">
+  </div>
+</div>
+
+<div class="form-row">
+  <div>
+    <label>Gender</label>
+    <select name="gender">
+      <option>Male</option>
+      <option>Female</option>
+    </select>
+  </div>
+  <div>
+    <label>Marital Status</label>
+    <select name="marital_status">
+      <option>Single</option>
+      <option>Divorced</option>
+      <option>Widowed</option>
+    </select>
+  </div>
+</div>
+
+<div class="form-row">
+  <div>
+    <label>Date of Birth</label>
+    <input type="date" name="date_of_birth">
+  </div>
+  <div>
+    <label>Birth Time</label>
+    <input type="time" name="birth_time">
+  </div>
+</div>
+
+<div class="form-row">
+  <div>
+    <label>Birth Day</label>
+    <input type="text" name="birth_day">
+  </div>
+  <div>
+    <label>Birth Place</label>
+    <input type="text" name="birth_place">
+  </div>
+</div>
+
+<!-- PHYSICAL -->
+<div class="section-title">Physical Details</div>
+
+<div class="form-row">
+  <div>
+    <label>Height</label>
+    <div style="display:flex;gap:10px;">
+      <input type="number" name="height_feet" placeholder="Feet">
+      <input type="number" name="height_inches" placeholder="Inches">
+    </div>
+  </div>
+  <div>
+    <label>Weight (kg)</label>
+    <input type="number" name="weight_kg">
+  </div>
+</div>
+
+<div class="form-row">
+  <div>
+    <label>Complexion</label>
+    <input type="text" name="complexion">
+  </div>
+  <div>
+    <label>Blood Group</label>
+    <input type="text" name="blood_group">
+  </div>
+</div>
+
+<!-- EDUCATION -->
+<div class="section-title">Education & Career</div>
+
+<div class="form-row">
+  <div>
+    <label>Education</label>
+    <input type="text" name="education">
+  </div>
+  <div>
+    <label>Job</label>
+    <input type="text" name="job">
+  </div>
+</div>
+
+<div class="form-row">
+  <div>
+    <label>Annual Income</label>
+    <input type="text" name="annual_income">
+  </div>
+</div>
+
+<!-- FAMILY -->
+<div class="section-title">Family Details</div>
+
+<div class="form-row">
+  <div>
+    <label>Father Name</label>
+    <input type="text" name="father_name">
+  </div>
+  <div>
+    <label>Father Occupation</label>
+    <input type="text" name="father_job">
+  </div>
+</div>
+
+<div class="form-row">
+  <div>
+    <label>Mother Name</label>
+    <input type="text" name="mother_name">
+  </div>
+  <div>
+    <label>Mother Occupation</label>
+    <input type="text" name="mother_job">
+  </div>
+</div>
+
+<div class="form-row">
+  <div>
+    <label>Native Place</label>
+    <input type="text" name="native_place">
+  </div>
+  <div>
+    <label>Current Address</label>
+    <input type="text" name="current_address">
+  </div>
+</div>
+
+<div class="form-row">
+  <div>
+    <label>Other Relatives</label>
+    <input type="text" name="other_relatives">
+  </div>
+</div>
+
+<!-- EXPECTATIONS -->
+<div class="section-title">Partner Expectations</div>
+<textarea name="expectations" rows="3"></textarea>
+
+<input type="hidden" name="status" value="Active">
+
+</div>
+</form>
+</div>
+
+<script>
+function previewImage(event){
+  const reader = new FileReader();
+  reader.onload = () => {
+    document.getElementById("profilePreview").src = reader.result;
+  };
+  reader.readAsDataURL(event.target.files[0]);
+}
+</script>

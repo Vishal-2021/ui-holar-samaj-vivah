@@ -1,32 +1,14 @@
-// import { Routes } from '@angular/router';
-
-// export const routes: Routes = [];
-
-
-
-// src/app/app.routes.ts
 import { Routes } from '@angular/router';
-import { PublicLayoutComponent } from './layout/public-layout/public-layout.component';
-import { authRoutes } from './features/auth/auth.routes';
+import { HomeComponent } from './pages/home/home.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { ProfileSearchComponent } from './pages/profile/profile-search/profile-search.component';
 
-export const appRoutes: Routes = [
-  {
-    path: '',
-    component: PublicLayoutComponent,
-    children: [
-      {
-        path: '', // default page Home
-        loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent),
-      }
-    ]
-  },
-  {
-    path: 'auth',
-    children: authRoutes
-  },
-  // ...authRoutes,
-  {
-    path: '**',
-    redirectTo: '',
-  }
+export const routes: Routes = [
+     { path: '', component: HomeComponent },
+     { path: 'login', component: LoginComponent },
+     { path: 'register', component: RegisterComponent },
+     { path: 'profile', component: ProfileComponent },
+     { path: 'profile-search', component: ProfileSearchComponent }
 ];

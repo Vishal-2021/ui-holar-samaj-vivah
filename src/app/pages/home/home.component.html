@@ -1,40 +1,74 @@
-<div class="hero">
-  <div style="margin-top: 176px; color: lightcyan;">
-    <h1>Find Your Perfect Match</h1>
-    <p>Join millions of singles who are looking for a life partner. Start your matrimonial journey today!</p>
-  </div>
-</div>
 
-<div class="how-it-works">
-  <div>
-    <h3>Create Your Profile</h3>
-    <p>Fill in details about yourself and your preferences to get started.</p>
-  </div>
-  <div>
-    <h3>Find Your Match</h3>
-    <p>Browse through thousands of profiles and connect with potential partners.</p>
-  </div>
-  <div>
-    <h3>Connect & Start Conversations</h3>
-    <p>Start a conversation with matches and get to know each other better.</p>
-  </div>
-</div>
 
-<div class="success-stories">
-  <h2>Success Stories</h2>
-  <p>Here’s how our platform has helped people find their perfect match:</p>
-  <div class="testimonial-container">
-    <div class="testimonial">
-      <p>"I found my soulmate through MatrimonialSite! The experience was seamless and easy!"</p>
-      <strong>- Priya & Raj</strong>
+    <nav id="navbar"></nav>
+    <div class="">
+      <img src="/BgImage.png" style="width: 100%" alt="WeddingBanner" />
+      
     </div>
-    <div class="testimonial">
-      <p>"The platform is easy to use and helped me find someone who shares my values."</p>
-      <strong>- Neha & Aman</strong>
-    </div>
-    <div class="testimonial">
-      <p>"I met my partner here, and now we’re happily married. Thank you for such a wonderful service!"</p>
-      <strong>- Aisha & Sameer</strong>
-    </div>
-  </div>
-</div>
+
+    <section class="success-story">
+      <div class="story-container">
+        <!-- Left Image -->
+        <div class="story-image">
+          <img src="/Sucimage.png" alt="Holar Samaj Success Story" />
+        </div>
+
+        <!-- Right Content -->
+        <div class="story-content">
+          <h2>Success Stories</h2>
+          <h3>Found Love Through Holar Samaj Matrimony</h3>
+
+          <p>
+            We found our perfect life partner through Holar Samaj Matrimony. The
+            platform helped us connect with the right match easily and safely.
+            Today, we are happily married and grateful for this wonderful
+            journey.
+          </p>
+
+          <p class="names">– Rahul & Sneha</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="how-it-works">
+      <h2>How It Works</h2>
+      <p class="subtitle">Find your life partner in 3 easy steps</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="icon">1</div>
+          <h3>Register</h3>
+          <p>Create your profile with basic details and photos.</p>
+        </div>
+
+        <div class="step">
+          <div class="icon">2</div>
+          <h3>Search</h3>
+          <p>Search profiles using filters to find the right match.</p>
+        </div>
+
+        <div class="step">
+          <div class="icon">3</div>
+          <h3>Contact</h3>
+          <p>Send interest or connect with your match.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer id="footer"></footer>
+
+    <script>
+      fetch("nav-bar.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("navbar").innerHTML = data;
+        });
+
+        fetch("footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+            document.getElementById("footer").innerHTML = data;
+        });
+    </script>
+
+
