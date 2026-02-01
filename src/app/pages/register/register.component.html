@@ -2,27 +2,18 @@
   <div class="card">
     <h3>Welcome! Your journey to finding the right match begins now</h3>
 
-    <form>
+    <form (ngSubmit)="register()" #registerForm="ngForm">
+      <label>Full Name *</label>
+      <input type="text" name="name" [(ngModel)]="name" placeholder="Enter full name" required>
+
       <label>Your Email *</label>
-      <input type="email" placeholder="Enter email" required>
+      <input type="email" name="email" [(ngModel)]="email" placeholder="Enter email" required>
 
       <label>Mobile No *</label>
-      <input type="tel" placeholder="Enter mobile number" required>
+      <input type="tel" name="mobile" [(ngModel)]="mobile" placeholder="Enter mobile number" required>
 
       <label>Create New Password *</label>
-      <input type="password" placeholder="Create password" required>
-
-      <label>Create profile for *</label>
-      <select required>
-        <option value="">Select</option>
-        <option>Self</option>
-        <option>Son</option>
-        <option>Daughter</option>
-        <option>Brother</option>
-        <option>Sister</option>
-        <option>Relative</option>
-        <option>Friend</option>
-      </select>
+      <input type="password" name="password" [(ngModel)]="password" placeholder="Create password" required>
 
       <button type="submit">Register me</button>
 
