@@ -4,12 +4,12 @@
     </div>
 
     <!-- Hamburger checkbox -->
-    <input type="checkbox" id="menu-toggle">
-    <label for="menu-toggle" class="hamburger">
+    <!-- <input type="checkbox" id="menu-toggle"> -->
+    <label class="hamburger" id="hamburger">
         ☰
     </label>
 
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
         <li><a routerLink="/">Home</a></li>
         <li><a routerLink="/profile-search">Search</a></li>
         <li><a routerLink="/login" class="login">Login</a></li>
@@ -18,11 +18,22 @@
     </ul>
 </nav>
 
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
 
-<!-- <nav>
-  <a routerLink="/">Home</a> |
-  <a routerLink="/login">Login</a> |
-  <a routerLink="/register">Register</a> |
-  <a routerLink="/profile">Profile</a>
-</nav> -->
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+
+  // Auto-close on link click (mobile UX)
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+    });
+  });
+</script>
+
+
+
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -8,4 +8,19 @@ import { RouterModule } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {}
+export class HeaderComponent implements AfterViewInit {
+    ngAfterViewInit() {
+        const hamburger = document.getElementById('hamburger')
+        const navLinks = document.getElementById('navLinks')
+
+        hamburger?.addEventListener('click', ()=>{
+          navLinks?.classList.toggle('active')
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link =>{
+          link.addEventListener('click', ()=> {
+            navLinks?.classList.remove('active')
+          });
+        });
+    }
+}
