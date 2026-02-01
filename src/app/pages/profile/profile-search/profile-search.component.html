@@ -1,70 +1,81 @@
 <div class="search-wrapper">
   <div class="search-card">
-
     <h2>Search Profiles</h2>
 
-    <div class="gender-select">
-      <label><input type="radio" name="gender" checked> Bride</label>
-      <label><input type="radio" name="gender"> Groom</label>
-    </div>
+    <!-- Search For -->
+    <div class="form-row">
+      <span class="label">Search for</span>
+      <div class="segmented">
+        <input type="radio" id="bride" name="gender" checked />
+        <label for="bride">Bride</label>
 
-    <div class="section-title">Basic Details</div>
-
-    <div class="form-grid">
-      <div class="form-group">
-        <label>Religion</label>
-        <select>
-          <option>Any Religion</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label>Caste</label>
-        <select>
-          <option>Any Caste</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label>Age From</label>
-        <input type="number" placeholder="Min age">
-      </div>
-
-      <div class="form-group">
-        <label>Age To</label>
-        <input type="number" placeholder="Max age">
-      </div>
-
-      <div class="form-group full-width">
-        <label>Location</label>
-        <input type="text" placeholder="Enter city, state or country">
+        <input type="radio" id="groom" name="gender" />
+        <label for="groom">Groom</label>
       </div>
     </div>
 
-    <div class="section-title">Education & Profession</div>
+    <!-- Age -->
+    <div class="form-row">
+      <span class="label">Age</span>
+      <div class="age-grid">
+        <input type="number" placeholder="Min" />
+        <input type="number" placeholder="Max" />
+      </div>
+    </div>
 
-    <div class="form-grid">
-      <div class="form-group">
-        <label>Education</label>
+    <!-- height -->
+    <div class="form-row">
+      <span class="label">Height</span>
+      <div class="age-grid">
+        <input type="number" placeholder="Min fit" />
+        <input type="number" placeholder="Max fit" />
+      </div>
+    </div>
+
+    <!-- Location -->
+    <div class="form-row">
+      <span class="label">Location</span>
+      <input type="text" placeholder="Enter city, state or country" />
+    </div>
+
+    <!-- Education -->
+    <div class="form-row">
+      <span class="label">Education</span>
+      <select>
+        <option>Any Education</option>
+        <option>UG</option>
+        <option>PG</option>
+      </select>
+    </div>
+
+    <!-- Profession -->
+    <div class="form-row">
+      <span class="label">Profession</span>
+      <input type="text" placeholder="Enter profession" />
+    </div>
+
+    <!-- Income -->
+    <!-- Income -->
+    <div class="form-row">
+      <span class="label">Income</span>
+      <div class="income-grid">
         <select>
-          <option>Any Education</option>
+          <option disabled selected>Min Income</option>
+          <option>1 Lakh</option>
+          <option>3 Lakh</option>
+          <option>5 Lakh</option>
         </select>
-      </div>
 
-      <div class="form-group">
-        <label>Profession</label>
-        <input type="text" placeholder="Enter profession">
-      </div>
-
-      <div class="form-group full-width">
-        <label>Annual Income (optional)</label>
         <select>
-          <option>Any Income</option>
+          <option disabled selected>Max Income</option>
+          <option>and above</option>
+          <option>5 Lakh</option>
+          <option>10 Lakh</option>
+          <option>20 Lakh</option>
         </select>
       </div>
     </div>
 
     <button class="search-btn">Search Profiles</button>
-
   </div>
 </div>

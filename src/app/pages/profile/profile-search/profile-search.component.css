@@ -1,4 +1,4 @@
-/* CENTER WRAPPER */
+/* Center wrapper */
 .search-wrapper{
   min-height:100vh;
   display:flex;
@@ -7,122 +7,121 @@
   padding:15px;
 }
 
-/* CARD */
+/* Card */
 .search-card{
-  width:100%;
-  max-width:520px;
   background:#fff;
-  border-radius:12px;
-  box-shadow:0 8px 22px rgba(0,0,0,0.08);
-  padding:22px 24px;
+  width:100%;
+  max-width:650px;
+  padding:40px 80px;
 }
 
-/* TITLE */
+/* Title */
 .search-card h2{
   text-align:center;
-  color:#ff6f61;
-  margin-bottom:14px;
-  font-weight:600;
-  font-size:22px;
+  font-size:18px;
+  color:#555;
+  margin-bottom:20px;
 }
 
-/* RADIO */
-.gender-select{
-  text-align:center;
-  margin-bottom:16px;
+/* Common row layout */
+.form-row{
+  display:grid;
+  grid-template-columns:90px 1fr;
+  align-items:center;
+  gap:0px;
+  margin-bottom:26px;
 }
 
-.gender-select label{
-  margin:0 10px;
+/* Labels */
+.label{
   font-size:14px;
+  font-weight:500;
+  color:#585858;
+}
+
+/* Inputs & selects */
+input,
+select{
+  width:100%;
+  height:45px;
+  padding:10px;
+  border:1px solid #dcdcdc;
+  font-size:14px;
+}
+
+/* Segmented buttons */
+.segmented{
+  display:flex;
+  border:1px solid #ddd;
+  height:45px;
+}
+
+.segmented input{
+  display:none;
+}
+
+.segmented label{
+  flex:1;
+  text-align:center;
+  line-height:45px;
   cursor:pointer;
+  font-size:14px;
+  background:#fff;
+  color:#333;
 }
 
-/* SECTION */
-.section-title{
-  font-size:13px;
+.segmented input:checked + label{
+  background:#d64550;
+  color:#fff;
   font-weight:600;
-  color:#ff6f61;
-  margin:14px 0 8px;
-  border-bottom:1px dashed #e5e5e5;
-  padding-bottom:4px;
 }
 
-/* GRID */
-.form-grid{
+/* Age grid */
+.age-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:12px 14px;
+  gap:12px;
 }
 
-.form-group label{
-  font-size:12px;
-  margin-bottom:4px;
-  display:block;
+/*income*/
+.income-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
 }
 
-.form-group input,
-.form-group select{
-  width:100%;
-  padding:9px 10px;
-  border-radius:6px;
-  border:1px solid #dcdcdc;
-  font-size:13px;
-}
 
-/* FULL WIDTH */
-.full-width{
-  grid-column:1 / -1;
-}
 
-/* BUTTON */
+/* Button */
 .search-btn{
-  margin-top:18px;
+  margin-top:20px;
   width:100%;
-  background:#ff6f61;
+  height:48px;
   border:none;
+  background:#d64550;
   color:#fff;
-  padding:12px;
-  border-radius:7px;
   font-size:15px;
   font-weight:500;
+  border-radius:1px;
   cursor:pointer;
 }
 
 .search-btn:hover{
-  background:#ff5a4a;
+  background:#c24a3f;  
 }
 
-/* ---------------- RESPONSIVE ---------------- */
-
-/* Tablets */
-@media (max-width:768px){
+/* Responsive */
+@media(max-width:480px){
   .search-card{
-    max-width:460px;
     padding:20px;
   }
 
-  .search-card h2{
-    font-size:20px;
-  }
-}
-
-/* Mobile */
-@media (max-width:480px){
-  .form-grid{
+  .form-row{
     grid-template-columns:1fr;
+    gap:6px;
   }
 
-  .search-card{
-    padding:18px 16px;
-  }
-
-  .gender-select label{
+  .label{
     font-size:13px;
-    margin:0 6px;
-  }
-
-  .search-btn{
-    font-size:14px;
   }
 }
