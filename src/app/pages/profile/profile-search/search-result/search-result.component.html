@@ -1,0 +1,79 @@
+<div class="container">
+  <header>
+    <h1>Member Profiles</h1>
+    <p class="subtitle">Browse through our community members</p>
+  </header>
+
+  <div class="results-header">
+    <h2>All Profiles</h2>
+
+    <div class="results-count">
+      Showing
+      Showing {{ resultsFrom }} - {{ resultsTo }} of {{ profiles.length }} profiles
+
+    </div>
+
+    <div class="page-size">
+      <label>Profiles per page:</label>
+      <select (change)="changePageSize($event)">
+        <option value="6">6</option>
+        <option value="9">9</option>
+        <option value="12">12</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="profiles-grid">
+    <div class="profile-card" *ngFor="let profile of paginatedProfiles">
+      <div class="profile-image">
+        <img [src]="profile.image" [alt]="profile.name">
+      </div>
+
+      <div class="profile-content">
+        <h3 class="profile-name">{{ profile.name }}</h3>
+
+        <div class="profile-detail">
+          <i class="fas fa-money-bill-wave"></i>
+          <strong>Income:</strong> {{ profile.income }}
+        </div>
+
+        <div class="profile-detail">
+          <i class="fas fa-map-marker-alt"></i>
+          <strong>Location:</strong> {{ profile.location }}
+        </div>
+
+        <div class="profile-detail">
+          <i class="fas fa-graduation-cap"></i>
+          <strong>Education:</strong> {{ profile.education }}
+        </div>
+
+        <div class="profile-detail">
+          <i class="fas fa-briefcase"></i>
+          <strong>Profession:</strong> {{ profile.profession }}
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="paginatedProfiles.length === 0" class="no-profiles">
+      No profiles found
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination" *ngIf="totalPages > 1">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">
+      ‹
+    </button>
+
+    <button
+      *ngFor="let p of [].constructor(totalPages); let i = index"
+      (click)="changePage(i + 1)"
+      [class.active]="currentPage === i + 1">
+      {{ i + 1 }}
+    </button>
+
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">
+      ›
+    </button>
+  </div>
+</div>
