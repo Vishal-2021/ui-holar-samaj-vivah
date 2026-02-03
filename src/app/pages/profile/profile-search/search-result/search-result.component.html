@@ -4,30 +4,31 @@
     <p class="subtitle">Browse through our community members</p>
   </header>
 
-  <div class="results-header">
-    <h2>All Profiles</h2>
+  <div class="results-actions">
+    <div class="results-header">
+      <h2>All Profiles</h2>
 
-    <div class="results-count">
-      Showing
-      Showing {{ resultsFrom }} - {{ resultsTo }} of {{ profiles.length }} profiles
+      <div class="results-count">
+        Showing
+        Showing {{ resultsFrom }} - {{ resultsTo }} of {{ profiles.length }} profiles
 
-    </div>
+      </div>
 
-    <!-- 🔙 Back to Search -->
-    <a routerLink="/profile-search" class="back-search-btn">
-      ← Search
-    </a>
+      <!-- 🔙 Back to Search -->
+      <a routerLink="/profile-search" class="back-search-btn">
+        ← Search
+      </a>
 
-    <div class="page-size">
-      <label>Profiles per page:</label>
-      <select (change)="changePageSize($event)">
-        <option value="6">6</option>
-        <option value="9">9</option>
-        <option value="12">12</option>
-      </select>
+      <div class="page-size">
+        <label>Profiles per page:</label>
+        <select (change)="changePageSize($event)">
+          <option value="6">6</option>
+          <option value="9">9</option>
+          <option value="12">12</option>
+        </select>
+      </div>
     </div>
   </div>
-
   <div class="profiles-grid">
     <div class="profile-card" *ngFor="let profile of paginatedProfiles">
       <div class="profile-image">

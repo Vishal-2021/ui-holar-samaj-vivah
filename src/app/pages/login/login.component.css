@@ -2,7 +2,7 @@
 .main {
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: center; 
   justify-content: center;
   padding: 16px;
 }
@@ -105,5 +105,9 @@ h2 {
 @media (max-width: 480px) {
   .card {
     padding: 20px;
+  }
+    .main {
+    align-items: flex-start;   /* 🔥 key fix */
+    padding-top: 40px;         /* adjust as needed */
   }
 }

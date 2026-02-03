@@ -75,3 +75,9 @@ button:hover{
   color:#ff4d4d;
   text-decoration:none;
 }
+
+@media (max-width: 480px) {
+  .card{
+    
+  }
+}
