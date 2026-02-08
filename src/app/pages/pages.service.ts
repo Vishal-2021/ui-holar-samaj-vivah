@@ -7,13 +7,35 @@ import { Observable } from 'rxjs';
 })
 export class PagesService {
 
-  private apiUrl = 'https://holarsamaj.in/api/';
+  private searchCriteria: any = {};
+
+  // private apiUrl = 'https://holarsamaj.in/api/';
+  private apiUrl = 'http://localhost/api/';
 
   constructor(private http: HttpClient) {}
 
+  // ✅ User Registration
   userregister(data: any): Observable<any> {
-    this.apiUrl += 'user/register';
-    return this.http.post(this.apiUrl, data);
+    return this.http.post(this.apiUrl + 'user/register', data);
   }
 
+  // ✅ Create / Update Profile
+  userprofiles(data: any): Observable<any> {
+    return this.http.post(this.apiUrl + 'user/profile', data);
+  }
+
+  // ✅ SEARCH PROFILES 
+  searchProfiles(data: any): Observable<any> {
+    return this.http.post(this.apiUrl + 'user/search', data);
+  }
+
+  // ✅ Save search criteria
+  setCriteria(criteria: any) {
+    this.searchCriteria = criteria;
+  }
+
+  // ✅ Get search criteria
+  getCriteria() {
+    return this.searchCriteria;
+  }
 }

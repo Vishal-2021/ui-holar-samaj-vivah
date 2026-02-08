@@ -1,184 +1,245 @@
 <div class="container">
 
-<form class="profile-card" method="post" enctype="multipart/form-data">
+<form class="profile-card" (ngSubmit)="addProfile()" #profileForm="ngForm" novalidate>
 
-<!-- LEFT -->
-<div class="profile-left">
-  <h3>Upload Photo</h3>
-  <img id="profilePreview" src="https://via.placeholder.com/160">
-  <input type="file" name="profile_photo" accept="image/*" onchange="previewImage(event)">
-  <button type="submit">Save Profile</button>
-</div>
+  <!-- LEFT -->
+  <div class="profile-left">
+    <h3>Upload Photo</h3>
 
-<!-- RIGHT -->
-<div class="profile-right">
-
-<!-- BASIC DETAILS -->
-<div class="section-title">Basic Details</div>
-
-<div class="form-row">
-  <div>
-    <label>Created For</label>
-    <select name="created_for">
-      <option>Self</option>
-      <option>Son</option>
-      <option>Daughter</option>
-    </select>
-  </div>
-  <div>
-    <label>Full Name</label>
-    <input type="text" name="full_name">
-  </div>
-</div>
-
-<div class="form-row">
-  <div>
-    <label>Gender</label>
-    <select name="gender">
-      <option>Male</option>
-      <option>Female</option>
-    </select>
-  </div>
-  <div>
-    <label>Marital Status</label>
-    <select name="marital_status">
-      <option>Single</option>
-      <option>Divorced</option>
-      <option>Widowed</option>
-    </select>
-  </div>
-</div>
-
-<div class="form-row">
-  <div>
-    <label>Date of Birth</label>
-    <input type="date" name="date_of_birth">
-  </div>
-  <div>
-    <label>Birth Time</label>
-    <input type="time" name="birth_time">
-  </div>
-</div>
-
-<div class="form-row">
-  <div>
-    <label>Birth Day</label>
-    <input type="text" name="birth_day">
-  </div>
-  <div>
-    <label>Birth Place</label>
-    <input type="text" name="birth_place">
-  </div>
-</div>
-
-<!-- PHYSICAL -->
-<div class="section-title">Physical Details</div>
-
-<div class="form-row">
-  <div>
-    <label>Height</label>
-    <div style="display:flex;gap:10px;">
-      <input type="number" name="height_feet" placeholder="Feet">
-      <input type="number" name="height_inches" placeholder="Inches">
+    <div class="photo-wrapper">
+      <img [src]="imagePreview || 'https://via.placeholder.com/160'"
+           alt="Profile Photo">
     </div>
-  </div>
-  <div>
-    <label>Weight (kg)</label>
-    <input type="number" name="weight_kg">
-  </div>
-</div>
 
-<div class="form-row">
-  <div>
-    <label>Complexion</label>
-    <input type="text" name="complexion">
-  </div>
-  <div>
-    <label>Blood Group</label>
-    <input type="text" name="blood_group">
-  </div>
-</div>
+    <input type="file"
+           accept="image/*"
+           (change)="onImageSelected($event)">
 
-<!-- EDUCATION -->
-<div class="section-title">Education & Career</div>
-
-<div class="form-row">
-  <div>
-    <label>Education</label>
-    <input type="text" name="education">
+    <button type="submit">Save Profile</button>
   </div>
-  <div>
-    <label>Job</label>
-    <input type="text" name="job">
-  </div>
-</div>
 
-<div class="form-row">
-  <div>
-    <label>Annual Income</label>
-    <input type="text" name="annual_income">
-  </div>
-</div>
+  <!-- RIGHT -->
+  <div class="profile-right">
 
-<!-- FAMILY -->
-<div class="section-title">Family Details</div>
+    <!-- BASIC DETAILS -->
+    <div class="section-title">Basic Details</div>
 
-<div class="form-row">
-  <div>
-    <label>Father Name</label>
-    <input type="text" name="father_name">
-  </div>
-  <div>
-    <label>Father Occupation</label>
-    <input type="text" name="father_job">
-  </div>
-</div>
+    <div class="form-row">
+      <div>
+        <label>Created For</label>
+        <select name="created_for"
+                [(ngModel)]="profile.created_for"
+                required>
+          <option value="">Select</option>
+          <option value="Self">Self</option>
+          <option value="Son">Son</option>
+          <option value="Daughter">Daughter</option>
+        </select>
+      </div>
 
-<div class="form-row">
-  <div>
-    <label>Mother Name</label>
-    <input type="text" name="mother_name">
-  </div>
-  <div>
-    <label>Mother Occupation</label>
-    <input type="text" name="mother_job">
-  </div>
-</div>
+      <div>
+        <label>Full Name</label>
+        <input type="text"
+               name="full_name"
+               [(ngModel)]="profile.full_name"
+               required>
+      </div>
+    </div>
 
-<div class="form-row">
-  <div>
-    <label>Native Place</label>
-    <input type="text" name="native_place">
+    <div class="form-row">
+      <div>
+        <label>Gender</label>
+        <select name="gender"
+                [(ngModel)]="profile.gender">
+          <option value="">Select</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Marital Status</label>
+        <select name="marital_status"
+                [(ngModel)]="profile.marital_status">
+          <option value="">Select</option>
+          <option value="Single">Single</option>
+          <option value="Divorced">Divorced</option>
+          <option value="Widowed">Widowed</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div>
+        <label>Date of Birth</label>
+        <input type="date"
+               name="date_of_birth"
+               [(ngModel)]="profile.date_of_birth">
+      </div>
+
+      <div>
+        <label>Birth Time</label>
+        <input type="time"
+               name="birth_time"
+               [(ngModel)]="profile.birth_time">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div>
+        <label>Birth Day</label>
+        <input type="text"
+               name="birth_day"
+               [(ngModel)]="profile.birth_day">
+      </div>
+
+      <div>
+        <label>Birth Place</label>
+        <input type="text"
+               name="birth_place"
+               [(ngModel)]="profile.birth_place">
+      </div>
+    </div>
+
+    <!-- PHYSICAL -->
+    <div class="section-title">Physical Details</div>
+
+    <div class="form-row">
+      <div>
+        <label>Height</label>
+        <div style="display:flex; gap:10px;">
+          <input type="number"
+                 placeholder="Feet"
+                 name="height_feet"
+                 [(ngModel)]="profile.height_feet">
+
+          <input type="number"
+                 placeholder="Inches"
+                 name="height_inches"
+                 [(ngModel)]="profile.height_inches">
+        </div>
+      </div>
+
+      <div>
+        <label>Weight (kg)</label>
+        <input type="number"
+               name="weight_kg"
+               [(ngModel)]="profile.weight_kg">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div>
+        <label>Complexion</label>
+        <input type="text"
+               name="complexion"
+               [(ngModel)]="profile.complexion">
+      </div>
+
+      <div>
+        <label>Blood Group</label>
+        <input type="text"
+               name="blood_group"
+               [(ngModel)]="profile.blood_group">
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="section-title">Education & Career</div>
+
+    <div class="form-row">
+      <div>
+        <label>Education</label>
+        <input type="text"
+               name="education"
+               [(ngModel)]="profile.education">
+      </div>
+
+      <div>
+        <label>Job</label>
+        <input type="text"
+               name="job"
+               [(ngModel)]="profile.job">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div>
+        <label>Annual Income</label>
+        <input type="text"
+               name="annual_income"
+               [(ngModel)]="profile.annual_income">
+      </div>
+    </div>
+
+    <!-- FAMILY -->
+    <div class="section-title">Family Details</div>
+
+    <div class="form-row">
+      <div>
+        <label>Father Name</label>
+        <input type="text"
+               name="father_name"
+               [(ngModel)]="profile.father_name">
+      </div>
+
+      <div>
+        <label>Father Occupation</label>
+        <input type="text"
+               name="father_job"
+               [(ngModel)]="profile.father_job">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div>
+        <label>Mother Name</label>
+        <input type="text"
+               name="mother_name"
+               [(ngModel)]="profile.mother_name">
+      </div>
+
+      <div>
+        <label>Mother Occupation</label>
+        <input type="text"
+               name="mother_job"
+               [(ngModel)]="profile.mother_job">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div>
+        <label>Native Place</label>
+        <input type="text"
+               name="native_place"
+               [(ngModel)]="profile.native_place">
+      </div>
+
+      <div>
+        <label>Current Address</label>
+        <input type="text"
+               name="current_address"
+               [(ngModel)]="profile.current_address">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div>
+        <label>Other Relatives</label>
+        <input type="text"
+               name="other_relatives"
+               [(ngModel)]="profile.other_relatives">
+      </div>
+    </div>
+
+    <!-- EXPECTATIONS -->
+    <div class="section-title">Partner Expectations</div>
+
+    <textarea rows="3"
+              name="expectations"
+              [(ngModel)]="profile.expectations"></textarea>
+
   </div>
-  <div>
-    <label>Current Address</label>
-    <input type="text" name="current_address">
-  </div>
-</div>
-
-<div class="form-row">
-  <div>
-    <label>Other Relatives</label>
-    <input type="text" name="other_relatives">
-  </div>
-</div>
-
-<!-- EXPECTATIONS -->
-<div class="section-title">Partner Expectations</div>
-<textarea name="expectations" rows="3"></textarea>
-
-<input type="hidden" name="status" value="Active">
-
-</div>
 </form>
-</div>
 
-<script>
-function previewImage(event){
-  const reader = new FileReader();
-  reader.onload = () => {
-    document.getElementById("profilePreview").src = reader.result;
-  };
-  reader.readAsDataURL(event.target.files[0]);
-}
-</script>
+</div>

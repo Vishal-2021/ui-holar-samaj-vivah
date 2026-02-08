@@ -1,26 +1,91 @@
 <div class="container">
   <div class="card">
-    <h3>Welcome! Your journey to finding the right match begins now</h3>
+   <!-- Success / Error Message -->
+    <div class="alert" [ngClass]="isSuccess ? 'successMessage' : 'errorMessage'" *ngIf="message">
+    {{ message }}
+   </div>
+   <h2>Registration</h2>
 
-    <form (ngSubmit)="register()" #registerForm="ngForm">
-      <label>Full Name *</label>
-      <input type="text" name="name" [(ngModel)]="name" placeholder="Enter full name" required>
+  <form #registerForm="ngForm" (ngSubmit)="register(registerForm)" novalidate >
+    <!-- Full Name -->
+    <label>Full Name *</label>
+    <input
+      type="text"
+      name="name"
+      [(ngModel)]="name"
+      #nameCtrl="ngModel"
+      placeholder="Enter full name"
+      required
+      minlength="3"
+    />
+    <small class="error" *ngIf="nameCtrl.invalid && nameCtrl.touched">
+      <span *ngIf="nameCtrl.errors?.['required']">Name is required</span>
+      <span *ngIf="nameCtrl.errors?.['minlength']">
+        Name must be at least 3 characters
+      </span>
+    </small>
 
-      <label>Your Email *</label>
-      <input type="email" name="email" [(ngModel)]="email" placeholder="Enter email" required>
+    <!-- Email -->
+    <label>Your Email *</label>
+    <input
+      type="email"
+      name="email"
+      [(ngModel)]="email"
+      #emailCtrl="ngModel"
+      placeholder="Enter email"
+      required
+      email
+    />
+    <small class="error" *ngIf="emailCtrl.invalid && emailCtrl.touched">
+      <span *ngIf="emailCtrl.errors?.['required']">Email is required</span>
+      <span *ngIf="emailCtrl.errors?.['email']">Enter a valid email</span>
+    </small>
 
-      <label>Mobile No *</label>
-      <input type="tel" name="mobile" [(ngModel)]="mobile" placeholder="Enter mobile number" required>
+    <!-- Mobile -->
+    <label>Mobile No *</label>
+    <input
+      type="tel"
+      name="mobile"
+      [(ngModel)]="mobile"
+      #mobileCtrl="ngModel"
+      placeholder="Enter mobile number"
+      required
+      pattern="^[6-9][0-9]{9}$"
+    />
+    <small class="error" *ngIf="mobileCtrl.invalid && mobileCtrl.touched">
+      <span *ngIf="mobileCtrl.errors?.['required']">Mobile number is required</span>
+      <span *ngIf="mobileCtrl.errors?.['pattern']">
+        Enter valid 10-digit mobile number
+      </span>
+    </small>
 
-      <label>Create New Password *</label>
-      <input type="password" name="password" [(ngModel)]="password" placeholder="Create password" required>
+    <!-- Password -->
+    <label>Create New Password *</label>
+    <input
+      type="password"
+      name="password"
+      [(ngModel)]="password"
+      #passwordCtrl="ngModel"
+      placeholder="Create password"
+      required
+      minlength="6"
+    />
+    <small class="error" *ngIf="passwordCtrl.invalid && passwordCtrl.touched">
+      <span *ngIf="passwordCtrl.errors?.['required']">Password is required</span>
+      <span *ngIf="passwordCtrl.errors?.['minlength']">
+        Password must be at least 6 characters
+      </span>
+    </small>
 
-      <button type="submit">Register me</button>
+    <!-- Submit -->
+    <button type="submit" [disabled]="registerForm.invalid">
+      Register me
+    </button>
 
-      <div class="terms">
-        By clicking Register me, you accept the
-        <a href="#">Terms of Use</a> & <a href="#">Privacy Policy</a>
-      </div>
-    </form>
+    <div class="back-to-login">
+      <a routerLink="/login">← Login</a>
+    </div>
+  </form>
+
   </div>
 </div>

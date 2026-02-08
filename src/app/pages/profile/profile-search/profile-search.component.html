@@ -6,67 +6,67 @@
     <div class="form-row">
       <span class="label">Search for</span>
       <div class="segmented">
-        <input type="radio" id="bride" name="gender" checked />
+        <input type="radio" id="bride" value="Female" name="gender" [(ngModel)]="search.gender" />
         <label for="bride">Bride</label>
 
-        <input type="radio" id="groom" name="gender" />
+        <input type="radio" id="groom" name="gender" value="Male" [(ngModel)]="search.gender" />
         <label for="groom">Groom</label>
       </div>
     </div>
 
-    <!-- Age -->
+    <!-- Age
     <div class="form-row">
       <span class="label">Age</span>
       <div class="age-grid">
-        <input type="number" placeholder="Min" />
-        <input type="number" placeholder="Max" />
+        <input type="number" name="MinAge" placeholder="Min" [(ngModel)]="search.minAge"/>
+        <input type="number" name="MaxAge" placeholder="Max" [(ngModel)]="search.maxAge"/>
       </div>
-    </div>
+    </div> -->
 
     <!-- height -->
-    <div class="form-row">
+    <!-- <div class="form-row">
       <span class="label">Height</span>
       <div class="age-grid">
-        <input type="number" placeholder="Min fit" />
-        <input type="number" placeholder="Max fit" />
+        <input type="number" name="Minfit" placeholder="Min fit" [(ngModel)]="search.minHeight"/>
+        <input type="number" name="maxfit" placeholder="Max fit" [(ngModel)]="search.maxHeight"/>
       </div>
-    </div>
+    </div> -->
 
     <!-- Location -->
     <div class="form-row">
       <span class="label">Location</span>
-      <input type="text" placeholder="Enter city, state or country" />
+      <input type="text" placeholder="Enter city, state or country" [(ngModel)]="search.location" />
     </div>
 
     <!-- Education -->
-    <div class="form-row">
+    <!-- <div class="form-row">
       <span class="label">Education</span>
-      <select>
+      <select [(ngModel)]="search.education">
         <option>Any Education</option>
         <option>UG</option>
         <option>PG</option>
       </select>
-    </div>
+    </div> -->
 
     <!-- Profession -->
     <div class="form-row">
       <span class="label">Profession</span>
-      <input type="text" placeholder="Enter profession" />
+      <input type="text" placeholder="Enter profession" [(ngModel)]="search.profession"/>
     </div>
 
+    
     <!-- Income -->
-    <!-- Income -->
-    <div class="form-row">
+    <!-- <div class="form-row">
       <span class="label">Income</span>
       <div class="income-grid">
-        <select>
+        <select [(ngModel)]="search.minIncome">
           <option disabled selected>Min Income</option>
           <option>1 Lakh</option>
           <option>3 Lakh</option>
           <option>5 Lakh</option>
         </select>
 
-        <select>
+        <select [(ngModel)]="search.maxIncome">
           <option disabled selected>Max Income</option>
           <option>and above</option>
           <option>5 Lakh</option>
@@ -74,7 +74,7 @@
           <option>20 Lakh</option>
         </select>
       </div>
-    </div>
+    </div> -->
 
     <button type="button" class="search-btn" (click)="goToSearchResult()">Search Profiles</button>
   </div>

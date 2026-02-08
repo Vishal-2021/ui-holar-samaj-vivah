@@ -6,48 +6,66 @@
           <img src="/WeddingImage.png" alt="Holar Samaj Vivah" />
         </div>
 
-        <h2>Login to Holar-Samaj Vivah</h2>
-        <br />
+        
 
-        <form (ngSubmit)="login()" #loginForm="ngForm">
-          <!-- Email -->
-          <div class="input-box">
-            <i class="fa-regular fa-envelope"></i>
-            <input type="email" name="email" [(ngModel)]="email" placeholder="Enter your email" required />
+        <h2>Login to Holar-Samaj Vivah</h2>
+       
+        <span class="loginFailed" *ngIf="loginFailedMessage"> {{loginFailedMessage}}</span>
+
+        <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" novalidate>
+          <div class="form-group">
+            <!-- Email -->
+              <div class="input-box">
+                <i class="fa-regular fa-envelope"></i>
+                <input type="email" name="email" [(ngModel)]="email" #emailCtrl="ngModel" placeholder="Enter your email" required email/>
+              </div>
+              <!-- Email Error -->
+              <small class="error" *ngIf="emailCtrl.invalid && emailCtrl.touched">
+                <span *ngIf="emailCtrl.errors?.['required']">Email is required</span>
+                <span *ngIf="emailCtrl.errors?.['email']">Enter a valid email</span>
+              </small>
           </div>
 
           <!-- Password (SVG icon, no font) -->
-          <div class="input-box">
-            <span class="icon">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M7 10V7a5 5 0 0 1 10 0v3"
-                  stroke="#6e6e6e"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-                <rect
-                  x="5"
-                  y="10"
-                  width="14"
-                  height="11"
-                  rx="2"
-                  stroke="#6e6e6e"
-                  stroke-width="2"
-                />
-              </svg>
-            </span>
-
-            <input type="password" name="password" [(ngModel)]="password" placeholder="Enter your password" required />
+          <div class="form-group">
+            <div class="input-box">
+              <span class="icon">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7 10V7a5 5 0 0 1 10 0v3"
+                    stroke="#6e6e6e"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <rect
+                    x="5"
+                    y="10"
+                    width="14"
+                    height="11"
+                    rx="2"
+                    stroke="#6e6e6e"
+                    stroke-width="2"
+                  />
+                </svg>
+              </span>
+              <input type="password" name="password" [(ngModel)]="password" #passwordCtrl="ngModel" placeholder="Enter your password" required minlength="6"/>
+            </div>
+              <!-- Password Error -->
+            <small class="error" *ngIf="passwordCtrl.invalid && passwordCtrl.touched">
+              <span *ngIf="passwordCtrl.errors?.['required']">Password is required</span>
+              <span *ngIf="passwordCtrl.errors?.['minlength']">
+                Password must be at least 6 characters
+              </span>
+            </small>
           </div>
-
-          <button class="login-btn" type="submit">
+          
+          <button class="login-btn" type="submit" [disabled]="loginForm.invalid">
             <i class="fa-solid fa-right-to-bracket"></i> Sign In
           </button>
         </form>

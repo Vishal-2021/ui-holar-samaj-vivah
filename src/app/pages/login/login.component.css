@@ -32,16 +32,42 @@
 h2 {
   text-align: center;
   color: #585858;
-  margin-bottom: 10px;
+  margin-bottom: 18px;
   font-size: 20px;
   font-weight: 700;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.loginFailed {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  color: #e53935;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 14px;  
+  border-radius: 6px;
+}
+
+
+.form-group {
+  margin-bottom: 22px; /* default spacing */
+}
+
+.form-group:has(.error) {
+  margin-bottom: 14px;
+}
+
 /* Input box */
 .input-box {
   position: relative;
-  margin-bottom: 22px;
+  
+}
+/* When input is invalid and touched, reduce gap */
+.input-box input.ng-invalid.ng-touched {
+  margin-bottom: 2px;
 }
 
 .input-box i,
@@ -110,4 +136,22 @@ h2 {
     align-items: flex-start;   /* 🔥 key fix */
     padding-top: 40px;         /* adjust as needed */
   }
+}
+
+/* form validation */
+.error {
+  color: #e53935;
+  font-size: 12px;
+  margin: 4px 0 0 42px; /* align with input text */
+  line-height: 1.2;
+  display: block;
+}
+
+
+input.ng-invalid.ng-touched {
+  border: 1px solid #e53935;
+}
+
+.login-btn[disabled] {  
+  cursor: not-allowed;
 }

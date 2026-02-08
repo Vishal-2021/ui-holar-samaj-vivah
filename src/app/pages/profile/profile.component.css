@@ -18,13 +18,40 @@
   text-align:center;
   border-right:1px solid #eee;
 }
-.profile-left img{
-  width:160px;
-  height:160px;
-  border-radius:50%;
-  object-fit:cover;
-  border:4px solid #e91e63;
+
+
+
+
+
+
+
+.profile-left .photo-wrapper {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;              /* 🔥 REQUIRED */
+  border: 2px solid #e94224;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 10px;
 }
+
+.profile-left .photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;              /* 🔥 REQUIRED */
+}
+
+
+
+
+
+.profile-left input[type="file"] {
+  margin-top: 12px;
+}
+
 .profile-left input[type="file"]{
   margin-top:12px;
 }

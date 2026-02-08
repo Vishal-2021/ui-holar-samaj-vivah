@@ -1,24 +1,25 @@
 <div class="container">
+  <!-- Header -->
   <header>
     <h1>Member Profiles</h1>
     <p class="subtitle">Browse through our community members</p>
   </header>
 
+  <!-- Actions / Header -->
   <div class="results-actions">
     <div class="results-header">
       <h2>All Profiles</h2>
 
       <div class="results-count">
-        Showing
-        Showing {{ resultsFrom }} - {{ resultsTo }} of {{ profiles.length }} profiles
-
+        Showing {{ resultsFrom }} - {{ resultsTo }} of {{ totalRecords }} profiles
       </div>
 
-      <!-- 🔙 Back to Search -->
+      <!-- Back to Search -->
       <a routerLink="/profile-search" class="back-search-btn">
         ← Search
       </a>
 
+      <!-- Page Size -->
       <div class="page-size">
         <label>Profiles per page:</label>
         <select (change)="changePageSize($event)">
@@ -29,14 +30,19 @@
       </div>
     </div>
   </div>
+
+  <!-- Profiles Grid -->
   <div class="profiles-grid">
-    <div class="profile-card" *ngFor="let profile of paginatedProfiles">
+    <div class="profile-card" *ngFor="let profile of profiles">
       <div class="profile-image">
-        <img [src]="profile.image" [alt]="profile.name">
+        <img
+          [src]="profile.photo_url || '/default-user.png'"
+          [alt]="profile.full_name"          
+        />
       </div>
 
       <div class="profile-content">
-        <h3 class="profile-name">{{ profile.name }}</h3>
+        <h3 class="profile-name">{{ profile.full_name }}</h3>
 
         <div class="profile-detail">
           <i class="fas fa-money-bill-wave"></i>
@@ -60,7 +66,8 @@
       </div>
     </div>
 
-    <div *ngIf="paginatedProfiles.length === 0" class="no-profiles">
+    <!-- No Profiles -->
+    <div *ngIf="profiles.length === 0" class="no-profiles">
       No profiles found
     </div>
   </div>
@@ -74,7 +81,8 @@
     <button
       *ngFor="let p of [].constructor(totalPages); let i = index"
       (click)="changePage(i + 1)"
-      [class.active]="currentPage === i + 1">
+      [class.active]="currentPage === i + 1"
+    >
       {{ i + 1 }}
     </button>
 
