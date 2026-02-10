@@ -15,7 +15,7 @@
            accept="image/*"
            (change)="onImageSelected($event)">
 
-    <button type="submit">Save Profile</button>
+    <button type="button" (click)="uploadPhoto()">Upload Photo</button>
   </div>
 
   <!-- RIGHT -->
@@ -239,6 +239,7 @@
               name="expectations"
               [(ngModel)]="profile.expectations"></textarea>
 
+                 <button type="submit">Save Profile</button>
   </div>
 </form>
 

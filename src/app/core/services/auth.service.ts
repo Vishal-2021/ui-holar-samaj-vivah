@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  // private apiUrl = 'https://holarsamaj.in/api/user/login';
-  private apiUrl = 'http://localhost/api/user/login';
+   private apiUrl = 'https://holarsamaj.in/api/user/login';
+  //private apiUrl = 'http://localhost/api/user/login';
 
   constructor(private http: HttpClient) {}
 

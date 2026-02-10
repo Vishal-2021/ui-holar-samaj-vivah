@@ -9,11 +9,15 @@ export class PagesService {
 
   private searchCriteria: any = {};
 
-  // private apiUrl = 'https://holarsamaj.in/api/';
-  private apiUrl = 'http://localhost/api/';
+   private apiUrl = 'https://holarsamaj.in/api/';
+  //private apiUrl = 'http://localhost/api/';
 
   constructor(private http: HttpClient) {}
 
+  // ✅ Upload Profile Image
+  uploadImage(data: any): Observable<any> {
+    return this.http.post(this.apiUrl + 'user/profile/photo', data);
+  }
   // ✅ User Registration
   userregister(data: any): Observable<any> {
     return this.http.post(this.apiUrl + 'user/register', data);

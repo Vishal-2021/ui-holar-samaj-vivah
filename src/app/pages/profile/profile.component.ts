@@ -63,6 +63,22 @@ export class ProfileComponent {
       }
     }
 
+
+    uploadPhoto(){
+      const formData = new FormData();
+      formData.append('profile_photo', this.selectedFile);
+      formData.append('user_id', localStorage.getItem('user_id') || '');
+
+      this.pagesService.uploadImage(formData).subscribe({
+        next: (response: any) => {
+          console.log("Image uploaded:", response);
+        },
+        error: (error) => {
+          console.error("Image upload error:", error);
+        }
+      }); 
+    }
+
     addProfile(){
       const data = {
         user_id: Number(localStorage.getItem('user_id')),
