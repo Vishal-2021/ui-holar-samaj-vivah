@@ -4,18 +4,18 @@
 
   <!-- LEFT -->
   <div class="profile-left">
-    <h3>Upload Photo</h3>
+    <h2>My Profile</h2>
 
     <div class="photo-wrapper">
       <img [src]="imagePreview || 'https://via.placeholder.com/160'"
-           alt="Profile Photo">
+           alt="Upload Photo">
     </div>
 
     <input type="file"
            accept="image/*"
            (change)="onImageSelected($event)">
 
-    <button type="button" (click)="uploadPhoto()">Upload Photo</button>
+    <!-- <button type="button" (click)="uploadPhoto()">Upload Photo</button> -->
   </div>
 
   <!-- RIGHT -->
@@ -165,8 +165,8 @@
 
     <div class="form-row">
       <div>
-        <label>Annual Income</label>
-        <input type="text"
+        <label>Annual Income In Lakh</label>
+        <input type="number"
                name="annual_income"
                [(ngModel)]="profile.annual_income">
       </div>

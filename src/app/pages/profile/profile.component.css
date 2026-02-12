@@ -1,13 +1,17 @@
 
-
+h2{
+  color:#ff4d4d;
+  margin-bottom:18px;
+  font-weight:600;
+}
 .container{
   max-width:1200px;
-  margin:25px auto;
-  padding:15px;
+  margin:3px auto;
+  padding:3px;
 }
 .profile-card{
   background:#fff;
-  border-radius:12px;
+  border-radius:6px;
   box-shadow:0 6px 18px rgba(0,0,0,0.08);
   display:flex;
   gap:30px;
@@ -17,6 +21,7 @@
   width:320px;
   text-align:center;
   border-right:1px solid #eee;
+  padding-right: 25px;
 }
 
 
@@ -29,20 +34,21 @@
   width: 160px;
   height: 160px;
   border-radius: 50%;
-  overflow: hidden;              /* 🔥 REQUIRED */
-  border: 2px solid #e94224;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  margin-top: 10px;
+  overflow: hidden;
+  border: 2px solid #ff4d4d;
+  margin: 10px auto 0;
+
+  display: grid;
+  place-items: center;   /* 👈 vertical + horizontal */
 }
 
 .profile-left .photo-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;              /* 🔥 REQUIRED */
+  object-fit: cover;
+  object-position: center center;
+  display: block;
 }
+
+
 
 
 
@@ -55,10 +61,10 @@
 .profile-left input[type="file"]{
   margin-top:12px;
 }
-.profile-left button{
+ button{
   width:100%;
   padding:10px;
-  background:#e91e63;
+  background:#ff4d4d;
   border:none;
   color:#fff;
   border-radius:6px;
@@ -68,7 +74,7 @@
 }
 .profile-right{flex:1;}
 .section-title{
-  color:#e91e63;
+  color:#ff4d4d;
   margin:18px 0 10px;
   font-weight:600;
 }

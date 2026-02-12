@@ -19,7 +19,9 @@ export class ProfileSearchComponent {
   search = {
       gender: 'Female',     // Bride = Female, Groom = Male
       location: '',
-      profession: ''
+      profession: '',
+      minIncome:'',
+      maxIncome:''
     };
 
 
