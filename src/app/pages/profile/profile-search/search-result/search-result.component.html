@@ -33,10 +33,11 @@
 
   <!-- Profiles Grid -->
   <div class="profiles-grid">
-    <div class="profile-card" *ngFor="let profile of profiles">
+    <div class="profile-card" *ngFor="let profile of profiles" (click)="viewProfile(profile.user_id)">
       <div class="profile-image">
         <img
-          [src]="profile.photo_url || '/default-user.png'"
+          [src]="'https://holarsamaj.in/api' + profile.photo_url"
+          (error)="onImageError($event)"
           [alt]="profile.full_name"          
         />
       </div>

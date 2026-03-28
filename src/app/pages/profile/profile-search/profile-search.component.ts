@@ -21,7 +21,9 @@ export class ProfileSearchComponent {
       location: '',
       profession: '',
       minIncome:'',
-      maxIncome:''
+      maxIncome:'',
+      minAge: '',
+      maxAge: ''
     };
 
 

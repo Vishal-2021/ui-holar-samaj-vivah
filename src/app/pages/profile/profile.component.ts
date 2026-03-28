@@ -63,12 +63,12 @@ export class ProfileComponent {
       }
     }
 
-
+   
     uploadPhoto(){
       const formData = new FormData();
       formData.append('profile_photo', this.selectedFile);
       formData.append('user_id', localStorage.getItem('user_id') || '');
-
+     
       this.pagesService.uploadImage(formData).subscribe({
         next: (response: any) => {
           console.log("Image uploaded:", response);
@@ -111,10 +111,31 @@ export class ProfileComponent {
 
       this.pagesService.userprofiles(data).subscribe({
         next: (Response: any)=>{
-          console.log("profile Add", Response)
+          console.log("profile Add", Response)          
+          if (this.selectedFile) {
+            console.log("File:", this.selectedFile); // 🔥 debug
+
+            const formData = new FormData();
+            formData.append('profile_photo', this.selectedFile);
+            formData.append('user_id', localStorage.getItem('user_id') || '');
+
+            this.pagesService.uploadImage(formData).subscribe({
+              next: (res: any) => {
+                console.log("Upload success:", res);
+                alert("Profile saved successfully ✅");
+              },
+              error: (err) => {
+                console.error("Upload error:", err);
+                alert("Profile saved but photo failed ❌");
+              }
+            });
+          } else {
+            alert("Profile Saved (No Photo)");
+          }          
         },
         error: (error) =>{
           console.error('profile Error:', error);
+          alert("Something went wrong ❌");
         }
 
       })

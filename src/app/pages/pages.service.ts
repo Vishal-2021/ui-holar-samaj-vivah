@@ -10,36 +10,42 @@ export class PagesService {
   private searchCriteria: any = {};
 
    private apiUrl = 'https://holarsamaj.in/api/';
-  //private apiUrl = 'http://localhost/api/';
+  // private apiUrl = 'http://localhost/api/';
 
   constructor(private http: HttpClient) {}
 
-  // ✅ Upload Profile Image
+  // Upload Profile Image
   uploadImage(data: any): Observable<any> {
     return this.http.post(this.apiUrl + 'user/profile/photo', data);
   }
-  // ✅ User Registration
+  
+  // User Registration
   userregister(data: any): Observable<any> {
     return this.http.post(this.apiUrl + 'user/register', data);
   }
 
-  // ✅ Create / Update Profile
+  // Create / Update Profile
   userprofiles(data: any): Observable<any> {
     return this.http.post(this.apiUrl + 'user/profile', data);
   }
 
-  // ✅ SEARCH PROFILES 
+  // SEARCH PROFILES 
   searchProfiles(data: any): Observable<any> {
     return this.http.post(this.apiUrl + 'user/search', data);
   }
 
-  // ✅ Save search criteria
+  // Save search criteria
   setCriteria(criteria: any) {
     this.searchCriteria = criteria;
   }
 
-  // ✅ Get search criteria
+  // Get search criteria
   getCriteria() {
     return this.searchCriteria;
+  }
+
+  //  Get Profile By ID
+  getProfileById(id: number): Observable<any> {
+    return this.http.get(this.apiUrl + 'user/profile?id=' + id);
   }
 }

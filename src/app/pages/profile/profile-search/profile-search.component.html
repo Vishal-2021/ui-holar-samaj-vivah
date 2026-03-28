@@ -14,14 +14,14 @@
       </div>
     </div>
 
-    <!-- Age
+    <!-- Age -->
     <div class="form-row">
       <span class="label">Age</span>
       <div class="age-grid">
         <input type="number" name="MinAge" placeholder="Min" [(ngModel)]="search.minAge"/>
         <input type="number" name="MaxAge" placeholder="Max" [(ngModel)]="search.maxAge"/>
       </div>
-    </div> -->
+    </div> 
 
     <!-- height -->
     <!-- <div class="form-row">
@@ -56,25 +56,48 @@
 
     
     <!-- Income -->
-    <!-- <div class="form-row">
+    <div class="form-row">
       <span class="label">Income</span>
       <div class="income-grid">
         <select [(ngModel)]="search.minIncome">
-          <option disabled selected>Min Income</option>
-          <option>1 Lakh</option>
-          <option>3 Lakh</option>
-          <option>5 Lakh</option>
+          <option disabled value="">Min Income</option>
+            <option value="0">No Income</option>
+              <option value="1">0 - 1 Lakh</option>
+              <option value="2">1 - 2 Lakh</option>
+              <option value="3">2 - 3 Lakh</option>
+              <option value="4">3 - 4 Lakh</option>
+              <option value="5">4 - 5 Lakh</option>
+              <option value="7.5">5 - 7.5 Lakh</option>
+              <option value="10">7.5 - 10 Lakh</option>
+              <option value="15">10 - 15 Lakh</option>
+              <option value="20">15 - 20 Lakh</option>
+              <option value="25">20 - 25 Lakh</option>
+              <option value="35">25 - 35 Lakh</option>
+              <option value="50">35 - 50 Lakh</option>
+              <option value="70">50 - 70 Lakh</option>
+              <option value="100">70 - 1 crore</option>
         </select>
 
         <select [(ngModel)]="search.maxIncome">
-          <option disabled selected>Max Income</option>
-          <option>and above</option>
-          <option>5 Lakh</option>
-          <option>10 Lakh</option>
-          <option>20 Lakh</option>
+              <option disabled value="">Max Income</option>
+              <option value="0">No Income</option>
+              <option value="1">0 - 1 Lakh</option>
+              <option value="2">1 - 2 Lakh</option>
+              <option value="3">2 - 3 Lakh</option>
+              <option value="4">3 - 4 Lakh</option>
+              <option value="5">4 - 5 Lakh</option>
+              <option value="7.5">5 - 7.5 Lakh</option>
+              <option value="10">7.5 - 10 Lakh</option>
+              <option value="15">10 - 15 Lakh</option>
+              <option value="20">15 - 20 Lakh</option>
+              <option value="25">20 - 25 Lakh</option>
+              <option value="35">25 - 35 Lakh</option>
+              <option value="50">35 - 50 Lakh</option>
+              <option value="70">50 - 70 Lakh</option>
+              <option value="100">70 - 1 crore</option>
         </select>
       </div>
-    </div> -->
+    </div>
 
     <button type="button" class="search-btn" (click)="goToSearchResult()">Search Profiles</button>
   </div>

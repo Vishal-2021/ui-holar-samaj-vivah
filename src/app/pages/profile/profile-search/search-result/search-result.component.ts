@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { PagesService } from '../../../pages.service';
 import { ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 interface Profile {
   user_id: number;
@@ -28,14 +30,20 @@ export class SearchResultComponent implements OnInit {
   profilesPerPage = 2;
   totalRecords = 0;
 
-  constructor(private pageService: PagesService, private cdr: ChangeDetectorRef) {}
+  constructor(private pageService: PagesService, private cdr: ChangeDetectorRef, private router: Router) {}
 
   ngOnInit() {
     this.loadProfiles();
   }
 
 
+  viewProfile(user_id: number) {
+    this.router.navigate(['/profile-details', user_id]);
+  }
 
+  onImageError(event: any) {
+    event.target.src = 'default-user.png';
+  }
 
   loadProfiles() {
     const criteria = this.pageService.getCriteria();
@@ -49,7 +57,9 @@ export class SearchResultComponent implements OnInit {
     this.pageService.searchProfiles(payload).subscribe({
       next: (res: { status: string; data: Profile[]; totalRecords?: number }) => {
         if (res.status === 'SUCCESS') {
-          this.profiles = res.data;          
+          
+          this.profiles = res.data;       
+          console.log(this.profiles)   
           this.totalRecords = res.totalRecords ?? res.data.length;
           this.cdr.detectChanges()
         }

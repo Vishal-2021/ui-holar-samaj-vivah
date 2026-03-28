@@ -12,9 +12,10 @@
     <ul class="nav-links" id="navLinks">
         <li><a routerLink="/">Home</a></li>
         <li><a routerLink="/profile-search">Search</a></li>
-        <li><a routerLink="/login" class="login">Login</a></li>
-        <li><a routerLink="/register" class="btn">Registration</a></li>
+        <li *ngIf="!authService.isLoggedIn()"><a routerLink="/login" class="login">Login</a></li>
+        <li *ngIf="!authService.isLoggedIn()"><a routerLink="/register" class="btn">Registration</a></li>
         <li><a routerLink="/profile" class="btn">Profile</a></li>
+        <li *ngIf="authService.isLoggedIn()"><a (click)="logout()" class="btn" style="cursor: pointer;">logout</a></li>
     </ul>
 </nav>
 

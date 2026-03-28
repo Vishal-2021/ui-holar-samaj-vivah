@@ -8,11 +8,19 @@ import { Observable } from 'rxjs';
 export class AuthService {
 
    private apiUrl = 'https://holarsamaj.in/api/user/login';
-  //private apiUrl = 'http://localhost/api/user/login';
+  // private apiUrl = 'http://localhost/api/user/login';
 
   constructor(private http: HttpClient) {}
 
   login(data: any): Observable<any> {
     return this.http.post(this.apiUrl, data);
+  }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('user_id');
+  }
+
+  logout() {
+    localStorage.removeItem('user_id');
   }
 }

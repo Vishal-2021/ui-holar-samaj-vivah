@@ -38,13 +38,16 @@ h2{
   border: 2px solid #ff4d4d;
   margin: 10px auto 0;
 
-  display: grid;
-  place-items: center;   /* 👈 vertical + horizontal */
+  display: flex;              /* better than grid here */
+  justify-content: center;
+  align-items: center;
 }
 
 .profile-left .photo-wrapper img {
-  object-fit: cover;
-  object-position: center center;
+   width: 100%;               /* 🔥 IMPORTANT */
+  height: 100%;              /* 🔥 IMPORTANT */
+  object-fit: cover;         /* crop properly */
+  object-position: center;   /* center image */
   display: block;
 }
 

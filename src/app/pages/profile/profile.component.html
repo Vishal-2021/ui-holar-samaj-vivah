@@ -15,7 +15,7 @@
            accept="image/*"
            (change)="onImageSelected($event)">
 
-    <!-- <button type="button" (click)="uploadPhoto()">Upload Photo</button> -->
+    <!-- <button type="button" (click)="uploadPhoto()">Change Photo</button> -->
   </div>
 
   <!-- RIGHT -->
@@ -166,9 +166,27 @@
     <div class="form-row">
       <div>
         <label>Annual Income In Lakh</label>
-        <input type="number"
+        <!-- <input type="number"
                name="annual_income"
-               [(ngModel)]="profile.annual_income">
+               [(ngModel)]="profile.annual_income"> -->
+        <select name="annual_income" [(ngModel)]="profile.annual_income">
+              <option disabled selected>Select Income</option>
+              <option value="0">No Income</option>
+              <option value="1 Lakh">0 - 1 Lakh</option>
+              <option value="2 Lakh">1 - 2 Lakh</option>
+              <option value="3 Lakh">2 - 3 Lakh</option>
+              <option value="4 Lakh">3 - 4 Lakh</option>
+              <option value="5 Lakh">4 - 5 Lakh</option>
+              <option value="7.5 Lakh">5 - 7.5 Lakh</option>
+              <option value="10 Lakh">7.5 - 10 Lakh</option>
+              <option value="15 Lakh">10 - 15 Lakh</option>
+              <option value="20 Lakh">15 - 20 Lakh</option>
+              <option value="25 Lakh">20 - 25 Lakh</option>
+              <option value="35 Lakh">25 - 35 Lakh</option>
+              <option value="50 Lakh">35 - 50 Lakh</option>
+              <option value="70 Lakh">50 - 70 Lakh</option>
+              <option value="100 crore">70 - 1 crore</option>
+        </select>
       </div>
     </div>
 
