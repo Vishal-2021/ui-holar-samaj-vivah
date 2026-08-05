@@ -1,0 +1,74 @@
+<div *ngIf="profile; else loading">
+
+  <div class="profile-wrapper">
+
+    <!-- Header -->
+    <div class="profile-card">
+      <img 
+        [src]="profile?.photo_url 
+          ? 'https://holarsamaj.in/api' + profile.photo_url 
+          : 'default-user.png'"
+        class="profile-img"
+      >
+
+      <div class="profile-content">
+        <h2>{{ profile.full_name }}</h2>
+
+        <div class="badges">
+          <span>📍 {{ profile.current_address }}</span>
+          <span>💼 {{ profile.job }}</span>
+          <span>💰 {{ profile.annual_income }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Details -->
+    <div class="details-card">
+
+      <h3>Basic Details</h3>
+      <div class="grid">
+        <div><b>Gender</b><span>{{ profile.gender }}</span></div>
+        <div><b>Marital Status</b><span>{{ profile.marital_status }}</span></div>
+        <div><b>DOB</b><span>{{ profile.date_of_birth }}</span></div>
+        <div><b>Birth Place</b><span>{{ profile.birth_place }}</span></div>
+      </div>
+
+      <h3>Physical Details</h3>
+      <div class="grid">
+        <div><b>Height</b><span>{{ profile.height_feet }}' {{ profile.height_inches }}"</span></div>
+        <div><b>Weight</b><span>{{ profile.weight_kg }} kg</span></div>
+        <div><b>Complexion</b><span>{{ profile.complexion }}</span></div>
+        <div><b>Blood Group</b><span>{{ profile.blood_group }}</span></div>
+      </div>
+
+      <h3>Education & Career</h3>
+      <div class="grid">
+        <div><b>Education</b><span>{{ profile.education }}</span></div>
+        <div><b>Job</b><span>{{ profile.job }}</span></div>
+        <div><b>Income</b><span>{{ profile.annual_income }}</span></div>
+      </div>
+
+      <h3>Family Details</h3>
+      <div class="grid">
+        <div><b>Father</b><span>{{ profile.father_name }}</span></div>
+        <div><b>Mother</b><span>{{ profile.mother_name }}</span></div>
+        <div><b>Native Place</b><span>{{ profile.native_place }}</span></div>
+        <div><b>Address</b><span>{{ profile.current_address }}</span></div>
+      </div>
+
+      <h3>Partner Expectations</h3>
+      <p class="expectation">
+        {{ profile.expectations }}
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+<ng-template #loading>
+  <p style="text-align:center; margin-top:30px;">
+    Loading profile...
+  </p>
+</ng-template>

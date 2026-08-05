@@ -1,0 +1,110 @@
+body {
+  background: #f5f7fb;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.profile-wrapper {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 15px;
+}
+
+/* Header Card */
+.profile-card {
+  display: flex;
+  gap: 20px;
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  align-items: center;
+}
+
+.profile-img {
+  width: 160px;
+  height: 180px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.profile-content h2 {
+  margin-bottom: 10px;
+  color: #222;
+}
+
+/* Badges */
+.badges span {
+  display: inline-block;
+  margin-right: 10px;
+  background: #f1f3f6;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+
+/* Details Card */
+.details-card {
+  margin-top: 20px;
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.details-card h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #ff4d4d;
+  border-left: 4px solid #ff4d4d;
+  padding-left: 10px;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.grid div {
+  background: #fafafa;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.grid b {
+  display: block;
+  color: #888;
+  font-size: 13px;
+}
+
+.grid span {
+  color: #333;
+  font-weight: 500;
+}
+
+/* Partner Section */
+.expectation {
+  background: #fafafa;
+  padding: 15px;
+  border-radius: 10px;
+  line-height: 1.6;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .profile-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-img {
+    width: 100%;
+    height: auto;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
