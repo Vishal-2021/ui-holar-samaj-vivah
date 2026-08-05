@@ -46,7 +46,14 @@ export class LoginComponent {
           localStorage.setItem('user_id', response.user.user_id);
           localStorage.setItem('email', response.user.email)
 
-          
+          // Session expires after 30 minutes
+          const expiryTime = Date.now() + (1 * 60 * 1000);
+
+          localStorage.setItem(
+            'expiryTime',
+            expiryTime.toString()
+          );
+                    
           this.router.navigate(['/profile']);
           // Example: save token
           // localStorage.setItem('token', response.token);

@@ -1,21 +1,23 @@
 <div class="container">
 
-<form class="profile-card" (ngSubmit)="addProfile()" #profileForm="ngForm" novalidate>
+<form class="profile-card" (ngSubmit)="addProfile(profileForm)" #profileForm="ngForm" novalidate>
 
   <!-- LEFT -->
   <div class="profile-left">
+
     <h2>My Profile</h2>
 
     <div class="photo-wrapper">
-      <img [src]="imagePreview || 'https://via.placeholder.com/160'"
+      <img [src]="imagePreview"
            alt="Upload Photo">
     </div>
-
+    
+    
     <input type="file"
            accept="image/*"
-           (change)="onImageSelected($event)">
+           (change)="onImageSelected($event)"
+           [disabled]="isProfileExists && !isEditMode" >
 
-    <!-- <button type="button" (click)="uploadPhoto()">Change Photo</button> -->
   </div>
 
   <!-- RIGHT -->
@@ -25,240 +27,398 @@
     <div class="section-title">Basic Details</div>
 
     <div class="form-row">
+
       <div>
         <label>Created For</label>
-        <select name="created_for"
-                [(ngModel)]="profile.created_for"
-                required>
+
+        <select
+          name="created_for"
+          [(ngModel)]="profile.created_for"
+          [disabled]="isProfileExists && !isEditMode"
+          required>
+
           <option value="">Select</option>
           <option value="Self">Self</option>
           <option value="Son">Son</option>
           <option value="Daughter">Daughter</option>
+
         </select>
       </div>
 
       <div>
         <label>Full Name</label>
-        <input type="text"
-               name="full_name"
-               [(ngModel)]="profile.full_name"
-               required>
+
+        <input
+          type="text"
+          name="full_name"
+          [(ngModel)]="profile.full_name"
+          [disabled]="isProfileExists && !isEditMode"
+          required>
       </div>
+
     </div>
 
     <div class="form-row">
+
       <div>
         <label>Gender</label>
-        <select name="gender"
-                [(ngModel)]="profile.gender">
+
+        <select
+          name="gender"
+          [(ngModel)]="profile.gender"
+          [disabled]="isProfileExists && !isEditMode" required>
+
           <option value="">Select</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
+
         </select>
       </div>
 
       <div>
         <label>Marital Status</label>
-        <select name="marital_status"
-                [(ngModel)]="profile.marital_status">
+
+        <select
+          name="marital_status"
+          [(ngModel)]="profile.marital_status"
+          [disabled]="isProfileExists && !isEditMode" required>
+
           <option value="">Select</option>
           <option value="Single">Single</option>
           <option value="Divorced">Divorced</option>
           <option value="Widowed">Widowed</option>
+
         </select>
       </div>
+
     </div>
 
     <div class="form-row">
+
       <div>
         <label>Date of Birth</label>
-        <input type="date"
-               name="date_of_birth"
-               [(ngModel)]="profile.date_of_birth">
+
+        <input
+          type="date"
+          name="date_of_birth"
+          [(ngModel)]="profile.date_of_birth"
+          [disabled]="isProfileExists && !isEditMode" required>
       </div>
 
       <div>
         <label>Birth Time</label>
-        <input type="time"
-               name="birth_time"
-               [(ngModel)]="profile.birth_time">
+
+        <input
+          type="time"
+          name="birth_time"
+          [(ngModel)]="profile.birth_time"
+          [disabled]="isProfileExists && !isEditMode" required>
       </div>
+
     </div>
 
     <div class="form-row">
+
       <div>
         <label>Birth Day</label>
-        <input type="text"
-               name="birth_day"
-               [(ngModel)]="profile.birth_day">
+
+        <input
+          type="text"
+          name="birth_day"
+          [(ngModel)]="profile.birth_day"
+          [disabled]="isProfileExists && !isEditMode" required>
       </div>
 
       <div>
         <label>Birth Place</label>
-        <input type="text"
-               name="birth_place"
-               [(ngModel)]="profile.birth_place">
+
+        <input
+          type="text"
+          name="birth_place"
+          [(ngModel)]="profile.birth_place"
+          [disabled]="isProfileExists && !isEditMode" required>
       </div>
+
     </div>
 
     <!-- PHYSICAL -->
     <div class="section-title">Physical Details</div>
 
     <div class="form-row">
+
       <div>
+
         <label>Height</label>
-        <div style="display:flex; gap:10px;">
-          <input type="number"
-                 placeholder="Feet"
-                 name="height_feet"
-                 [(ngModel)]="profile.height_feet">
 
-          <input type="number"
-                 placeholder="Inches"
-                 name="height_inches"
-                 [(ngModel)]="profile.height_inches">
+        <div style="display:flex; gap:10px;">
+
+          <input
+            type="number"
+            placeholder="Feet"
+            name="height_feet"
+            [(ngModel)]="profile.height_feet"
+            [disabled]="isProfileExists && !isEditMode" required>
+
+          <input
+            type="number"
+            placeholder="Inches"
+            name="height_inches"
+            [(ngModel)]="profile.height_inches"
+            [disabled]="isProfileExists && !isEditMode" required>
+
         </div>
+
       </div>
 
       <div>
+
         <label>Weight (kg)</label>
-        <input type="number"
-               name="weight_kg"
-               [(ngModel)]="profile.weight_kg">
+
+        <input
+          type="number"
+          name="weight_kg"
+          [(ngModel)]="profile.weight_kg"
+          [disabled]="isProfileExists && !isEditMode" required>
+
       </div>
+
     </div>
 
     <div class="form-row">
+
       <div>
+
         <label>Complexion</label>
-        <input type="text"
-               name="complexion"
-               [(ngModel)]="profile.complexion">
+
+        <input
+          type="text"
+          name="complexion"
+          [(ngModel)]="profile.complexion"
+          [disabled]="isProfileExists && !isEditMode" required>
+
       </div>
 
       <div>
+
         <label>Blood Group</label>
-        <input type="text"
-               name="blood_group"
-               [(ngModel)]="profile.blood_group">
+
+        <input
+          type="text"
+          name="blood_group"
+          [(ngModel)]="profile.blood_group"
+          [disabled]="isProfileExists && !isEditMode" required>
+
       </div>
+
     </div>
 
     <!-- EDUCATION -->
     <div class="section-title">Education & Career</div>
 
     <div class="form-row">
+
       <div>
+
         <label>Education</label>
-        <input type="text"
-               name="education"
-               [(ngModel)]="profile.education">
+
+        <input
+          type="text"
+          name="education"
+          [(ngModel)]="profile.education"
+          [disabled]="isProfileExists && !isEditMode" required>
+
       </div>
 
       <div>
+
         <label>Job</label>
-        <input type="text"
-               name="job"
-               [(ngModel)]="profile.job">
+
+        <input
+          type="text"
+          name="job"
+          [(ngModel)]="profile.job"
+          [disabled]="isProfileExists && !isEditMode" required>
+
       </div>
+
     </div>
 
     <div class="form-row">
+
       <div>
+
         <label>Annual Income In Lakh</label>
-        <!-- <input type="number"
-               name="annual_income"
-               [(ngModel)]="profile.annual_income"> -->
-        <select name="annual_income" [(ngModel)]="profile.annual_income">
-              <option disabled selected>Select Income</option>
-              <option value="0">No Income</option>
-              <option value="1 Lakh">0 - 1 Lakh</option>
-              <option value="2 Lakh">1 - 2 Lakh</option>
-              <option value="3 Lakh">2 - 3 Lakh</option>
-              <option value="4 Lakh">3 - 4 Lakh</option>
-              <option value="5 Lakh">4 - 5 Lakh</option>
-              <option value="7.5 Lakh">5 - 7.5 Lakh</option>
-              <option value="10 Lakh">7.5 - 10 Lakh</option>
-              <option value="15 Lakh">10 - 15 Lakh</option>
-              <option value="20 Lakh">15 - 20 Lakh</option>
-              <option value="25 Lakh">20 - 25 Lakh</option>
-              <option value="35 Lakh">25 - 35 Lakh</option>
-              <option value="50 Lakh">35 - 50 Lakh</option>
-              <option value="70 Lakh">50 - 70 Lakh</option>
-              <option value="100 crore">70 - 1 crore</option>
+
+        <select
+          name="annual_income"
+          [(ngModel)]="profile.annual_income"
+          [disabled]="isProfileExists && !isEditMode" required>
+
+          <option disabled selected>Select Income</option>
+          <option value="0">No Income</option>
+          <option value="1 Lakh">0 - 1 Lakh</option>
+          <option value="2 Lakh">1 - 2 Lakh</option>
+          <option value="3 Lakh">2 - 3 Lakh</option>
+          <option value="4 Lakh">3 - 4 Lakh</option>
+          <option value="5 Lakh">4 - 5 Lakh</option>
+          <option value="7.5 Lakh">5 - 7.5 Lakh</option>
+          <option value="10 Lakh">7.5 - 10 Lakh</option>
+          <option value="15 Lakh">10 - 15 Lakh</option>
+          <option value="20 Lakh">15 - 20 Lakh</option>
+          <option value="25 Lakh">20 - 25 Lakh</option>
+          <option value="35 Lakh">25 - 35 Lakh</option>
+          <option value="50 Lakh">35 - 50 Lakh</option>
+          <option value="70 Lakh">50 - 70 Lakh</option>
+          <option value="100 crore">70 - 1 crore</option>
+
         </select>
+
       </div>
+
     </div>
 
     <!-- FAMILY -->
     <div class="section-title">Family Details</div>
 
     <div class="form-row">
+
       <div>
+
         <label>Father Name</label>
-        <input type="text"
-               name="father_name"
-               [(ngModel)]="profile.father_name">
+
+        <input
+          type="text"
+          name="father_name"
+          [(ngModel)]="profile.father_name"
+          [disabled]="isProfileExists && !isEditMode" required>
+
       </div>
 
       <div>
+
         <label>Father Occupation</label>
-        <input type="text"
-               name="father_job"
-               [(ngModel)]="profile.father_job">
+
+        <input
+          type="text"
+          name="father_job"
+          [(ngModel)]="profile.father_job"
+          [disabled]="isProfileExists && !isEditMode" required>
+
       </div>
+
     </div>
 
     <div class="form-row">
+
       <div>
+
         <label>Mother Name</label>
-        <input type="text"
-               name="mother_name"
-               [(ngModel)]="profile.mother_name">
+
+        <input
+          type="text"
+          name="mother_name"
+          [(ngModel)]="profile.mother_name"
+          [disabled]="isProfileExists && !isEditMode" required>
+
       </div>
 
       <div>
+
         <label>Mother Occupation</label>
-        <input type="text"
-               name="mother_job"
-               [(ngModel)]="profile.mother_job">
+
+        <input
+          type="text"
+          name="mother_job"
+          [(ngModel)]="profile.mother_job"
+          [disabled]="isProfileExists && !isEditMode" required>
+
       </div>
+
     </div>
 
     <div class="form-row">
+
       <div>
+
         <label>Native Place</label>
-        <input type="text"
-               name="native_place"
-               [(ngModel)]="profile.native_place">
+
+        <input
+          type="text"
+          name="native_place"
+          [(ngModel)]="profile.native_place"
+          [disabled]="isProfileExists && !isEditMode" required>
+
       </div>
 
       <div>
+
         <label>Current Address</label>
-        <input type="text"
-               name="current_address"
-               [(ngModel)]="profile.current_address">
+
+        <input
+          type="text"
+          name="current_address"
+          [(ngModel)]="profile.current_address"
+          [disabled]="isProfileExists && !isEditMode" required>
+
       </div>
+
     </div>
 
     <div class="form-row">
+
       <div>
+
         <label>Other Relatives</label>
-        <input type="text"
-               name="other_relatives"
-               [(ngModel)]="profile.other_relatives">
+
+        <input
+          type="text"
+          name="other_relatives"
+          [(ngModel)]="profile.other_relatives"
+          [disabled]="isProfileExists && !isEditMode" required>
+
       </div>
+
     </div>
 
     <!-- EXPECTATIONS -->
     <div class="section-title">Partner Expectations</div>
 
-    <textarea rows="3"
-              name="expectations"
-              [(ngModel)]="profile.expectations"></textarea>
+    <textarea
+      rows="3"
+      name="expectations"
+      [(ngModel)]="profile.expectations"
+      [disabled]="isProfileExists && !isEditMode" required></textarea>
 
-                 <button type="submit">Save Profile</button>
+    <!-- SAVE BUTTON -->
+    <button
+      *ngIf="!isProfileExists"
+      type="submit">
+
+      Save Profile
+
+    </button>
+
+    <!-- EDIT BUTTON -->
+    <button
+      *ngIf="isProfileExists && !isEditMode"
+      type="button"
+      (click)="enableEdit()">
+
+      Edit Profile
+
+    </button>
+
+    <!-- UPDATE BUTTON -->
+    <button
+      *ngIf="isEditMode"
+      type="submit">
+
+      Update Profile
+
+    </button>
+
   </div>
+
 </form>
 
 </div>

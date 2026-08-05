@@ -48,4 +48,6 @@ export class PagesService {
   getProfileById(id: number): Observable<any> {
     return this.http.get(this.apiUrl + 'user/profile?id=' + id);
   }
+
+  
 }
