@@ -1,0 +1,182 @@
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+
+body{
+    background:#f8f8f8;
+}
+
+
+
+/* Main Container */
+
+.container{
+
+    width:85%;
+    margin:40px auto;
+
+}
+
+
+h1{
+
+    color:#333;
+    margin-bottom:25px;
+
+}
+
+
+
+/* Tabs */
+
+.tabs{
+
+    display:flex;
+    gap:20px;
+    margin-bottom:30px;
+
+}
+
+
+.tabs button{
+
+    padding:12px 35px;
+    border:none;
+    border-radius:25px;
+    background:#ddd;
+    font-size:16px;
+    cursor:pointer;
+
+}
+
+
+.tabs .active{
+
+    background:#df3929;
+    color:white;
+
+}
+
+
+
+
+/* Profile Card */
+
+.card{
+
+    background:white;
+    display:flex;
+    align-items:center;
+    padding:25px;
+    margin-bottom:20px;
+    border-radius:15px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+
+}
+
+
+
+/* Rounded Square Image */
+
+.photo{
+
+    width:120px;
+    height:120px;
+    border-radius:20px;
+    object-fit:cover;
+    margin-right:25px;
+    border:3px solid #f1f1f1;
+
+}
+
+
+
+.info h2{
+
+    color:#222;
+    margin-bottom:10px;
+
+}
+
+
+.info p{
+
+    color:#666;
+    line-height:25px;
+
+}
+
+
+
+/* Right Side Buttons */
+
+.action{
+
+    margin-left:auto;
+    text-align:center;
+
+}
+
+
+
+.action button{
+
+    padding:10px 25px;
+    border:none;
+    border-radius:25px;
+    background:#df3929;
+    color:white;
+    cursor:pointer;
+    margin:5px;
+
+}
+
+
+
+.action button:hover{
+
+    background:#c52f20;
+
+}
+
+
+
+
+.pending{
+
+    color:#e08b00;
+    font-weight:bold;
+
+}
+
+
+.accepted{
+
+    color:green;
+    font-weight:bold;
+
+}
+
+
+.declined{
+
+    color:red;
+    font-weight:bold;
+
+}
+
+
+.hidden{
+
+    display:none;
+
+}
+
+
+

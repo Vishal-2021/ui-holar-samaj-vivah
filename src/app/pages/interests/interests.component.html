@@ -1,0 +1,128 @@
+<div class="container">
+
+
+    <h1>My Interests</h1>
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <button id="receivedBtn" [class.active]="showReceivedInterests" (click)="showReceived()">
+            Received Interests
+        </button>
+        <button id="sentBtn" [class.active]="showSentInterests" (click)="showSent()">
+            Sent Interests
+        </button>
+    </div>
+
+
+
+
+
+    <!-- RECEIVED INTERESTS -->
+
+    <div *ngIf="showReceivedInterests" id="received">
+        <div class="card">
+            <img class="photo" src="https://via.placeholder.com/120">
+            <div class="info">
+                <h2>Priya Sharma</h2>
+                <p>
+                    Age: 25 Years
+                    <br> Location: Mumbai
+                    <br> Education: MBA
+                </p>
+            </div>
+
+            <div class="action">
+                <button>
+                    Accept
+                </button>
+                <button>
+                    Reject
+                </button>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <img class="photo" src="https://via.placeholder.com/120">
+            <div class="info">
+               <h2>Rahul Patil</h2>
+                <p>
+                    Age: 28 Years
+                    <br> Location: Pune
+                    <br> Occupation: Engineer
+                </p>
+            </div>
+
+            <div class="action">
+                <p class="pending">
+                    Pending Response
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- SENT INTERESTS -->
+    <div *ngIf="showSentInterests" id="sent">
+        <div class="card">
+            <img class="photo" src="https://via.placeholder.com/120">
+            <div class="info">
+                <h2>Neha Sharma</h2>
+                <p>
+                    Age: 26 Years
+                    <br> Location: Mumbai
+                    <br> Education: M.Com
+                </p>
+            </div>
+
+            <div class="action">
+                <p class="pending">
+                    Pending
+                </p>
+                <button>
+                    Withdraw
+                </button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img class="photo" src="https://via.placeholder.com/120">
+            <div class="info">
+                <h2>Pooja More</h2>
+                <p>
+                    Age: 24 Years
+                    <br> Location: Nashik
+                    <br> Education: MBA
+                </p>
+            </div>
+
+            <div class="action">
+                <p class="accepted">
+                    Accepted
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img class="photo" src="https://via.placeholder.com/120">
+            <div class="info">
+                <h2>Amit Patil</h2>
+                <p>
+                    Age: 29 Years
+                    <br> Location: Pune
+                    <br> Occupation: Software Engineer
+                </p>
+            </div>
+
+            <div class="action">
+                <p class="declined">
+                    Declined
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
