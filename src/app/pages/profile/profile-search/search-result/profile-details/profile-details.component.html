@@ -1,74 +1,305 @@
 <div *ngIf="profile; else loading">
 
-  <div class="profile-wrapper">
+  <div class="profile-page">
 
-    <!-- Header -->
-    <div class="profile-card">
-      <img 
-        [src]="profile?.photo_url 
-          ? 'https://holarsamaj.in/api' + profile.photo_url 
-          : 'default-user.png'"
-        class="profile-img"
-      >
-
-      <div class="profile-content">
-        <h2>{{ profile.full_name }}</h2>
-
-        <div class="badges">
-          <span>📍 {{ profile.current_address }}</span>
-          <span>💼 {{ profile.job }}</span>
-          <span>💰 {{ profile.annual_income }}</span>
-        </div>
-      </div>
+    <!-- Back -->
+    <div class="back-section">
+      <button class="back-btn" onclick="history.back()">
+        ← Back to Search Results
+      </button>
     </div>
 
-    <!-- Details -->
+    <!-- ================= PROFILE HERO ================= -->
+    <div class="profile-hero">
+
+      <!-- Profile Image -->
+      <div class="photo-section">
+        <img
+          [src]="profile?.photo_url
+            ? 'https://holarsamaj.in/api' + profile.photo_url
+            : 'default-user.png'"
+          class="profile-img"
+          alt="Profile Photo"
+        >
+
+        <div class="verified-badge">
+          ✓ Verified Profile
+        </div>
+      </div>
+
+      <!-- Profile Summary -->
+      <div class="profile-summary">
+
+        <div class="active-badge">
+          ● Profile
+        </div>
+
+        <h1>{{ profile.full_name }}</h1>
+
+        <p class="profile-subtitle">
+          Matrimonial Profile
+        </p>
+
+        <div class="quick-info">
+
+          <div class="quick-item">
+            <span class="quick-icon">📍</span>
+            <div>
+              <small>Location</small>
+              <strong>{{ profile.current_address }}</strong>
+            </div>
+          </div>
+
+          <div class="quick-item">
+            <span class="quick-icon">💼</span>
+            <div>
+              <small>Profession</small>
+              <strong>{{ profile.job }}</strong>
+            </div>
+          </div>
+
+          <div class="quick-item">
+            <span class="quick-icon">₹</span>
+            <div>
+              <small>Annual Income</small>
+              <strong>{{ profile.annual_income }}</strong>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Main Action -->
+        <div class="profile-actions">
+          <button class="interest-btn">
+            ♡ Interested
+          </button>
+
+          <button class="message-btn">
+            💬 Send Message
+          </button>
+        </div>
+
+        <div class="trust-message">
+          ✓ This profile is verified and trusted
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ================= BASIC DETAILS ================= -->
     <div class="details-card">
 
-      <h3>Basic Details</h3>
-      <div class="grid">
-        <div><b>Gender</b><span>{{ profile.gender }}</span></div>
-        <div><b>Marital Status</b><span>{{ profile.marital_status }}</span></div>
-        <div><b>DOB</b><span>{{ profile.date_of_birth }}</span></div>
-        <div><b>Birth Place</b><span>{{ profile.birth_place }}</span></div>
+      <div class="section-heading">
+        <div class="section-icon">👤</div>
+
+        <div>
+          <h2>Basic Details</h2>
+          <p>Personal information</p>
+        </div>
       </div>
 
-      <h3>Physical Details</h3>
-      <div class="grid">
-        <div><b>Height</b><span>{{ profile.height_feet }}' {{ profile.height_inches }}"</span></div>
-        <div><b>Weight</b><span>{{ profile.weight_kg }} kg</span></div>
-        <div><b>Complexion</b><span>{{ profile.complexion }}</span></div>
-        <div><b>Blood Group</b><span>{{ profile.blood_group }}</span></div>
+      <div class="details-grid">
+
+        <div class="detail-item">
+          <span>Gender</span>
+          <strong>{{ profile.gender }}</strong>
+        </div>
+
+        <div class="detail-item">
+          <span>Marital Status</span>
+          <strong>{{ profile.marital_status }}</strong>
+        </div>
+
+        <div class="detail-item">
+          <span>Date of Birth</span>
+          <strong>{{ profile.date_of_birth }}</strong>
+        </div>
+
+        <div class="detail-item">
+          <span>Birth Place</span>
+          <strong>{{ profile.birth_place }}</strong>
+        </div>
+
       </div>
 
-      <h3>Education & Career</h3>
-      <div class="grid">
-        <div><b>Education</b><span>{{ profile.education }}</span></div>
-        <div><b>Job</b><span>{{ profile.job }}</span></div>
-        <div><b>Income</b><span>{{ profile.annual_income }}</span></div>
+    </div>
+
+
+    <!-- ================= PHYSICAL DETAILS ================= -->
+    <div class="details-card">
+
+      <div class="section-heading">
+        <div class="section-icon">📏</div>
+
+        <div>
+          <h2>Physical Details</h2>
+          <p>Physical information</p>
+        </div>
       </div>
 
-      <h3>Family Details</h3>
-      <div class="grid">
-        <div><b>Father</b><span>{{ profile.father_name }}</span></div>
-        <div><b>Mother</b><span>{{ profile.mother_name }}</span></div>
-        <div><b>Native Place</b><span>{{ profile.native_place }}</span></div>
-        <div><b>Address</b><span>{{ profile.current_address }}</span></div>
+      <div class="details-grid">
+
+        <div class="detail-item">
+          <span>Height</span>
+          <strong>
+            {{ profile.height_feet }}' {{ profile.height_inches }}"
+          </strong>
+        </div>
+
+        <div class="detail-item">
+          <span>Weight</span>
+          <strong>
+            {{ profile.weight_kg }} kg
+          </strong>
+        </div>
+
+        <div class="detail-item">
+          <span>Complexion</span>
+          <strong>{{ profile.complexion }}</strong>
+        </div>
+
+        <div class="detail-item">
+          <span>Blood Group</span>
+          <strong>{{ profile.blood_group }}</strong>
+        </div>
+
       </div>
 
-      <h3>Partner Expectations</h3>
-      <p class="expectation">
+    </div>
+
+
+    <!-- ================= EDUCATION & CAREER ================= -->
+    <div class="details-card">
+
+      <div class="section-heading">
+        <div class="section-icon">🎓</div>
+
+        <div>
+          <h2>Education & Career</h2>
+          <p>Professional information</p>
+        </div>
+      </div>
+
+      <div class="details-grid">
+
+        <div class="detail-item">
+          <span>Education</span>
+          <strong>{{ profile.education }}</strong>
+        </div>
+
+        <div class="detail-item">
+          <span>Profession</span>
+          <strong>{{ profile.job }}</strong>
+        </div>
+
+        <div class="detail-item">
+          <span>Annual Income</span>
+          <strong>{{ profile.annual_income }}</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ================= FAMILY DETAILS ================= -->
+    <div class="details-card">
+
+      <div class="section-heading">
+        <div class="section-icon">👨‍👩‍👧</div>
+
+        <div>
+          <h2>Family Details</h2>
+          <p>Family information</p>
+        </div>
+      </div>
+
+      <div class="details-grid">
+
+        <div class="detail-item">
+          <span>Father's Name</span>
+          <strong>{{ profile.father_name }}</strong>
+        </div>
+
+        <div class="detail-item">
+          <span>Mother's Name</span>
+          <strong>{{ profile.mother_name }}</strong>
+        </div>
+
+        <div class="detail-item">
+          <span>Native Place</span>
+          <strong>{{ profile.native_place }}</strong>
+        </div>
+
+        <div class="detail-item">
+          <span>Current Address</span>
+          <strong>{{ profile.current_address }}</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ================= PARTNER EXPECTATIONS ================= -->
+    <div class="details-card expectations-card">
+
+      <div class="section-heading">
+        <div class="section-icon heart-icon">♥</div>
+
+        <div>
+          <h2>Partner Expectations</h2>
+          <p>Looking for a suitable life partner</p>
+        </div>
+      </div>
+
+      <div class="expectation-box">
         {{ profile.expectations }}
-      </p>
+      </div>
 
+    </div>
+
+
+    <!-- ================= BOTTOM CTA ================= -->
+    <div class="bottom-cta">
+
+      <div class="cta-icon">
+        ♥
+      </div>
+
+      <div class="cta-content">
+        <h3>Interested in this profile?</h3>
+        <p>
+          Send an interest to start a conversation.
+        </p>
+      </div>
+
+      <button class="send-interest-btn">
+        ♡ Send Interest
+      </button>
+
+    </div>
+
+
+    <!-- Security -->
+    <div class="security-message">
+      🔒 Your information is safe and secure
     </div>
 
   </div>
 
 </div>
 
+
+<!-- ================= LOADING ================= -->
+
 <ng-template #loading>
-  <p style="text-align:center; margin-top:30px;">
-    Loading profile...
-  </p>
+
+  <div class="loading-container">
+    <div class="loader"></div>
+    <p>Loading profile...</p>
+  </div>
+
 </ng-template>

@@ -1,94 +1,570 @@
-<div class="container">
-  <!-- Header -->
-  <header>
-    <h1>Member Profiles</h1>
-    <p class="subtitle">Browse through our community members</p>
-  </header>
+<div class="search-results-page">
 
-  <!-- Actions / Header -->
-  <div class="results-actions">
-    <div class="results-header">
-      <h2>All Profiles</h2>
+  <!-- =====================================================
+       PAGE HEADER
+  ====================================================== -->
 
-      <div class="results-count">
-        Showing {{ resultsFrom }} - {{ resultsTo }} of {{ totalRecords }} profiles
+  <section class="results-hero">
+
+    <div class="hero-icon">
+      ♡
+    </div>
+
+    <div class="hero-content">
+
+      <h1>
+        Find Your <span>Perfect Match</span>
+      </h1>
+
+      <p>
+        Discover suitable profiles from the Holar Samaj community
+      </p>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       MAIN CONTENT
+  ====================================================== -->
+
+  <div class="results-layout">
+
+
+    <!-- ===================================================
+         SEARCH CRITERIA SIDEBAR
+    ==================================================== -->
+
+    <aside class="criteria-card">
+
+      <div class="criteria-header">
+
+        <div>
+
+          <span class="criteria-small-title">
+            YOUR SEARCH
+          </span>
+
+          <h2>
+            Search Criteria
+          </h2>
+
+        </div>
+
+        <a
+          routerLink="/profile-search"
+          class="edit-search"
+          title="Edit Search">
+
+          ✎
+
+        </a>
+
       </div>
 
-      <!-- Back to Search -->
-      <a routerLink="/profile-search" class="back-search-btn">
-        ← Search
+
+      <div class="criteria-divider"></div>
+
+
+      <div class="criteria-item">
+
+        <span class="criteria-icon">
+          👤
+        </span>
+
+        <div>
+
+          <small>
+            Looking for
+          </small>
+
+          <strong>
+            {{
+              profiles.length > 0
+                ? 'Matching profiles'
+                : 'Selected profiles'
+            }}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="criteria-item">
+
+        <span class="criteria-icon">
+          ♥
+        </span>
+
+        <div>
+
+          <small>
+            Results
+          </small>
+
+          <strong>
+            {{ totalRecords }} Profiles
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <a
+        routerLink="/profile-search"
+        class="change-search-btn">
+
+        ← Change Search
+
       </a>
 
-      <!-- Page Size -->
-      <div class="page-size">
-        <label>Profiles per page:</label>
-        <select (change)="changePageSize($event)">
-          <option value="6">6</option>
-          <option value="9">9</option>
-          <option value="12">12</option>
-        </select>
+    </aside>
+
+
+
+    <!-- ===================================================
+         RESULTS CONTENT
+    ==================================================== -->
+
+    <main class="results-content">
+
+
+      <!-- =================================================
+           RESULTS TOP BAR
+      ================================================== -->
+
+      <div class="results-topbar">
+
+        <div class="results-title">
+
+          <h2>
+            Search Results
+          </h2>
+
+          <p>
+            <strong>
+              {{ totalRecords }}
+            </strong>
+            matching profiles found
+          </p>
+
+        </div>
+
+
+        <div class="results-controls">
+
+          <!-- Page Size -->
+
+          <div class="page-size">
+
+            <label for="pageSize">
+              Show
+            </label>
+
+            <select
+              id="pageSize"
+              (change)="changePageSize($event)">
+
+              <option value="6">
+                6
+              </option>
+
+              <option value="9">
+                9
+              </option>
+
+              <option value="12">
+                12
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <!-- Back Search -->
+
+          <a
+            routerLink="/profile-search"
+            class="back-search-btn">
+
+            ⚙ Filters
+
+          </a>
+
+        </div>
+
       </div>
-    </div>
+
+
+
+      <!-- =================================================
+           PROFILES GRID
+      ================================================== -->
+
+      <div class="profiles-grid">
+
+
+        <!-- PROFILE CARD -->
+
+        <article
+          class="profile-card"
+          *ngFor="let profile of profiles"
+          (click)="viewProfile(profile.user_id)"
+        >
+
+
+          <!-- IMAGE -->
+
+          <div class="profile-image">
+
+            <img
+              [src]="'https://holarsamaj.in/api' + profile.photo_url"
+              (error)="onImageError($event)"
+              [alt]="profile.full_name"
+            />
+
+
+            <!-- VERIFIED -->
+
+            <div class="verified-badge">
+
+              <span>
+                ✓
+              </span>
+
+              Verified
+
+            </div>
+
+
+            <!-- FAVORITE ICON -->
+
+            <button
+              type="button"
+              class="favorite-btn"
+              title="Interested"
+              (click)="$event.stopPropagation()">
+
+              ♡
+
+            </button>
+
+          </div>
+
+
+
+          <!-- PROFILE BODY -->
+
+          <div class="profile-content">
+
+
+            <!-- NAME -->
+
+            <div class="profile-name-row">
+
+              <h3 class="profile-name">
+                {{ profile.full_name }}
+              </h3>
+
+              <span class="online-indicator"></span>
+
+            </div>
+
+
+
+            <!-- BASIC INFO -->
+
+            <div class="basic-info">
+
+              <span>
+                Profile
+              </span>
+
+              <span class="dot-separator">
+                •
+              </span>
+
+              <span>
+                Verified Member
+              </span>
+
+            </div>
+
+
+
+            <!-- DETAILS -->
+
+            <div class="profile-details">
+
+
+              <!-- INCOME -->
+
+              <div class="profile-detail">
+
+                <span class="detail-icon">
+                  ₹
+                </span>
+
+                <div>
+
+                  <small>
+                    Annual Income
+                  </small>
+
+                  <strong>
+                    {{ profile.income }}
+                  </strong>
+
+                </div>
+
+              </div>
+
+
+
+              <!-- LOCATION -->
+
+              <div class="profile-detail">
+
+                <span class="detail-icon">
+                  📍
+                </span>
+
+                <div>
+
+                  <small>
+                    Location
+                  </small>
+
+                  <strong>
+                    {{ profile.location }}
+                  </strong>
+
+                </div>
+
+              </div>
+
+
+
+              <!-- EDUCATION -->
+
+              <div class="profile-detail">
+
+                <span class="detail-icon">
+                  🎓
+                </span>
+
+                <div>
+
+                  <small>
+                    Education
+                  </small>
+
+                  <strong>
+                    {{ profile.education }}
+                  </strong>
+
+                </div>
+
+              </div>
+
+
+
+              <!-- PROFESSION -->
+
+              <div class="profile-detail">
+
+                <span class="detail-icon">
+                  💼
+                </span>
+
+                <div>
+
+                  <small>
+                    Profession
+                  </small>
+
+                  <strong>
+                    {{ profile.profession }}
+                  </strong>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+
+            <!-- ACTIONS -->
+
+            <div class="profile-actions">
+
+
+              <!-- INTEREST -->
+
+              <button
+                type="button"
+                class="interest-btn"
+                (click)="$event.stopPropagation()">
+
+                ♡ Interested
+
+              </button>
+
+
+              <!-- VIEW PROFILE -->
+
+              <button
+                type="button"
+                class="view-profile-btn"
+                (click)="viewProfile(profile.user_id); $event.stopPropagation()">
+
+                View Profile
+                <span>
+                  →
+                </span>
+
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- =================================================
+             NO PROFILES
+        ================================================== -->
+
+        <div
+          *ngIf="profiles.length === 0"
+          class="no-profiles">
+
+          <div class="empty-icon">
+            💔
+          </div>
+
+          <h3>
+            No Profiles Found
+          </h3>
+
+          <p>
+            We couldn't find profiles matching your search.
+            Try changing your search criteria.
+          </p>
+
+          <a
+            routerLink="/profile-search"
+            class="change-search-empty">
+
+            Modify Search
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- =================================================
+           PAGINATION
+      ================================================== -->
+
+      <div
+        class="pagination-section"
+        *ngIf="totalPages > 1"
+      >
+
+
+        <div class="pagination">
+
+
+          <!-- PREVIOUS -->
+
+          <button
+            type="button"
+            class="page-arrow"
+            (click)="prevPage()"
+            [disabled]="currentPage === 1">
+
+            ‹
+
+          </button>
+
+
+
+          <!-- PAGE NUMBERS -->
+
+          <button
+            type="button"
+            *ngFor="
+              let p of [].constructor(totalPages);
+              let i = index
+            "
+            (click)="changePage(i + 1)"
+            [class.active]="currentPage === i + 1">
+
+            {{ i + 1 }}
+
+          </button>
+
+
+
+          <!-- NEXT -->
+
+          <button
+            type="button"
+            class="page-arrow"
+            (click)="nextPage()"
+            [disabled]="currentPage === totalPages">
+
+            ›
+
+          </button>
+
+        </div>
+
+
+
+        <!-- RESULT RANGE -->
+
+        <div class="pagination-info">
+
+          Showing
+
+          <strong>
+            {{ resultsFrom }}
+          </strong>
+
+          -
+
+          <strong>
+            {{ resultsTo }}
+          </strong>
+
+          of
+
+          <strong>
+            {{ totalRecords }}
+          </strong>
+
+          profiles
+
+        </div>
+
+      </div>
+
+
+    </main>
+
   </div>
 
-  <!-- Profiles Grid -->
-  <div class="profiles-grid">
-    <div class="profile-card" *ngFor="let profile of profiles" (click)="viewProfile(profile.user_id)">
-      <div class="profile-image">
-        <img
-          [src]="'https://holarsamaj.in/api' + profile.photo_url"
-          (error)="onImageError($event)"
-          [alt]="profile.full_name"          
-        />
-      </div>
-
-      <div class="profile-content">
-        <h3 class="profile-name">{{ profile.full_name }}</h3>
-
-        <div class="profile-detail">
-          <i class="fas fa-money-bill-wave"></i>
-          <strong>Income:</strong> {{ profile.income }}
-        </div>
-
-        <div class="profile-detail">
-          <i class="fas fa-map-marker-alt"></i>
-          <strong>Location:</strong> {{ profile.location }}
-        </div>
-
-        <div class="profile-detail">
-          <i class="fas fa-graduation-cap"></i>
-          <strong>Education:</strong> {{ profile.education }}
-        </div>
-
-        <div class="profile-detail">
-          <i class="fas fa-briefcase"></i>
-          <strong>Profession:</strong> {{ profile.profession }}
-        </div>
-      </div>
-    </div>
-
-    <!-- No Profiles -->
-    <div *ngIf="profiles.length === 0" class="no-profiles">
-      No profiles found
-    </div>
-  </div>
-
-  <!-- Pagination -->
-  <div class="pagination" *ngIf="totalPages > 1">
-    <button (click)="prevPage()" [disabled]="currentPage === 1">
-      ‹
-    </button>
-
-    <button
-      *ngFor="let p of [].constructor(totalPages); let i = index"
-      (click)="changePage(i + 1)"
-      [class.active]="currentPage === i + 1"
-    >
-      {{ i + 1 }}
-    </button>
-
-    <button (click)="nextPage()" [disabled]="currentPage === totalPages">
-      ›
-    </button>
-  </div>
 </div>

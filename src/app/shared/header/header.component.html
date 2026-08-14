@@ -1,10 +1,23 @@
+<!-- =========================================================
+     HOLAR SAMAJ VIVAH NAVBAR
+========================================================= -->
+
 <nav class="navbar">
 
   <!-- ================= LOGO ================= -->
 
-  <div class="logo">
-    Holar<span>Samaj</span>Vivah
-  </div>
+  <a routerLink="/" class="brand" (click)="closeMenu()">
+
+    <div class="brand-icon">
+      ♥
+    </div>
+
+    <div class="brand-text">
+      <span class="brand-main">Holar Samaj</span>
+      <span class="brand-sub">Vivah</span>
+    </div>
+
+  </a>
 
 
   <!-- ================= HAMBURGER ================= -->
@@ -26,132 +39,101 @@
   <!-- ================= NAVIGATION ================= -->
 
   <ul
-    class="nav-links"
-    [class.active]="menuOpen">
+  class="nav-links"
+  [class.active]="menuOpen">
 
-    <!-- Home -->
-    <li>
-      <a
-        routerLink="/"
-        (click)="closeMenu()">
+  <!-- Home -->
+  <li>
+    <a
+      routerLink="/"
+      (click)="closeMenu()">
+      <i class="fa-solid fa-house nav-icon"></i>
+      <span>Home</span>
+    </a>
+  </li>
 
-        Home
+  <!-- Search -->
+  <li>
+    <a
+      routerLink="/profile-search"
+      (click)="closeMenu()">
+      <i class="fa-solid fa-magnifying-glass nav-icon"></i>
+      <span>Search</span>
+    </a>
+  </li>
 
-      </a>
-    </li>
+  <!-- Login -->
+  <li *ngIf="!authService.isLoggedIn()">
+    <a
+      routerLink="/login"
+      class="login"
+      (click)="closeMenu()">
+      <i class="fa-solid fa-right-to-bracket nav-icon"></i>
+      <span>Login</span>
+    </a>
+  </li>
 
+  <!-- Registration -->
+  <li *ngIf="!authService.isLoggedIn()">
+    <a
+      routerLink="/register"
+      class="btn"
+      (click)="closeMenu()">
+      <i class="fa-solid fa-user-plus nav-icon"></i>
+      <span>Registration</span>
+    </a>
+  </li>
 
-    <!-- Search -->
-    <li>
-      <a
-        routerLink="/profile-search"
-        (click)="closeMenu()">
+  <!-- Messages -->
+  <li *ngIf="authService.isLoggedIn()">
+    <a
+      routerLink="/messages"
+      (click)="closeMenu()">
+      <i class="fa-solid fa-comments nav-icon"></i>
+      <span>Messages</span>
+    </a>
+  </li>
 
-        Search
+  <!-- Interests -->
+  <li *ngIf="authService.isLoggedIn()">
+    <a
+      routerLink="/interests"
+      (click)="closeMenu()">
+      <i class="fa-solid fa-heart nav-icon"></i>
+      <span>Interests</span>
+    </a>
+  </li>
 
-      </a>
-    </li>
+  <!-- Profile -->
+  <li *ngIf="authService.isLoggedIn()">
+    <a
+      routerLink="/profile"
+      (click)="closeMenu()">
+      <i class="fa-solid fa-circle-user nav-icon"></i>
+      <span>My Profile</span>
+    </a>
+  </li>
 
+  <!-- Subscription -->
+  <li *ngIf="authService.isLoggedIn()">
+    <a
+      routerLink="/subscription"
+      (click)="closeMenu()">
+      <i class="fa-solid fa-crown nav-icon"></i>
+      <span>Membership</span>
+    </a>
+  </li>
 
-    <!-- Login -->
-    <li *ngIf="!authService.isLoggedIn()">
+  <!-- Logout -->
+  <li *ngIf="authService.isLoggedIn()">
+    <a
+      class="btn logout-btn"
+      (click)="logout()">
+      <i class="fa-solid fa-right-from-bracket nav-icon"></i>
+      <span>Logout</span>
+    </a>
+  </li>
 
-      <a
-        routerLink="/login"
-        class="login"
-        (click)="closeMenu()">
-
-        Login
-
-      </a>
-
-    </li>
-
-
-    <!-- Registration -->
-    <li *ngIf="!authService.isLoggedIn()">
-
-      <a
-        routerLink="/register"
-        class="btn"
-        (click)="closeMenu()">
-
-        Registration
-
-      </a>
-
-    </li>
-
-
-    <!-- Messages -->
-    <li *ngIf="authService.isLoggedIn()">
-
-      <a
-        routerLink="/messages"
-        (click)="closeMenu()">
-
-        Messages
-
-      </a>
-
-    </li>
-
-
-    <!-- Interests -->
-    <li *ngIf="authService.isLoggedIn()">
-
-      <a
-        routerLink="/interests"
-        (click)="closeMenu()">
-
-        Interests
-
-      </a>
-
-    </li>
-
-
-    <!-- Profile -->
-    <li *ngIf="authService.isLoggedIn()">
-
-      <a
-        routerLink="/profile"
-        (click)="closeMenu()">
-
-        Profile
-
-      </a>
-
-    </li>
-
-
-    <!-- Subscription -->
-    <li *ngIf="authService.isLoggedIn()">
-
-      <a
-        routerLink="/subscription"
-        (click)="closeMenu()">
-
-        Subscription
-
-      </a>
-
-    </li>
-
-
-    <!-- Logout -->
-    <li *ngIf="authService.isLoggedIn()">
-
-      <a
-        class="btn logout-btn"
-        (click)="logout()">
-
-        Logout
-
-      </a>
-
-    </li>
-
-  </ul>
+</ul>
 
 </nav>

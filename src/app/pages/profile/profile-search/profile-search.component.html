@@ -1,104 +1,490 @@
-<div class="search-wrapper">
-  <div class="search-card">
-    <h2>Search Profiles</h2>
+<div class="search-page">
 
-    <!-- Search For -->
-    <div class="form-row">
-      <span class="label">Search for</span>
-      <div class="segmented">
-        <input type="radio" id="bride" value="Female" name="gender" [(ngModel)]="search.gender" />
-        <label for="bride">Bride</label>
+  <!-- =====================================================
+       PAGE INTRO
+  ====================================================== -->
 
-        <input  type="radio" id="groom" name="gender" value="Male" [(ngModel)]="search.gender" />
-        <label for="groom">Groom</label>
-      </div>
+  <section class="search-intro">
+
+    <div class="intro-icon">
+      ♡
     </div>
 
-    <!-- Age -->
-    <div class="form-row">
-      <span class="label">Age</span>
-      <div class="age-grid">
-        <input type="number" name="MinAge" placeholder="Min" [(ngModel)]="search.minAge"/>
-        <input type="number" name="MaxAge" placeholder="Max" [(ngModel)]="search.maxAge"/>
-      </div>
-    </div> 
+    <h1>
+      Find Your <span>Perfect Match</span>
+    </h1>
 
-    <!-- height -->
-    <!-- <div class="form-row">
-      <span class="label">Height</span>
-      <div class="age-grid">
-        <input type="number" name="Minfit" placeholder="Min fit" [(ngModel)]="search.minHeight"/>
-        <input type="number" name="maxfit" placeholder="Max fit" [(ngModel)]="search.maxHeight"/>
-      </div>
-    </div> -->
+    <p>
+      Search for suitable profiles based on your preferences
+    </p>
 
-    <!-- Location -->
-    <div class="form-row">
-      <span class="label">Location</span>
-      <input type="text" placeholder="Enter city, state or country" [(ngModel)]="search.location" />
+  </section>
+
+
+  <!-- =====================================================
+       SEARCH CARD
+  ====================================================== -->
+
+  <section class="search-card">
+
+
+    <!-- Card Header -->
+
+    <div class="card-header">
+
+      <div class="header-icon">
+        🔍
+      </div>
+
+      <div>
+
+        <h2>
+          Search Profiles
+        </h2>
+
+        <p>
+          Find profiles that match your preferences
+        </p>
+
+      </div>
+
     </div>
 
-    <!-- Education -->
-    <!-- <div class="form-row">
-      <span class="label">Education</span>
-      <select [(ngModel)]="search.education">
-        <option>Any Education</option>
-        <option>UG</option>
-        <option>PG</option>
-      </select>
-    </div> -->
 
-    <!-- Profession -->
-    <div class="form-row">
-      <span class="label">Profession</span>
-      <input type="text" placeholder="Enter profession" [(ngModel)]="search.profession"/>
-    </div>
 
-    
-    <!-- Income -->
-    <div class="form-row">
-      <span class="label">Income</span>
-      <div class="income-grid">
-        <select [(ngModel)]="search.minIncome">
-          <option disabled value="">Min Income</option>
-            <option value="0">No Income</option>
-              <option value="1">0 - 1 Lakh</option>
-              <option value="2">1 - 2 Lakh</option>
-              <option value="3">2 - 3 Lakh</option>
-              <option value="4">3 - 4 Lakh</option>
-              <option value="5">4 - 5 Lakh</option>
-              <option value="7.5">5 - 7.5 Lakh</option>
-              <option value="10">7.5 - 10 Lakh</option>
-              <option value="15">10 - 15 Lakh</option>
-              <option value="20">15 - 20 Lakh</option>
-              <option value="25">20 - 25 Lakh</option>
-              <option value="35">25 - 35 Lakh</option>
-              <option value="50">35 - 50 Lakh</option>
-              <option value="70">50 - 70 Lakh</option>
-              <option value="100">70 - 1 crore</option>
-        </select>
+    <!-- ===================================================
+         SEARCH FOR
+    ==================================================== -->
 
-        <select [(ngModel)]="search.maxIncome">
-              <option disabled value="">Max Income</option>
-              <option value="0">No Income</option>
-              <option value="1">0 - 1 Lakh</option>
-              <option value="2">1 - 2 Lakh</option>
-              <option value="3">2 - 3 Lakh</option>
-              <option value="4">3 - 4 Lakh</option>
-              <option value="5">4 - 5 Lakh</option>
-              <option value="7.5">5 - 7.5 Lakh</option>
-              <option value="10">7.5 - 10 Lakh</option>
-              <option value="15">10 - 15 Lakh</option>
-              <option value="20">15 - 20 Lakh</option>
-              <option value="25">20 - 25 Lakh</option>
-              <option value="35">25 - 35 Lakh</option>
-              <option value="50">35 - 50 Lakh</option>
-              <option value="70">50 - 70 Lakh</option>
-              <option value="100">70 - 1 crore</option>
-        </select>
+    <div class="search-section">
+
+      <div class="section-label">
+        I am looking for
       </div>
+
+      <div class="gender-selection">
+
+        <!-- Bride -->
+
+        <input
+          type="radio"
+          id="bride"
+          value="Female"
+          name="gender"
+          [(ngModel)]="search.gender"
+        />
+
+        <label
+          for="bride"
+          class="gender-option">
+
+          <span class="gender-icon">
+            ♀
+          </span>
+
+          <span>
+            Bride
+          </span>
+
+        </label>
+
+
+        <!-- Groom -->
+
+        <input
+          type="radio"
+          id="groom"
+          name="gender"
+          value="Male"
+          [(ngModel)]="search.gender"
+        />
+
+        <label
+          for="groom"
+          class="gender-option">
+
+          <span class="gender-icon">
+            ♂
+          </span>
+
+          <span>
+            Groom
+          </span>
+
+        </label>
+
+      </div>
+
     </div>
 
-    <button type="button" class="search-btn" (click)="goToSearchResult()">Search Profiles</button>
-  </div>
+
+
+    <!-- ===================================================
+         BASIC FILTERS
+    ==================================================== -->
+
+    <div class="filter-grid">
+
+
+      <!-- AGE -->
+
+      <div class="filter-item">
+
+        <label>
+          <span class="field-icon">🎂</span>
+          Age
+        </label>
+
+        <div class="range-inputs">
+
+          <div class="input-box">
+
+            <input
+              type="number"
+              name="MinAge"
+              placeholder="Min Age"
+              [(ngModel)]="search.minAge"
+            />
+
+          </div>
+
+
+          <span class="range-text">
+            to
+          </span>
+
+
+          <div class="input-box">
+
+            <input
+              type="number"
+              name="MaxAge"
+              placeholder="Max Age"
+              [(ngModel)]="search.maxAge"
+            />
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- LOCATION -->
+
+      <div class="filter-item">
+
+        <label>
+          <span class="field-icon">📍</span>
+          Location
+        </label>
+
+        <div class="input-box full-width">
+
+          <input
+            type="text"
+            placeholder="Enter city, state or country"
+            [(ngModel)]="search.location"
+          />
+
+        </div>
+
+      </div>
+
+
+
+      <!-- PROFESSION -->
+
+      <div class="filter-item full-column">
+
+        <label>
+          <span class="field-icon">💼</span>
+          Profession
+        </label>
+
+        <div class="input-box full-width">
+
+          <input
+            type="text"
+            placeholder="Enter profession"
+            [(ngModel)]="search.profession"
+          />
+
+        </div>
+
+      </div>
+
+
+
+      <!-- =================================================
+           INCOME
+      ================================================== -->
+
+      <div class="filter-item full-column">
+
+        <label>
+          <span class="field-icon">₹</span>
+          Annual Income Range
+        </label>
+
+        <div class="income-inputs">
+
+
+          <!-- MIN INCOME -->
+
+          <div class="select-box">
+
+            <select
+              [(ngModel)]="search.minIncome">
+
+              <option
+                disabled
+                value="">
+                Min Income
+              </option>
+
+              <option value="0">
+                No Income
+              </option>
+
+              <option value="1">
+                0 - 1 Lakh
+              </option>
+
+              <option value="2">
+                1 - 2 Lakh
+              </option>
+
+              <option value="3">
+                2 - 3 Lakh
+              </option>
+
+              <option value="4">
+                3 - 4 Lakh
+              </option>
+
+              <option value="5">
+                4 - 5 Lakh
+              </option>
+
+              <option value="7.5">
+                5 - 7.5 Lakh
+              </option>
+
+              <option value="10">
+                7.5 - 10 Lakh
+              </option>
+
+              <option value="15">
+                10 - 15 Lakh
+              </option>
+
+              <option value="20">
+                15 - 20 Lakh
+              </option>
+
+              <option value="25">
+                20 - 25 Lakh
+              </option>
+
+              <option value="35">
+                25 - 35 Lakh
+              </option>
+
+              <option value="50">
+                35 - 50 Lakh
+              </option>
+
+              <option value="70">
+                50 - 70 Lakh
+              </option>
+
+              <option value="100">
+                70 - 1 crore
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <span class="range-text">
+            to
+          </span>
+
+
+          <!-- MAX INCOME -->
+
+          <div class="select-box">
+
+            <select
+              [(ngModel)]="search.maxIncome">
+
+              <option
+                disabled
+                value="">
+                Max Income
+              </option>
+
+              <option value="0">
+                No Income
+              </option>
+
+              <option value="1">
+                0 - 1 Lakh
+              </option>
+
+              <option value="2">
+                1 - 2 Lakh
+              </option>
+
+              <option value="3">
+                2 - 3 Lakh
+              </option>
+
+              <option value="4">
+                3 - 4 Lakh
+              </option>
+
+              <option value="5">
+                4 - 5 Lakh
+              </option>
+
+              <option value="7.5">
+                5 - 7.5 Lakh
+              </option>
+
+              <option value="10">
+                7.5 - 10 Lakh
+              </option>
+
+              <option value="15">
+                10 - 15 Lakh
+              </option>
+
+              <option value="20">
+                15 - 20 Lakh
+              </option>
+
+              <option value="25">
+                20 - 25 Lakh
+              </option>
+
+              <option value="35">
+                25 - 35 Lakh
+              </option>
+
+              <option value="50">
+                35 - 50 Lakh
+              </option>
+
+              <option value="70">
+                50 - 70 Lakh
+              </option>
+
+              <option value="100">
+                70 - 1 crore
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <div class="income-note">
+          <span>ⓘ</span>
+          All income values are in Indian Rupees (₹)
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ===================================================
+         MORE FILTERS
+         Future fields can be added here
+    ==================================================== -->
+
+    <div class="more-filters">
+
+      <div class="more-icon">
+        ⚙
+      </div>
+
+      <div class="more-content">
+
+        <strong>
+          More Filters
+        </strong>
+
+        <span>
+          Height, Education, Community, Diet, Marital Status
+          and more
+        </span>
+
+      </div>
+
+      <span class="more-arrow">
+        ›
+      </span>
+
+    </div>
+
+
+
+    <!-- ===================================================
+         SEARCH BUTTON
+    ==================================================== -->
+
+    <button
+      type="button"
+      class="search-btn"
+      (click)="goToSearchResult()">
+
+      <span class="search-button-icon">
+        🔍
+      </span>
+
+      Search Profiles
+
+    </button>
+
+
+
+    <!-- ===================================================
+         TRUST FOOTER
+    ==================================================== -->
+
+    <div class="search-trust">
+
+      <div>
+        🔒
+        <span>
+          Secure Search
+        </span>
+      </div>
+
+      <div>
+        ❤️
+        <span>
+          Trusted Community
+        </span>
+      </div>
+
+      <div>
+        ✓
+        <span>
+          Genuine Profiles
+        </span>
+      </div>
+
+    </div>
+
+  </section>
+
 </div>

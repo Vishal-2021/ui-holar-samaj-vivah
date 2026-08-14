@@ -27,7 +27,7 @@ export class SearchResultComponent implements OnInit {
   profiles: Profile[] = [];
 
   currentPage = 1;
-  profilesPerPage = 2;
+  profilesPerPage = 3;
   totalRecords = 0;
 
   constructor(private pageService: PagesService, private cdr: ChangeDetectorRef, private router: Router) {}

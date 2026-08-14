@@ -1,20 +1,24 @@
 /* =========================================================
-   NAVBAR
+   HOLAR SAMAJ VIVAH - NAVBAR
 ========================================================= */
 
 .navbar {
+
   width: 100%;
-  min-height: 70px;
+  min-height: 76px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  padding: 15px 40px;
+  padding: 10px 6%;
 
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.97);
 
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.10);
+  border-bottom: 1px solid #f1e4df;
+
+  box-shadow:
+    0 4px 20px rgba(80, 40, 30, 0.07);
 
   position: sticky;
   top: 0;
@@ -22,38 +26,129 @@
   z-index: 1000;
 
   box-sizing: border-box;
+
+  backdrop-filter: blur(12px);
 }
 
 
 /* =========================================================
-   LOGO
+   LOGO / BRAND
 ========================================================= */
 
-.logo {
-  font-size: 30px;
-  font-weight: 700;
+.brand {
 
-  color: #ee5b41;
-
-  white-space: nowrap;
-
-  cursor: pointer;
-}
-
-.logo span {
-  color: #333333;
-}
-
-
-/* =========================================================
-   DESKTOP NAVIGATION
-========================================================= */
-
-.nav-links {
   display: flex;
   align-items: center;
 
-  gap: 30px;
+  gap: 11px;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+}
+
+
+/* Heart Icon */
+
+.brand-icon {
+
+  width: 43px;
+  height: 43px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(135deg, #fff1ed, #ffe5df);
+
+  color: #e9332b;
+
+  border-radius: 50%;
+
+  font-size: 22px;
+
+  box-shadow:
+    0 5px 15px rgba(233, 51, 43, 0.12);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+.brand:hover .brand-icon {
+
+  transform: scale(1.08) rotate(-5deg);
+
+  box-shadow:
+    0 8px 20px rgba(233, 51, 43, 0.20);
+}
+
+
+/* Brand Text */
+
+.brand-text {
+
+  display: flex;
+  align-items: baseline;
+
+  gap: 5px;
+
+  line-height: 1;
+}
+
+
+/* Holar Samaj */
+
+.brand-main {
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 25px;
+
+  font-weight: 700;
+
+  color: #34211d;
+
+  letter-spacing: -0.4px;
+}
+
+
+/* Vivah */
+
+.brand-sub {
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 20px;
+
+  font-style: italic;
+
+  font-weight: 600;
+
+  color: #e9332b;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.nav-links {
+
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
 
   margin: 0;
   padding: 0;
@@ -63,35 +158,118 @@
 
 
 .nav-links li {
+
   margin: 0;
   padding: 0;
+
+  display: flex;
+  align-items: center;
 }
 
 
-.nav-links li a {
-  display: inline-block;
+/* =========================================================
+   NORMAL NAVIGATION LINKS
+========================================================= */
 
-  padding: 8px 0;
+.nav-links li a {
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  padding: 11px 15px;
+
+  color: #493b37;
 
   text-decoration: none;
 
-  color: #333333;
+  font-family:
+    "Segoe UI",
+    Arial,
+    sans-serif;
 
-  font-size: 17px;
-  font-weight: 500;
+  font-size: 15px;
+
+  font-weight: 600;
+
+  border-radius: 25px;
 
   cursor: pointer;
 
   transition:
-    color 0.2s ease,
-    transform 0.2s ease;
+    color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease;
 }
 
 
+/* Icon */
+
+.nav-icon {
+
+  font-size: 17px;
+
+  color: #b46b5d;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+/* Hover */
+
 .nav-links li a:hover {
-  color: #ee5b41;
+
+  color: #e9332b;
+
+  background: #fff5f2;
 
   transform: translateY(-1px);
+}
+
+
+.nav-links li a:hover .nav-icon {
+
+  color: #e9332b;
+
+  transform: scale(1.1);
+}
+
+
+/* =========================================================
+   UNDERLINE ANIMATION
+========================================================= */
+
+.nav-links li a:not(.register-btn):not(.logout-btn)::after {
+
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 5px;
+
+  width: 0;
+  height: 2px;
+
+  background: #e9332b;
+
+  border-radius: 10px;
+
+  transform: translateX(-50%);
+
+  transition: width 0.25s ease;
+}
+
+
+.nav-links li a:not(.register-btn):not(.logout-btn):hover::after {
+
+  width: 25px;
 }
 
 
@@ -99,44 +277,138 @@
    LOGIN
 ========================================================= */
 
-.nav-links li a.login {
-  color: #ec5b41;
+.login-link {
 
-  font-weight: 700;
+  color: #e9332b !important;
+
+  font-weight: 700 !important;
 }
 
-.nav-links li a.login:hover {
-  color: #bd2f1c;
+
+.login-link:hover {
+
+  background: #fff0ed !important;
+
+  color: #d92821 !important;
 }
 
 
 /* =========================================================
-   BUTTON
+   REGISTER BUTTON
 ========================================================= */
 
-.btn {
-  padding: 10px 20px !important;
+.register-btn {
 
-  background: #d43c28;
+  margin-left: 6px;
+
+  padding: 12px 21px !important;
 
   color: #ffffff !important;
 
-  border-radius: 20px;
+  background:
+    linear-gradient(
+      135deg,
+      #ef3b32,
+      #d92821
+    );
 
-  font-weight: 600 !important;
+  border-radius: 28px !important;
+
+  font-weight: 700 !important;
+
+  box-shadow:
+    0 7px 18px rgba(217, 40, 33, 0.20);
+
+  gap: 12px !important;
 
   transition:
-    background 0.2s ease,
-    transform 0.2s ease !important;
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease !important;
 }
 
 
-.btn:hover {
-  background: #c73320;
+.register-btn:hover {
 
   color: #ffffff !important;
 
-  transform: translateY(-1px);
+  background:
+    linear-gradient(
+      135deg,
+      #d92821,
+      #c8201a
+    ) !important;
+
+  transform:
+    translateY(-2px) !important;
+
+  box-shadow:
+    0 10px 25px rgba(217, 40, 33, 0.30);
+}
+
+
+/* Arrow */
+
+.register-btn .arrow {
+
+  font-size: 18px;
+
+  transition:
+    transform 0.25s ease;
+}
+
+
+.register-btn:hover .arrow {
+
+  transform: translateX(4px);
+}
+
+
+/* =========================================================
+   LOGOUT BUTTON
+========================================================= */
+
+.logout-btn {
+
+  margin-left: 5px;
+
+  padding: 10px 17px !important;
+
+  color: #d92821 !important;
+
+  border: 1px solid #f0b5ae;
+
+  background: #fff8f6;
+
+  border-radius: 24px !important;
+
+  font-weight: 700 !important;
+
+  gap: 7px !important;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease !important;
+}
+
+
+.logout-btn:hover {
+
+  color: #ffffff !important;
+
+  background: #e9332b !important;
+
+  border-color: #e9332b;
+
+  transform: translateY(-1px) !important;
+}
+
+
+.logout-icon {
+
+  font-size: 17px;
 }
 
 
@@ -145,16 +417,19 @@
 ========================================================= */
 
 .hamburger {
+
   display: none;
 
-  width: 44px;
-  height: 44px;
+  width: 45px;
+  height: 45px;
 
-  padding: 8px;
+  padding: 0;
 
-  border: none;
+  border: 1px solid #f0d9d3;
 
-  background: transparent;
+  background: #fff8f6;
+
+  border-radius: 12px;
 
   cursor: pointer;
 
@@ -165,22 +440,82 @@
   align-items: center;
 
   gap: 5px;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+
+.hamburger:hover {
+
+  background: #fff0ed;
+
+  border-color: #efb3aa;
 }
 
 
 .hamburger span {
+
   display: block;
 
-  width: 27px;
-  height: 3px;
+  width: 23px;
+  height: 2.5px;
 
-  background: #111111;
+  background: #d92821;
 
-  border-radius: 5px;
+  border-radius: 10px;
 
   transition:
-    transform 0.25s ease,
-    opacity 0.25s ease;
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .navbar {
+
+    padding: 10px 4%;
+  }
+
+
+  .nav-links {
+
+    gap: 2px;
+  }
+
+
+  .nav-links li a {
+
+    padding: 10px 11px;
+
+    font-size: 14px;
+  }
+
+
+  .brand-main {
+
+    font-size: 22px;
+  }
+
+
+  .brand-sub {
+
+    font-size: 18px;
+  }
+
+
+  .brand-icon {
+
+    width: 40px;
+    height: 40px;
+  }
+
 }
 
 
@@ -191,29 +526,54 @@
 @media (max-width: 768px) {
 
   .navbar {
+
     min-height: 70px;
 
-    padding: 14px 18px;
+    padding: 10px 18px;
 
     position: sticky;
+
     top: 0;
   }
 
 
-  /* -------------------------
+  /* -----------------------------------------
      Logo
-  ------------------------- */
+  ----------------------------------------- */
 
-  .logo {
-    font-size: 27px;
+  .brand {
+
+    gap: 9px;
   }
 
 
-  /* -------------------------
+  .brand-icon {
+
+    width: 40px;
+    height: 40px;
+
+    font-size: 20px;
+  }
+
+
+  .brand-main {
+
+    font-size: 21px;
+  }
+
+
+  .brand-sub {
+
+    font-size: 17px;
+  }
+
+
+  /* -----------------------------------------
      Hamburger
-  ------------------------- */
+  ----------------------------------------- */
 
   .hamburger {
+
     display: flex;
 
     position: relative;
@@ -222,9 +582,9 @@
   }
 
 
-  /* -------------------------
-     Mobile Menu
-  ------------------------- */
+  /* -----------------------------------------
+     Mobile Navigation
+  ----------------------------------------- */
 
   .nav-links {
 
@@ -239,47 +599,52 @@
 
     flex-direction: column;
 
-    align-items: center;
+    align-items: stretch;
 
     gap: 0;
 
-    padding: 15px 0 20px;
+    padding: 12px 15px 18px;
 
     margin: 0;
 
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.98);
 
     box-shadow:
-      0 5px 15px rgba(0, 0, 0, 0.12);
+      0 12px 30px rgba(50, 25, 20, 0.12);
 
-    border-top: 1px solid #eeeeee;
+    border-top:
+      1px solid #f3e3df;
+
+    box-sizing: border-box;
 
     z-index: 1050;
+
+    backdrop-filter: blur(12px);
   }
 
 
-  /* IMPORTANT:
-     Menu appears only when Angular
-     menuOpen = true
-  */
+  /* IMPORTANT */
 
   .nav-links.active {
+
     display: flex;
+
+    animation:
+      menuSlide 0.25s ease;
   }
 
 
-  /* -------------------------
-     Mobile Menu Items
-  ------------------------- */
+  /* -----------------------------------------
+     Menu Items
+  ----------------------------------------- */
 
   .nav-links li {
+
     width: 100%;
 
-    display: flex;
+    display: block;
 
-    justify-content: center;
-
-    padding: 0;
+    padding: 2px 0;
   }
 
 
@@ -287,48 +652,67 @@
 
     width: 100%;
 
-    padding: 15px 20px;
-
-    text-align: center;
-
-    font-size: 18px;
+    min-height: 48px;
 
     box-sizing: border-box;
+
+    justify-content: flex-start;
+
+    padding: 13px 18px;
+
+    font-size: 16px;
+
+    border-radius: 12px;
+
+    gap: 12px;
   }
 
 
   .nav-links li a:hover {
 
-    background: #fff5f3;
-
     transform: none;
   }
 
 
-  /* -------------------------
-     Mobile Buttons
-  ------------------------- */
+  .nav-links li a::after {
 
-  .nav-links .btn {
-
-    width: auto;
-
-    min-width: 120px;
-
-    margin: 8px auto;
-
-    padding: 10px 25px !important;
-
-    border-radius: 22px;
+    display: none !important;
   }
 
 
-  /* -------------------------
-     Hamburger animation
-  ------------------------- */
+  /* -----------------------------------------
+     Mobile Register
+  ----------------------------------------- */
 
-  .hamburger:focus {
-    outline: none;
+  .nav-links .register-btn {
+
+    width: 100%;
+
+    justify-content: center;
+
+    margin: 7px 0;
+
+    padding: 13px 20px !important;
+
+    border-radius: 13px !important;
+  }
+
+
+  /* -----------------------------------------
+     Mobile Logout
+  ----------------------------------------- */
+
+  .nav-links .logout-btn {
+
+    width: 100%;
+
+    justify-content: center;
+
+    margin: 7px 0;
+
+    padding: 12px 20px !important;
+
+    border-radius: 13px !important;
   }
 
 }
@@ -341,24 +725,96 @@
 @media (max-width: 480px) {
 
   .navbar {
-    padding: 13px 16px;
+
+    padding: 9px 14px;
   }
 
 
-  .logo {
-    font-size: 24px;
+  .brand-icon {
+
+    width: 38px;
+    height: 38px;
+
+    font-size: 19px;
+  }
+
+
+  .brand-main {
+
+    font-size: 19px;
+  }
+
+
+  .brand-sub {
+
+    font-size: 16px;
   }
 
 
   .hamburger {
+
     width: 42px;
     height: 42px;
   }
 
 
   .hamburger span {
-    width: 25px;
-    height: 3px;
+
+    width: 22px;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .brand-main {
+
+    font-size: 17px;
+  }
+
+
+  .brand-sub {
+
+    font-size: 15px;
+  }
+
+
+  .brand-icon {
+
+    width: 35px;
+    height: 35px;
+
+    font-size: 17px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE MENU ANIMATION
+========================================================= */
+
+@keyframes menuSlide {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      translateY(-8px);
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      translateY(0);
   }
 
 }
