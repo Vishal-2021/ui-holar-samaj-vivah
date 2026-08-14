@@ -1,42 +1,157 @@
 <nav class="navbar">
-    <div class="logo">
-        Holar<span>Samaj</span>Vivah
-    </div>
 
-    <!-- Hamburger checkbox -->
-    <!-- <input type="checkbox" id="menu-toggle"> -->
-    <label class="hamburger" id="hamburger">
-        ☰
-    </label>
+  <!-- ================= LOGO ================= -->
 
-    <ul class="nav-links" id="navLinks">
-        <li><a routerLink="/">Home</a></li>
-        <li><a routerLink="/profile-search">Search</a></li>
-        <li *ngIf="!authService.isLoggedIn()"><a routerLink="/login" class="login">Login</a></li>
-        <li *ngIf="!authService.isLoggedIn()"><a routerLink="/register" class="btn">Registration</a></li>
-        <li *ngIf="authService.isLoggedIn()"><a routerLink="/" >Messages</a></li>
-        <li *ngIf="authService.isLoggedIn()"><a routerLink="/interests" >Interests</a></li>
-        <li *ngIf="authService.isLoggedIn()"><a routerLink="/profile">Profile</a></li>
-        <li *ngIf="authService.isLoggedIn()"><a (click)="logout()" class="btn" style="cursor: pointer;">logout</a></li>
-    </ul>
+  <div class="logo">
+    Holar<span>Samaj</span>Vivah
+  </div>
+
+
+  <!-- ================= HAMBURGER ================= -->
+
+  <button
+    type="button"
+    class="hamburger"
+    (click)="toggleMenu()"
+    [attr.aria-expanded]="menuOpen"
+    aria-label="Toggle navigation">
+
+    <span></span>
+    <span></span>
+    <span></span>
+
+  </button>
+
+
+  <!-- ================= NAVIGATION ================= -->
+
+  <ul
+    class="nav-links"
+    [class.active]="menuOpen">
+
+    <!-- Home -->
+    <li>
+      <a
+        routerLink="/"
+        (click)="closeMenu()">
+
+        Home
+
+      </a>
+    </li>
+
+
+    <!-- Search -->
+    <li>
+      <a
+        routerLink="/profile-search"
+        (click)="closeMenu()">
+
+        Search
+
+      </a>
+    </li>
+
+
+    <!-- Login -->
+    <li *ngIf="!authService.isLoggedIn()">
+
+      <a
+        routerLink="/login"
+        class="login"
+        (click)="closeMenu()">
+
+        Login
+
+      </a>
+
+    </li>
+
+
+    <!-- Registration -->
+    <li *ngIf="!authService.isLoggedIn()">
+
+      <a
+        routerLink="/register"
+        class="btn"
+        (click)="closeMenu()">
+
+        Registration
+
+      </a>
+
+    </li>
+
+
+    <!-- Messages -->
+    <li *ngIf="authService.isLoggedIn()">
+
+      <a
+        routerLink="/messages"
+        (click)="closeMenu()">
+
+        Messages
+
+      </a>
+
+    </li>
+
+
+    <!-- Interests -->
+    <li *ngIf="authService.isLoggedIn()">
+
+      <a
+        routerLink="/interests"
+        (click)="closeMenu()">
+
+        Interests
+
+      </a>
+
+    </li>
+
+
+    <!-- Profile -->
+    <li *ngIf="authService.isLoggedIn()">
+
+      <a
+        routerLink="/profile"
+        (click)="closeMenu()">
+
+        Profile
+
+      </a>
+
+    </li>
+
+
+    <!-- Subscription -->
+    <li *ngIf="authService.isLoggedIn()">
+
+      <a
+        routerLink="/subscription"
+        (click)="closeMenu()">
+
+        Subscription
+
+      </a>
+
+    </li>
+
+
+    <!-- Logout -->
+    <li *ngIf="authService.isLoggedIn()">
+
+      <a
+        class="btn logout-btn"
+        (click)="logout()">
+
+        Logout
+
+      </a>
+
+    </li>
+
+  </ul>
+
 </nav>
-
-<script>
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
-
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
-
-  // Auto-close on link click (mobile UX)
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('active');
-    });
-  });
-</script>
-
-
-
-

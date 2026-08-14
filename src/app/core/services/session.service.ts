@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 export class SessionService {
 
   private timeout: any;
-  private readonly IDLE_TIME = 30 * 60 * 1000; // 30 minute for testing
+  private readonly IDLE_TIME = 60 * 60 * 1000; //  minute for testing
 
   constructor(private router: Router) {}
 

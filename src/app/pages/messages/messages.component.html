@@ -1,0 +1,699 @@
+<div class="messages-page">
+
+  <!-- ==========================================
+       LEFT CONVERSATION PANEL
+  =========================================== -->
+
+  <aside
+    class="conversation-panel"
+    [class.mobile-hidden]="mobileChatOpen"
+  >
+
+    <!-- Header -->
+
+    <div class="conversation-header">
+
+      <div class="messages-title">
+
+        <div class="title-icon">
+          💬
+        </div>
+
+        <h2>
+          Messages
+        </h2>
+
+      </div>
+
+      <div class="header-actions">
+
+        <button
+          class="icon-button"
+          title="Filter">
+          ☰
+        </button>
+
+        <button
+          class="icon-button compose"
+          title="New message">
+          ✎
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- Search -->
+
+    <div class="search-box">
+
+      <span class="search-icon">
+        🔍
+      </span>
+
+      <input
+        type="text"
+        [(ngModel)]="searchText"
+        placeholder="Search messages..."
+      >
+
+    </div>
+
+
+    <!-- Filters -->
+
+    <div class="filters">
+
+      <button
+        [class.active]="activeFilter === 'all'"
+        (click)="activeFilter = 'all'">
+
+        All
+
+      </button>
+
+      <button
+        [class.active]="activeFilter === 'unread'"
+        (click)="activeFilter = 'unread'">
+
+        Unread
+
+      </button>
+
+      <button
+        [class.active]="activeFilter === 'favorite'"
+        (click)="activeFilter = 'favorite'">
+
+        Favorites
+
+      </button>
+
+    </div>
+
+
+    <!-- Conversation List -->
+
+    <div class="conversation-list">
+
+      <div
+        class="conversation"
+        *ngFor="
+          let user of filteredUsers;
+          trackBy: trackUser
+        "
+        [class.selected]="
+          selectedUser?.userId === user.userId
+        "
+        (click)="selectUser(user)"
+      >
+
+        <!-- Profile -->
+
+        <div class="conversation-photo">
+
+          <img
+            [src]="user.photo"
+            [alt]="user.name"
+          >
+
+          <span
+            class="online-dot"
+            [class.offline]="!user.online">
+          </span>
+
+        </div>
+
+
+        <!-- Information -->
+
+        <div class="conversation-info">
+
+          <div class="conversation-top">
+
+            <h3>
+              {{ user.name }}
+            </h3>
+
+            <span class="conversation-time">
+              {{ user.lastTime }}
+            </span>
+
+          </div>
+
+          <div class="conversation-bottom">
+
+            <p>
+              {{ user.lastMessage }}
+            </p>
+
+            <span
+              *ngIf="user.unread > 0"
+              class="unread-count">
+
+              {{ user.unread }}
+
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Empty -->
+
+      <div
+        class="empty-conversations"
+        *ngIf="filteredUsers.length === 0">
+
+        <div>
+          💬
+        </div>
+
+        <h3>
+          No conversations found
+        </h3>
+
+        <p>
+          Try another search.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- Bottom Card -->
+
+    <div class="match-card">
+
+      <div class="match-icon">
+        ❤️
+      </div>
+
+      <div>
+
+        <h3>
+          Find your perfect match
+        </h3>
+
+        <p>
+          Explore more profiles and
+          connect with like-minded people.
+        </p>
+
+        <button>
+          Search Profiles
+        </button>
+
+      </div>
+
+    </div>
+
+  </aside>
+
+
+  <!-- ==========================================
+       CHAT PANEL
+  =========================================== -->
+
+  <main
+    class="chat-panel"
+    [class.mobile-visible]="mobileChatOpen"
+  >
+
+    <!-- ========================================
+         NO CHAT SELECTED
+    ========================================= -->
+
+    <div
+      class="no-chat"
+      *ngIf="!selectedUser">
+
+      <div class="no-chat-icon">
+        💬
+      </div>
+
+      <h2>
+        Your Messages
+      </h2>
+
+      <p>
+        Select a conversation to start chatting.
+      </p>
+
+    </div>
+
+
+    <!-- ========================================
+         ACTIVE CHAT
+    ========================================= -->
+
+    <ng-container *ngIf="selectedUser">
+
+      <!-- Chat Header -->
+
+      <header class="chat-header">
+
+        <div class="chat-user">
+
+          <!-- Mobile Back -->
+
+          <button
+            class="back-button"
+            (click)="backToUsers()">
+
+            ←
+
+          </button>
+
+          <div class="chat-photo">
+
+            <img
+              [src]="selectedUser.photo"
+              [alt]="selectedUser.name"
+            >
+
+            <span
+              class="online-dot"
+              [class.offline]="!selectedUser.online">
+            </span>
+
+          </div>
+
+          <div>
+
+            <h2>
+              {{ selectedUser.name }}
+            </h2>
+
+            <span
+              class="online-status"
+              [class.offline-text]="!selectedUser.online">
+
+              <span class="status-dot"></span>
+
+              {{
+                selectedUser.online
+                  ? 'Online'
+                  : 'Offline'
+              }}
+
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="chat-actions">
+
+          <button
+            title="Video call">
+
+            ▣
+
+          </button>
+
+          <button
+            title="Voice call">
+
+            ☎
+
+          </button>
+
+          <button
+            title="More">
+
+            ⋮
+
+          </button>
+
+        </div>
+
+      </header>
+
+
+      <!-- ======================================
+           CHAT BODY
+      ======================================= -->
+
+      <section class="chat-body">
+
+        <!-- Today -->
+
+        <div class="date-divider">
+
+          <span>
+            Today
+          </span>
+
+        </div>
+
+
+        <!-- Messages -->
+
+        <div
+          class="message-wrapper"
+          *ngFor="
+            let message of currentMessages;
+            trackBy: trackMessage
+          "
+          [class.my-message]="
+            message.senderId === currentUserId
+          "
+        >
+
+          <!-- Other person's photo -->
+
+          <div
+            class="message-avatar"
+            *ngIf="
+              message.senderId !== currentUserId
+            "
+          >
+
+            <img
+              [src]="selectedUser.photo"
+              [alt]="selectedUser.name"
+            >
+
+          </div>
+
+
+          <!-- Message -->
+
+          <div class="message-content">
+
+
+            <!-- Reply preview -->
+
+            <div
+              class="reply-preview"
+              *ngIf="message.replyTo">
+
+              <strong>
+                {{ message.replyTo.senderName }}
+              </strong>
+
+              <span>
+                {{ message.replyTo.text }}
+              </span>
+
+            </div>
+
+
+            <!-- Editing -->
+
+            <div
+              class="edit-container"
+              *ngIf="
+                editingMessageId === message.id
+              "
+            >
+
+              <textarea
+                [(ngModel)]="editText"
+                (keydown.enter)="handleEnter($event)"
+              ></textarea>
+
+              <div class="edit-actions">
+
+                <button
+                  class="cancel-btn"
+                  (click)="cancelEdit()">
+
+                  Cancel
+
+                </button>
+
+                <button
+                  class="save-btn"
+                  (click)="saveEdit()">
+
+                  Save
+
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <!-- Normal message -->
+
+            <div
+              class="message-bubble"
+              *ngIf="
+                editingMessageId !== message.id
+              "
+            >
+
+              {{ message.text }}
+
+              <div class="message-meta">
+
+                <span>
+                  {{ message.time }}
+                </span>
+
+                <span
+                  class="edited"
+                  *ngIf="message.edited">
+
+                  edited
+
+                </span>
+
+                <!-- Read ticks -->
+
+                <span
+                  class="ticks"
+                  *ngIf="
+                    message.senderId === currentUserId
+                  ">
+
+                  ✓✓
+
+                </span>
+
+              </div>
+
+
+              <!-- Reaction -->
+
+              <span
+                class="message-reaction"
+                *ngIf="message.reaction">
+
+                {{ message.reaction }}
+
+              </span>
+
+            </div>
+
+
+            <!-- Message actions -->
+
+            <div
+              class="message-actions"
+              [class.mine]="
+                message.senderId === currentUserId
+              "
+            >
+
+              <!-- Reply -->
+
+              <button
+                title="Reply"
+                (click)="replyMessage(message)">
+
+                ↩
+
+              </button>
+
+
+              <!-- React -->
+
+              <button
+                title="React"
+                (click)="
+                  toggleReactionPicker(message)
+                "
+              >
+
+                😊
+
+              </button>
+
+
+              <!-- Edit only own message -->
+
+              <button
+                *ngIf="
+                  message.senderId === currentUserId
+                "
+                title="Edit"
+                (click)="editMessage(message)">
+
+                ✎
+
+              </button>
+
+
+              <!-- Delete only own message -->
+
+              <button
+                *ngIf="
+                  message.senderId === currentUserId
+                "
+                title="Delete"
+                (click)="deleteMessage(message)">
+
+                🗑
+
+              </button>
+
+
+              <!-- Reaction picker -->
+
+              <div
+                class="reaction-picker"
+                *ngIf="
+                  reactionMessageId === message.id
+                "
+              >
+
+                <button
+                  *ngFor="
+                    let reaction of reactions
+                  "
+                  (click)="
+                    reactToMessage(
+                      message,
+                      reaction
+                    )
+                  "
+                >
+
+                  {{ reaction }}
+
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- No messages -->
+
+        <div
+          class="no-messages"
+          *ngIf="currentMessages.length === 0">
+
+          <div>
+            👋
+          </div>
+
+          <h3>
+            Start a conversation
+          </h3>
+
+          <p>
+            Say hello and start getting to know each other.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- ======================================
+           REPLY BAR
+      ======================================= -->
+
+      <div
+        class="reply-bar"
+        *ngIf="replyingTo">
+
+        <div>
+
+          <span>
+            Replying to
+            {{
+              replyingTo.senderId === currentUserId
+                ? 'yourself'
+                : selectedUser.name
+            }}
+          </span>
+
+          <p>
+            {{ replyingTo.text }}
+          </p>
+
+        </div>
+
+        <button
+          (click)="cancelReply()">
+
+          ×
+
+        </button>
+
+      </div>
+
+
+      <!-- ======================================
+           MESSAGE COMPOSER
+      ======================================= -->
+
+      <footer class="message-composer">
+
+        <button
+          class="emoji-button"
+          title="Emoji">
+
+          😊
+
+        </button>
+
+
+        <textarea
+          [(ngModel)]="messageText"
+          placeholder="Type a message..."
+          rows="1"
+          (keydown)="handleEnter($event)"
+        ></textarea>
+
+
+        <button
+          class="attachment-button"
+          title="Attachment">
+
+          📎
+
+        </button>
+
+
+        <button
+          class="send-button"
+          (click)="sendMessage()"
+          [disabled]="!messageText.trim()">
+
+          ➤
+
+        </button>
+
+      </footer>
+
+    </ng-container>
+
+  </main>
+
+</div>

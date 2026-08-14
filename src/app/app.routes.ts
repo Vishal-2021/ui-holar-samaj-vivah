@@ -9,6 +9,8 @@ import { ForgotPasswordComponent } from './pages/login/forgot-password/forgot-pa
 import { ProfileDetailsComponent } from './pages/profile/profile-search/search-result/profile-details/profile-details.component';
 import { authGuard } from './core/auth.guard';
 import { InterestsComponent } from './pages/interests/interests.component';
+import { MessagesComponent } from './pages/messages/messages.component';
+import { SubscriptionComponent } from './pages/subscription/subscription.component';
 
 export const routes: Routes = [
      { path: '', component: HomeComponent },
@@ -20,4 +22,6 @@ export const routes: Routes = [
      { path: 'forgot-password', component: ForgotPasswordComponent},
      { path: 'profile-details/:id', component: ProfileDetailsComponent},
      { path: 'interests', component: InterestsComponent},
+     { path: 'messages', component: MessagesComponent },
+     { path: 'subscription', component: SubscriptionComponent }
 ];

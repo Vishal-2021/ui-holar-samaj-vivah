@@ -1,0 +1,451 @@
+<div class="subscription-page">
+
+  <!-- =====================================================
+       HERO / INTRO SECTION
+  ====================================================== -->
+
+  <section class="membership-hero">
+
+    <!-- LEFT CONTENT -->
+
+    <div class="hero-content">
+
+      <div class="upgrade-badge">
+        👑 &nbsp; Upgrade Your Membership
+      </div>
+
+      <h1>
+        Choose Your Plan
+      </h1>
+
+      <p class="hero-description">
+        Select a membership plan that suits you and unlock
+        premium features to find your perfect life partner.
+      </p>
+
+
+      <!-- TRUST ITEMS -->
+
+      <div class="trust-items">
+
+        <div class="trust-item">
+
+          <div class="trust-icon">
+            🛡️
+          </div>
+
+          <div class="trust-content">
+            <strong>100% Secure</strong>
+            <span>Your data is safe</span>
+          </div>
+
+        </div>
+
+
+        <div class="trust-item">
+
+          <div class="trust-icon">
+            👥
+          </div>
+
+          <div class="trust-content">
+            <strong>Trusted by Thousands</strong>
+            <span>Happy members</span>
+          </div>
+
+        </div>
+
+
+        <div class="trust-item">
+
+          <div class="trust-icon">
+            🎧
+          </div>
+
+          <div class="trust-content">
+            <strong>24/7 Support</strong>
+            <span>We are here to help</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         HERO GRAPHIC
+    ====================================================== -->
+
+    <div class="hero-graphic">
+
+      <div class="graphic-card">
+
+        <div class="profile-circle">
+          👤
+        </div>
+
+        <div class="graphic-lines">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+      </div>
+
+
+      <div class="big-heart">
+        ❤️
+      </div>
+
+
+      <div class="crown">
+        👑
+      </div>
+
+
+      <span class="floating-heart heart-one">
+        ♥
+      </span>
+
+      <span class="floating-heart heart-two">
+        ♥
+      </span>
+
+      <span class="floating-heart heart-three">
+        ♥
+      </span>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       MEMBERSHIP PLANS
+  ====================================================== -->
+
+  <section class="plans-section">
+
+    <div
+      class="plan-card"
+      *ngFor="let plan of plans"
+      [class.popular-plan]="plan.popular"
+    >
+
+      <!-- POPULAR LABEL -->
+
+      <div
+        class="popular-label"
+        *ngIf="plan.popular"
+      >
+        Most Popular
+      </div>
+
+
+      <!-- PLAN HEADER -->
+
+      <div class="plan-header">
+
+        <h2>
+          {{ plan.name }}
+        </h2>
+
+        <p>
+          {{ plan.description }}
+        </p>
+
+      </div>
+
+
+      <!-- PRICE -->
+
+      <div class="price">
+
+        <span class="currency">
+          ₹
+        </span>
+
+        <span class="amount">
+          {{ plan.price }}
+        </span>
+
+        <span class="duration">
+          / {{ plan.duration }}
+        </span>
+
+      </div>
+
+
+      <div class="plan-divider"></div>
+
+
+      <!-- FEATURES -->
+
+      <div class="features">
+
+        <div
+          class="feature"
+          *ngFor="let feature of plan.features; let i = index"
+        >
+
+          <span class="feature-check">
+            {{ getFeatureIcon(i) }}
+          </span>
+
+          <span class="feature-text">
+            {{ feature }}
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- BUTTON -->
+
+      <button
+        type="button"
+        class="choose-button"
+        [ngClass]="plan.buttonClass"
+        (click)="choosePlan(plan)"
+      >
+
+        <span *ngIf="plan.price === 0">
+          Current Plan
+        </span>
+
+        <span *ngIf="plan.price !== 0">
+          Choose Plan
+        </span>
+
+      </button>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       WHY PREMIUM
+  ====================================================== -->
+
+  <section class="benefits-section">
+
+    <div class="benefits-heading">
+
+      <h2>
+        Why Upgrade to Premium?
+      </h2>
+
+      <p>
+        Get more visibility and connect with suitable matches.
+      </p>
+
+    </div>
+
+
+    <div class="benefits-grid">
+
+
+      <!-- BENEFIT 1 -->
+
+      <div class="benefit-card">
+
+        <div class="benefit-icon pink">
+          👁️
+        </div>
+
+        <h3>
+          Unlimited Access
+        </h3>
+
+        <p>
+          View unlimited profiles and photos.
+        </p>
+
+      </div>
+
+
+      <!-- BENEFIT 2 -->
+
+      <div class="benefit-card">
+
+        <div class="benefit-icon blue">
+          💬
+        </div>
+
+        <h3>
+          Direct Contact
+        </h3>
+
+        <p>
+          Get contact details and connect easily.
+        </p>
+
+      </div>
+
+
+      <!-- BENEFIT 3 -->
+
+      <div class="benefit-card">
+
+        <div class="benefit-icon orange">
+          ⭐
+        </div>
+
+        <h3>
+          Priority Listing
+        </h3>
+
+        <p>
+          Your profile appears higher in search.
+        </p>
+
+      </div>
+
+
+      <!-- BENEFIT 4 -->
+
+      <div class="benefit-card">
+
+        <div class="benefit-icon green">
+          🛡️
+        </div>
+
+        <h3>
+          Verified Profile
+        </h3>
+
+        <p>
+          Get verified for greater trust.
+        </p>
+
+      </div>
+
+
+      <!-- BENEFIT 5 -->
+
+      <div class="benefit-card">
+
+        <div class="benefit-icon purple">
+          👥
+        </div>
+
+        <h3>
+          More Visibility
+        </h3>
+
+        <p>
+          Get more profile views and matches.
+        </p>
+
+      </div>
+
+
+      <!-- BENEFIT 6 -->
+
+      <div class="benefit-card">
+
+        <div class="benefit-icon red">
+          🎧
+        </div>
+
+        <h3>
+          Priority Support
+        </h3>
+
+        <p>
+          Faster response from our support team.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       SECURITY BAR
+  ====================================================== -->
+
+  <section class="security-section">
+
+
+    <!-- SECURITY 1 -->
+
+    <div class="security-item">
+
+      <div class="security-icon">
+        🔒
+      </div>
+
+      <div class="security-content">
+
+        <strong>
+          Secure Payments
+        </strong>
+
+        <span>
+          All payments are encrypted and secure
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- SECURITY 2 -->
+
+    <div class="security-item">
+
+      <div class="security-icon">
+        🛡️
+      </div>
+
+      <div class="security-content">
+
+        <strong>
+          Money Back Guarantee
+        </strong>
+
+        <span>
+          7 days money back guarantee
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- SECURITY 3 -->
+
+    <div class="security-item">
+
+      <div class="security-icon">
+        🎧
+      </div>
+
+      <div class="security-content">
+
+        <strong>
+          Need Help?
+        </strong>
+
+        <span>
+          Contact our support team anytime
+        </span>
+
+      </div>
+
+    </div>
+
+
+  </section>
+
+</div>

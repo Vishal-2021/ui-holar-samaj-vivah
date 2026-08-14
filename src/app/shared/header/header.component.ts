@@ -14,6 +14,8 @@ import { CommonModule } from '@angular/common';
 })
 export class HeaderComponent implements AfterViewInit {
 
+   menuOpen = false;
+
   constructor(public router: Router, public authService: AuthService){}
 
     ngAfterViewInit() {
@@ -30,6 +32,17 @@ export class HeaderComponent implements AfterViewInit {
           });
         });
     }
+
+     // Open / close mobile menu
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen;
+  }
+
+  // Close menu after clicking navigation link
+  closeMenu(): void {
+    this.menuOpen = false;
+  }
+
 
     logout(){
       this.authService.logout();

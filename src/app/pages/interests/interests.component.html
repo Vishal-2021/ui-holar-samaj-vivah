@@ -1,128 +1,531 @@
-<div class="container">
+<div class="interests-page">
 
+  <!-- ================= HEADER ================= -->
+  <section class="page-header">
 
-    <h1>My Interests</h1>
+    <div class="header-content">
+      <h1>My Interests <span>💗</span></h1>
 
-    <!-- Tabs -->
-    <div class="tabs">
-        <button id="receivedBtn" [class.active]="showReceivedInterests" (click)="showReceived()">
-            Received Interests
+      <p>
+        Manage the people who are interested in you
+      </p>
+
+      <!-- Tabs -->
+      <div class="interest-tabs">
+
+        <button
+          class="tab-btn"
+          [class.active]="activeTab === 'received'"
+          (click)="showReceived()">
+
+          Received
+          <span class="tab-count">
+            {{ receivedInterests.length }}
+          </span>
+
         </button>
-        <button id="sentBtn" [class.active]="showSentInterests" (click)="showSent()">
-            Sent Interests
+
+        <button
+          class="tab-btn"
+          [class.active]="activeTab === 'sent'"
+          (click)="showSent()">
+
+          Sent
+          <span class="tab-count">
+            {{ sentInterests.length }}
+          </span>
+
         </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- ================= STATISTICS ================= -->
+
+    <div class="stats-container">
+
+      <div class="stat-card">
+
+        <div class="stat-icon received-icon">
+          💗
+        </div>
+
+        <div>
+          <small>Received</small>
+          <strong>{{ receivedInterests.length }}</strong>
+          <span>New interests</span>
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon sent-icon">
+          ✈️
+        </div>
+
+        <div>
+          <small>Sent</small>
+          <strong>{{ sentInterests.length }}</strong>
+          <span>Requests sent</span>
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon accepted-icon">
+          ✓
+        </div>
+
+        <div>
+          <small>Accepted</small>
+
+          <strong>
+            {{ acceptedCount }}
+        </strong>
+
+          <span>Connections</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ================= MAIN CONTAINER ================= -->
+
+  <section class="interest-container">
+
+
+    <!-- ================= FILTER BAR ================= -->
+
+    <div class="filter-bar">
+
+      <!-- Search -->
+
+      <div class="search-box">
+
+        <span>⌕</span>
+
+        <input
+          type="text"
+          placeholder="Search by name, location..."
+        />
+
+      </div>
+
+
+      <!-- Status -->
+
+      <select class="status-filter">
+
+        <option>All Status</option>
+        <option>Pending</option>
+        <option>Accepted</option>
+        <option>Rejected</option>
+
+      </select>
+
+
+      <!-- Sort -->
+
+      <div class="sort-box">
+
+        <label>Sort by:</label>
+
+        <select>
+
+          <option>Newest First</option>
+          <option>Oldest First</option>
+          <option>Name A-Z</option>
+
+        </select>
+
+      </div>
+
     </div>
 
 
 
-
-
+    <!-- ================================================= -->
     <!-- RECEIVED INTERESTS -->
+    <!-- ================================================= -->
 
-    <div *ngIf="showReceivedInterests" id="received">
-        <div class="card">
-            <img class="photo" src="https://via.placeholder.com/120">
-            <div class="info">
-                <h2>Priya Sharma</h2>
-                <p>
-                    Age: 25 Years
-                    <br> Location: Mumbai
-                    <br> Education: MBA
-                </p>
-            </div>
+    <div
+      class="interest-section"
+      *ngIf="activeTab === 'received'">
 
-            <div class="action">
-                <button>
-                    Accept
-                </button>
-                <button>
-                    Reject
-                </button>
-            </div>
+      <div class="section-title">
+
+        <div>
+          <h2>
+            Received Interests
+
+            <span class="section-count">
+              {{ receivedInterests.length }}
+            </span>
+
+          </h2>
+
+          <p>
+            People who have shown interest in you
+          </p>
         </div>
 
+      </div>
 
-        <div class="card">
-            <img class="photo" src="https://via.placeholder.com/120">
-            <div class="info">
-               <h2>Rahul Patil</h2>
-                <p>
-                    Age: 28 Years
-                    <br> Location: Pune
-                    <br> Occupation: Engineer
-                </p>
+
+
+      <!-- ================= RECEIVED LIST ================= -->
+
+      <div class="interest-list">
+
+        <div
+          class="interest-card"
+          *ngFor="let interest of receivedInterests"
+        >
+
+
+          <!-- PROFILE -->
+
+          <div class="profile-section">
+
+            <div class="profile-image-wrapper">
+
+              <img
+                [src]="interest.photo"
+                [alt]="interest.name"
+                class="profile-image"
+              />
+
+              <span
+                class="online-dot"
+                *ngIf="interest.online">
+              </span>
+
             </div>
 
-            <div class="action">
-                <p class="pending">
-                    Pending Response
-                </p>
+
+            <div class="profile-info">
+
+              <div class="name-row">
+
+                <h3>
+                  {{ interest.name }}
+                </h3>
+
+                <span
+                  class="new-badge"
+                  *ngIf="interest.status === 'pending'">
+                  New
+                </span>
+
+              </div>
+
+
+              <p>
+                <strong>Age:</strong>
+                {{ interest.age }} Years
+              </p>
+
+
+              <p>
+                <strong>⌖ Location:</strong>
+                {{ interest.location }}
+              </p>
+
+
+              <p>
+                <strong>▣ Education:</strong>
+                {{ interest.education }}
+              </p>
+
             </div>
+
+          </div>
+
+
+
+          <!-- STATUS -->
+
+          <div class="interest-status">
+
+            <span
+              class="status-badge"
+              [ngClass]="interest.status">
+
+              <span class="status-dot"></span>
+
+              {{
+                interest.status === 'pending'
+                  ? 'New Interest'
+                  : interest.status
+              }}
+
+            </span>
+
+          </div>
+
+
+
+          <!-- ACTIONS -->
+
+          <div class="interest-actions">
+
+            <button
+              class="btn accept-btn"
+              *ngIf="interest.status === 'pending'"
+              (click)="acceptInterest(interest)">
+
+              Accept
+
+            </button>
+
+
+            <button
+              class="btn reject-btn"
+              *ngIf="interest.status === 'pending'"
+              (click)="rejectInterest(interest)">
+
+              Reject
+
+            </button>
+
+
+            <button
+              class="btn message-btn"
+              *ngIf="interest.status === 'accepted'"
+              (click)="openMessage(interest)">
+
+              Message 💬
+
+            </button>
+
+
+            <button
+              class="more-btn">
+
+              ⋮
+
+            </button>
+
+
+            <small class="time-text">
+              ◷ Received recently
+            </small>
+
+          </div>
+
         </div>
+
+      </div>
+
     </div>
 
 
 
+    <!-- ================================================= -->
     <!-- SENT INTERESTS -->
-    <div *ngIf="showSentInterests" id="sent">
-        <div class="card">
-            <img class="photo" src="https://via.placeholder.com/120">
-            <div class="info">
-                <h2>Neha Sharma</h2>
-                <p>
-                    Age: 26 Years
-                    <br> Location: Mumbai
-                    <br> Education: M.Com
-                </p>
-            </div>
+    <!-- ================================================= -->
 
-            <div class="action">
-                <p class="pending">
-                    Pending
-                </p>
-                <button>
-                    Withdraw
-                </button>
-            </div>
-        </div>
+    <div
+      class="interest-section"
+      *ngIf="activeTab === 'sent'">
 
-        <div class="card">
-            <img class="photo" src="https://via.placeholder.com/120">
-            <div class="info">
-                <h2>Pooja More</h2>
-                <p>
-                    Age: 24 Years
-                    <br> Location: Nashik
-                    <br> Education: MBA
-                </p>
-            </div>
+      <div class="section-title">
 
-            <div class="action">
-                <p class="accepted">
-                    Accepted
-                </p>
-            </div>
-        </div>
+        <div>
 
-        <div class="card">
-            <img class="photo" src="https://via.placeholder.com/120">
-            <div class="info">
-                <h2>Amit Patil</h2>
-                <p>
-                    Age: 29 Years
-                    <br> Location: Pune
-                    <br> Occupation: Software Engineer
-                </p>
-            </div>
+          <h2>
+            Sent Interests
 
-            <div class="action">
-                <p class="declined">
-                    Declined
-                </p>
-            </div>
+            <span class="section-count">
+              {{ sentInterests.length }}
+            </span>
+
+          </h2>
+
+          <p>
+            People you have shown interest in
+          </p>
 
         </div>
+
+      </div>
+
+
+
+      <!-- ================= SENT LIST ================= -->
+
+      <div class="interest-list">
+
+        <div
+          class="interest-card"
+          *ngFor="let interest of sentInterests"
+        >
+
+
+          <!-- PROFILE -->
+
+          <div class="profile-section">
+
+            <div class="profile-image-wrapper">
+
+              <img
+                [src]="interest.photo"
+                [alt]="interest.name"
+                class="profile-image"
+              />
+
+              <span
+                class="online-dot"
+                *ngIf="interest.online">
+              </span>
+
+            </div>
+
+
+            <div class="profile-info">
+
+              <div class="name-row">
+
+                <h3>
+                  {{ interest.name }}
+                </h3>
+
+              </div>
+
+
+              <p>
+                <strong>Age:</strong>
+                {{ interest.age }} Years
+              </p>
+
+
+              <p>
+                <strong>⌖ Location:</strong>
+                {{ interest.location }}
+              </p>
+
+
+              <p>
+                <strong>▣ Education:</strong>
+                {{ interest.education }}
+              </p>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- STATUS -->
+
+          <div class="interest-status">
+
+            <span
+              class="status-badge"
+              [ngClass]="interest.status">
+
+              <span class="status-dot"></span>
+
+              {{ interest.status }}
+
+            </span>
+
+          </div>
+
+
+
+          <!-- ACTIONS -->
+
+          <div class="interest-actions">
+
+            <button
+              class="btn withdraw-btn"
+              *ngIf="interest.status === 'pending'"
+              (click)="withdrawInterest(interest)">
+
+              Withdraw
+
+            </button>
+
+
+            <button
+              class="btn message-btn"
+              *ngIf="interest.status === 'accepted'"
+              (click)="openMessage(interest)">
+
+              Message 💬
+
+            </button>
+
+
+            <button
+              class="more-btn">
+
+              ⋮
+
+            </button>
+
+
+            <small class="time-text">
+              ◷ Sent recently
+            </small>
+
+          </div>
+
+        </div>
+
+      </div>
 
     </div>
+
+
+
+    <!-- ================= BOTTOM CTA ================= -->
+
+    <div class="match-banner">
+
+      <div class="heart-circle">
+        💗
+      </div>
+
+
+      <div class="match-text">
+
+        <h3>
+          Looking for more matches?
+        </h3>
+
+        <p>
+          Explore new profiles and connect with people
+          who match your preferences.
+        </p>
+
+      </div>
+
+
+      <button
+        class="search-profile-btn"
+        routerLink="/search">
+
+        Search Profiles
+        <span>⌕</span>
+
+      </button>
+
+    </div>
+
+
+  </section>
 
 </div>
