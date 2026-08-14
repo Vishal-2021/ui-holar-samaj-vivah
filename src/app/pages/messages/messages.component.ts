@@ -431,18 +431,21 @@ export class MessagesComponent {
   /* ============================================
      ENTER KEY
   ============================================ */
+handleEnter(event: Event): void {
 
-  handleEnter(event: KeyboardEvent): void {
+  const keyboardEvent = event as KeyboardEvent;
 
-    if (event.key === 'Enter' && !event.shiftKey) {
+  if (
+    keyboardEvent.key === 'Enter' &&
+    !keyboardEvent.shiftKey
+  ) {
 
-      event.preventDefault();
+    keyboardEvent.preventDefault();
 
-      this.sendMessage();
-
-    }
-
+    this.sendMessage();
   }
+
+}
 
   /* ============================================
      START EDIT

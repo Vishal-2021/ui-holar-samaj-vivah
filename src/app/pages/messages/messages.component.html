@@ -25,23 +25,30 @@
 
       </div>
 
+
       <div class="header-actions">
 
         <button
           class="icon-button"
           title="Filter">
+
           ☰
+
         </button>
+
 
         <button
           class="icon-button compose"
           title="New message">
+
           ✎
+
         </button>
 
       </div>
 
     </div>
+
 
 
     <!-- Search -->
@@ -61,6 +68,7 @@
     </div>
 
 
+
     <!-- Filters -->
 
     <div class="filters">
@@ -73,6 +81,7 @@
 
       </button>
 
+
       <button
         [class.active]="activeFilter === 'unread'"
         (click)="activeFilter = 'unread'">
@@ -80,6 +89,7 @@
         Unread
 
       </button>
+
 
       <button
         [class.active]="activeFilter === 'favorite'"
@@ -90,6 +100,7 @@
       </button>
 
     </div>
+
 
 
     <!-- Conversation List -->
@@ -125,6 +136,7 @@
         </div>
 
 
+
         <!-- Information -->
 
         <div class="conversation-info">
@@ -140,6 +152,7 @@
             </span>
 
           </div>
+
 
           <div class="conversation-bottom">
 
@@ -160,6 +173,7 @@
         </div>
 
       </div>
+
 
 
       <!-- Empty -->
@@ -183,6 +197,7 @@
       </div>
 
     </div>
+
 
 
     <!-- Bottom Card -->
@@ -215,6 +230,7 @@
   </aside>
 
 
+
   <!-- ==========================================
        CHAT PANEL
   =========================================== -->
@@ -223,6 +239,7 @@
     class="chat-panel"
     [class.mobile-visible]="mobileChatOpen"
   >
+
 
     <!-- ========================================
          NO CHAT SELECTED
@@ -247,17 +264,20 @@
     </div>
 
 
+
     <!-- ========================================
          ACTIVE CHAT
     ========================================= -->
 
     <ng-container *ngIf="selectedUser">
 
+
       <!-- Chat Header -->
 
       <header class="chat-header">
 
         <div class="chat-user">
+
 
           <!-- Mobile Back -->
 
@@ -268,6 +288,9 @@
             ←
 
           </button>
+
+
+          <!-- User Photo -->
 
           <div class="chat-photo">
 
@@ -282,6 +305,9 @@
             </span>
 
           </div>
+
+
+          <!-- User Information -->
 
           <div>
 
@@ -308,6 +334,9 @@
         </div>
 
 
+
+        <!-- Chat Actions -->
+
         <div class="chat-actions">
 
           <button
@@ -317,12 +346,14 @@
 
           </button>
 
+
           <button
             title="Voice call">
 
             ☎
 
           </button>
+
 
           <button
             title="More">
@@ -336,11 +367,13 @@
       </header>
 
 
+
       <!-- ======================================
            CHAT BODY
       ======================================= -->
 
       <section class="chat-body">
+
 
         <!-- Today -->
 
@@ -351,6 +384,7 @@
           </span>
 
         </div>
+
 
 
         <!-- Messages -->
@@ -365,6 +399,7 @@
             message.senderId === currentUserId
           "
         >
+
 
           <!-- Other person's photo -->
 
@@ -381,6 +416,7 @@
             >
 
           </div>
+
 
 
           <!-- Message -->
@@ -405,7 +441,10 @@
             </div>
 
 
-            <!-- Editing -->
+
+            <!-- ==================================
+                 EDIT MESSAGE
+            =================================== -->
 
             <div
               class="edit-container"
@@ -416,21 +455,25 @@
 
               <textarea
                 [(ngModel)]="editText"
-                (keydown.enter)="handleEnter($event)"
+                (keydown)="handleEnter($event)"
               ></textarea>
+
 
               <div class="edit-actions">
 
                 <button
                   class="cancel-btn"
+                  type="button"
                   (click)="cancelEdit()">
 
                   Cancel
 
                 </button>
 
+
                 <button
                   class="save-btn"
+                  type="button"
                   (click)="saveEdit()">
 
                   Save
@@ -442,7 +485,10 @@
             </div>
 
 
-            <!-- Normal message -->
+
+            <!-- ==================================
+                 NORMAL MESSAGE
+            =================================== -->
 
             <div
               class="message-bubble"
@@ -453,11 +499,15 @@
 
               {{ message.text }}
 
+
+              <!-- Message Meta -->
+
               <div class="message-meta">
 
                 <span>
                   {{ message.time }}
                 </span>
+
 
                 <span
                   class="edited"
@@ -466,6 +516,7 @@
                   edited
 
                 </span>
+
 
                 <!-- Read ticks -->
 
@@ -482,6 +533,7 @@
               </div>
 
 
+
               <!-- Reaction -->
 
               <span
@@ -495,7 +547,10 @@
             </div>
 
 
-            <!-- Message actions -->
+
+            <!-- ==================================
+                 MESSAGE ACTIONS
+            =================================== -->
 
             <div
               class="message-actions"
@@ -504,9 +559,11 @@
               "
             >
 
+
               <!-- Reply -->
 
               <button
+                type="button"
                 title="Reply"
                 (click)="replyMessage(message)">
 
@@ -515,9 +572,11 @@
               </button>
 
 
+
               <!-- React -->
 
               <button
+                type="button"
                 title="React"
                 (click)="
                   toggleReactionPicker(message)
@@ -529,9 +588,11 @@
               </button>
 
 
+
               <!-- Edit only own message -->
 
               <button
+                type="button"
                 *ngIf="
                   message.senderId === currentUserId
                 "
@@ -543,9 +604,11 @@
               </button>
 
 
+
               <!-- Delete only own message -->
 
               <button
+                type="button"
                 *ngIf="
                   message.senderId === currentUserId
                 "
@@ -557,7 +620,8 @@
               </button>
 
 
-              <!-- Reaction picker -->
+
+              <!-- Reaction Picker -->
 
               <div
                 class="reaction-picker"
@@ -567,6 +631,7 @@
               >
 
                 <button
+                  type="button"
                   *ngFor="
                     let reaction of reactions
                   "
@@ -591,7 +656,10 @@
         </div>
 
 
-        <!-- No messages -->
+
+        <!-- ==================================
+             NO MESSAGES
+        =================================== -->
 
         <div
           class="no-messages"
@@ -614,6 +682,7 @@
       </section>
 
 
+
       <!-- ======================================
            REPLY BAR
       ======================================= -->
@@ -625,13 +694,17 @@
         <div>
 
           <span>
+
             Replying to
+
             {{
               replyingTo.senderId === currentUserId
                 ? 'yourself'
                 : selectedUser.name
             }}
+
           </span>
+
 
           <p>
             {{ replyingTo.text }}
@@ -639,7 +712,9 @@
 
         </div>
 
+
         <button
+          type="button"
           (click)="cancelReply()">
 
           ×
@@ -649,13 +724,18 @@
       </div>
 
 
+
       <!-- ======================================
            MESSAGE COMPOSER
       ======================================= -->
 
       <footer class="message-composer">
 
+
+        <!-- Emoji -->
+
         <button
+          type="button"
           class="emoji-button"
           title="Emoji">
 
@@ -663,6 +743,9 @@
 
         </button>
 
+
+
+        <!-- Message Input -->
 
         <textarea
           [(ngModel)]="messageText"
@@ -672,7 +755,11 @@
         ></textarea>
 
 
+
+        <!-- Attachment -->
+
         <button
+          type="button"
           class="attachment-button"
           title="Attachment">
 
@@ -681,7 +768,11 @@
         </button>
 
 
+
+        <!-- Send -->
+
         <button
+          type="button"
           class="send-button"
           (click)="sendMessage()"
           [disabled]="!messageText.trim()">
