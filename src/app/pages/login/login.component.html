@@ -1,84 +1,274 @@
+<div class="login-page">
 
-    <div class="main">
-      <div class="card">
-        <!-- TOP IMAGE -->
-        <div class="login-top-image">
-          <img src="/WeddingImage.png" alt="Holar Samaj Vivah" />
+  <!-- Soft background decoration -->
+  <div class="background-shape shape-one"></div>
+  <div class="background-shape shape-two"></div>
+
+  <div class="login-card">
+
+    <!-- =====================================================
+         LEFT / BRAND PANEL
+    ====================================================== -->
+
+    <div class="login-brand">
+
+      <div class="brand-icon">
+        <span>♥</span>
+      </div>
+
+      <span class="brand-label">
+        HOLAR SAMAJ VIVAH
+      </span>
+
+      <h1>
+        Welcome<br>
+        <em>Back</em>
+      </h1>
+
+      <p>
+        Find meaningful connections and continue
+        your journey towards finding your life partner.
+      </p>
+
+      <div class="brand-divider">
+        <span></span>
+        <b>♡</b>
+        <span></span>
+      </div>
+
+      <div class="brand-features">
+
+        <div class="brand-feature">
+          <span class="feature-icon">✓</span>
+          <div>
+            <strong>Trusted Community</strong>
+            <small>Connect with genuine members</small>
+          </div>
         </div>
+
+        <div class="brand-feature">
+          <span class="feature-icon">♥</span>
+          <div>
+            <strong>Meaningful Matches</strong>
+            <small>Discover suitable profiles</small>
+          </div>
+        </div>
+
+        <div class="brand-feature">
+          <span class="feature-icon">🔒</span>
+          <div>
+            <strong>Safe & Secure</strong>
+            <small>Your information stays protected</small>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         RIGHT LOGIN AREA
+    ====================================================== -->
+
+    <div class="login-form-area">
+
+      <!-- Header -->
+
+      <div class="login-header">
+
+        <div class="user-icon">
+          <i class="fa-solid fa-user"></i>
+        </div>
+
+        <span class="form-label">
+          WELCOME BACK
+        </span>
+
+        <h2>
+          Sign In
+        </h2>
+
+        <p>
+          Login to your Holar Samaj Vivah account
+        </p>
+
+        <div class="login-decoration">
+          <span></span>
+          <b>♥</b>
+          <span></span>
+        </div>
+
+      </div>
+
+
+      <!-- Login failed message -->
+
+      <div
+        class="loginFailed"
+        *ngIf="loginFailedMessage">
+
+        <span class="message-icon">!</span>
+
+        {{ loginFailedMessage }}
+
+      </div>
+
+
+      <!-- ===================================================
+           LOGIN FORM
+      ==================================================== -->
+
+      <form
+        #loginForm="ngForm"
+        (ngSubmit)="login(loginForm)"
+        novalidate>
+
+
+        <!-- EMAIL -->
+
+        <div class="form-group">
+
+          <label for="email">
+            Email Address
+          </label>
+
+          <div class="input-box">
+
+            <span class="field-icon">
+              <i class="fa-regular fa-envelope"></i>
+            </span>
+
+            <input
+              id="email"
+              type="email"
+              name="email"
+              [(ngModel)]="email"
+              #emailCtrl="ngModel"
+              placeholder="Enter your email"
+              required
+              email
+            />
+
+          </div>
+
+
+          <small
+            class="error"
+            *ngIf="emailCtrl.invalid && emailCtrl.touched">
+
+            <span *ngIf="emailCtrl.errors?.['required']">
+              Email is required
+            </span>
+
+            <span *ngIf="emailCtrl.errors?.['email']">
+              Enter a valid email
+            </span>
+
+          </small>
+
+        </div>
+
+
+        <!-- PASSWORD -->
+
+        <div class="form-group">
+
+          <div class="password-label-row">
+
+            <label for="password">
+              Password
+            </label>
+
+            <a
+              [routerLink]="['/forgot-password']"
+              class="small-forgot">
+
+              Forgot password?
+
+            </a>
+
+          </div>
+
+
+          <div class="input-box">
+
+            <span class="field-icon">
+              <i class="fa-solid fa-lock"></i>
+            </span>
+
+            <input
+              id="password"
+              type="password"
+              name="password"
+              [(ngModel)]="password"
+              #passwordCtrl="ngModel"
+              placeholder="Enter your password"
+              required
+              minlength="6"
+            />
+
+          </div>
+
+
+          <small
+            class="error"
+            *ngIf="passwordCtrl.invalid && passwordCtrl.touched">
+
+            <span *ngIf="passwordCtrl.errors?.['required']">
+              Password is required
+            </span>
+
+            <span *ngIf="passwordCtrl.errors?.['minlength']">
+              Password must be at least 6 characters
+            </span>
+
+          </small>
+
+        </div>
+
+
+        <!-- SIGN IN -->
+
+        <button
+          class="login-btn"
+          type="submit"
+          [disabled]="loginForm.invalid">
+
+          <span>
+            <i class="fa-solid fa-right-to-bracket"></i>
+            Sign In
+          </span>
 
         
 
-        <h2>Login to Holar-Samaj Vivah</h2>
-       
-        <span class="loginFailed" *ngIf="loginFailedMessage"> {{loginFailedMessage}}</span>
+        </button>
 
-        <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" novalidate>
-          <div class="form-group">
-            <!-- Email -->
-              <div class="input-box">
-                <i class="fa-regular fa-envelope"></i>
-                <input type="email" name="email" [(ngModel)]="email" #emailCtrl="ngModel" placeholder="Enter your email" required email/>
-              </div>
-              <!-- Email Error -->
-              <small class="error" *ngIf="emailCtrl.invalid && emailCtrl.touched">
-                <span *ngIf="emailCtrl.errors?.['required']">Email is required</span>
-                <span *ngIf="emailCtrl.errors?.['email']">Enter a valid email</span>
-              </small>
-          </div>
+      </form>
 
-          <!-- Password (SVG icon, no font) -->
-          <div class="form-group">
-            <div class="input-box">
-              <span class="icon">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M7 10V7a5 5 0 0 1 10 0v3"
-                    stroke="#6e6e6e"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-                  <rect
-                    x="5"
-                    y="10"
-                    width="14"
-                    height="11"
-                    rx="2"
-                    stroke="#6e6e6e"
-                    stroke-width="2"
-                  />
-                </svg>
-              </span>
-              <input type="password" name="password" [(ngModel)]="password" #passwordCtrl="ngModel" placeholder="Enter your password" required minlength="6"/>
-            </div>
-              <!-- Password Error -->
-            <small class="error" *ngIf="passwordCtrl.invalid && passwordCtrl.touched">
-              <span *ngIf="passwordCtrl.errors?.['required']">Password is required</span>
-              <span *ngIf="passwordCtrl.errors?.['minlength']">
-                Password must be at least 6 characters
-              </span>
-            </small>
-          </div>
-          
-          <button class="login-btn" type="submit" [disabled]="loginForm.invalid">
-            <i class="fa-solid fa-right-to-bracket"></i> Sign In
-          </button>
-        </form>
 
-        <div class="forgot">
-          <a [routerLink]="['/forgot-password']">Forgot your password?</a>
-        </div>
+      <!-- Register -->
 
-        <div class="register-link">
+      <div class="register-link">
+
+        <span>
           Don't have an account?
-          <a [routerLink]="['/register']">Register here</a>
-        </div>
-      </div>
-    </div>
- 
+        </span>
 
+        <a [routerLink]="['/register']">
+          Create an account
+        </a>
+
+      </div>
+
+
+      <div class="login-footer">
+        <span>♥</span>
+        Your journey to a meaningful connection starts here.
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { SessionService } from './core/services/session.service';
 import { filter } from 'rxjs';
 
 @Component({
@@ -16,7 +15,7 @@ export class App {
 
 
 
-  constructor(private sessionService: SessionService, private router: Router){  }
+  constructor(private router: Router){  }
 
     // Hide footer on Messages
   isMessagesPage(): boolean { 
@@ -40,7 +39,5 @@ export class App {
     return this.router.url.startsWith('/subscription');
   }
 
-  ngOnInit(): void{
-    this.sessionService.startWatching();
-  }
+  
 }

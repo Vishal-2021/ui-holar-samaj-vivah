@@ -27,6 +27,7 @@ export class PagesService {
   // Create / Update Profile
   userprofiles(data: any): Observable<any> {
     return this.http.post(this.apiUrl + 'user/profile', data);
+    
   }
 
   // SEARCH PROFILES 
@@ -48,6 +49,16 @@ export class PagesService {
   getProfileById(id: number): Observable<any> {
     return this.http.get(this.apiUrl + 'user/profile?id=' + id);
   }
+
+  //  Get Profile By ID
+getloadImage(imagePath: string): Observable<Blob> {
+
+  const url = 'https://holarsamaj.in/api' + imagePath;
+
+  return this.http.get(url, {
+    responseType: 'blob'
+  });
+}
 
   
 }

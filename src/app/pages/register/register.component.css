@@ -1,130 +1,1069 @@
-/* ===============================
-   SUCCESS / ERROR MESSAGE
-================================ */
-.alert{
-  text-align: center;
-  font-size: 14px;
-  font-weight: 400;  
-  margin-bottom: 10px
-}
+/* =========================================================
+   HOLAR SAMAJ VIVAH
+   REGISTRATION PAGE
+========================================================= */
 
-.successMessage{ 
-  color: #047857;  
-}
 
-.errorMessage{  
-  color: #b91c1c;
-}
+/* =========================================================
+   PAGE
+========================================================= */
 
-/* ===============================
-   CONTAINER
-================================ */
-.container{
-  min-height: calc(100vh - 70px);
+.register-page {
+
+  min-height: calc(100vh - 76px);
+
   display: flex;
-  flex-direction: column;
-  justify-content: center;     /* keeps card vertically centered */
+
   align-items: center;
-  padding-top: 20px;           /* space for message */
-  margin-bottom: 15px;
+
+  justify-content: center;
+
+  padding: 45px 25px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(238, 65, 52, 0.07),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(250, 180, 165, 0.10),
+      transparent 35%
+    ),
+    #fffaf8;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  box-sizing: border-box;
 }
 
-/* ===============================
-   CARD
-================================ */
-.card{
-  background: #fff;
-  width: 380px;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+
+/* =========================================================
+   DECORATIVE BACKGROUND
+========================================================= */
+
+.decor {
+
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
 }
 
-h2{
-  text-align: center;
-  font-size: 16px;
-  margin-bottom: 18px;
-  color: #444;
+
+.decor-one {
+
+  width: 300px;
+
+  height: 300px;
+
+  left: -170px;
+
+  bottom: -110px;
+
+  border: 1px solid rgba(229, 47, 47, 0.08);
+
 }
 
-/* ===============================
-   FORM ELEMENTS
-================================ */
-label{
-  font-size: 13px;
-  color: #333;
+
+.decor-two {
+
+  width: 250px;
+
+  height: 250px;
+
+  right: -120px;
+
+  top: -100px;
+
+  border: 1px solid rgba(229, 47, 47, 0.08);
+
 }
 
-input{
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
+
+.register-card {
+
+  position: relative;
+
+  z-index: 2;
+
   width: 100%;
-  padding: 10px;
-  margin-top: 6px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+
+  max-width: 950px;
+
+  display: grid;
+
+  grid-template-columns: 42% 58%;
+
+  background: #ffffff;
+
+  border-radius: 24px;
+
+  overflow: hidden;
+
+  border: 1px solid #f1ddd8;
+
+  box-shadow:
+    0 20px 55px rgba(68, 35, 27, 0.10);
+}
+
+
+/* =========================================================
+   LEFT BRAND PANEL
+========================================================= */
+
+.register-brand {
+
+  position: relative;
+
+  padding: 55px 42px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fff2ee 0%,
+      #fff8f5 55%,
+      #fff0ec 100%
+    );
+
+  border-right: 1px solid #f0dfda;
+}
+
+
+/* Decorative circle */
+
+.register-brand::before {
+
+  content: "";
+
+  position: absolute;
+
+  width: 250px;
+
+  height: 250px;
+
+  border-radius: 50%;
+
+  background: rgba(239, 53, 46, 0.05);
+
+  right: -120px;
+
+  top: -110px;
+
+}
+
+
+/* Second decorative circle */
+
+.register-brand::after {
+
+  content: "♥";
+
+  position: absolute;
+
+  right: 35px;
+
+  bottom: 25px;
+
+  font-size: 80px;
+
+  color: rgba(229, 47, 47, 0.06);
+
+}
+
+
+/* =========================================================
+   HEART
+========================================================= */
+
+.brand-heart {
+
+  width: 55px;
+
+  height: 55px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  color: #e6332c;
+
+  font-size: 25px;
+
+  box-shadow:
+    0 8px 22px rgba(229, 47, 47, 0.12);
+
+  margin-bottom: 23px;
+
+  position: relative;
+
+  z-index: 1;
+}
+
+
+/* =========================================================
+   BRAND LABEL
+========================================================= */
+
+.brand-label {
+
+  display: inline-block;
+
+  color: #df312b;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 3px;
+
+  margin-bottom: 12px;
+
+  position: relative;
+
+  z-index: 1;
+}
+
+
+/* =========================================================
+   BRAND HEADING
+========================================================= */
+
+.register-brand h1 {
+
+  margin: 0;
+
+  color: #35231f;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 42px;
+
+  line-height: 1.12;
+
+  font-weight: 600;
+
+  position: relative;
+
+  z-index: 1;
+}
+
+
+.register-brand h1 em {
+
+  display: block;
+
+  color: #df3029;
+
+  font-style: italic;
+
+  margin-top: 5px;
+}
+
+
+/* =========================================================
+   BRAND DESCRIPTION
+========================================================= */
+
+.register-brand > p {
+
+  margin: 22px 0 25px;
+
+  max-width: 350px;
+
+  color: #7d6b65;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+
+  position: relative;
+
+  z-index: 1;
+}
+
+
+/* =========================================================
+   BRAND DIVIDER
+========================================================= */
+
+.brand-divider {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  width: 170px;
+
+  margin-bottom: 30px;
+
+  position: relative;
+
+  z-index: 1;
+}
+
+
+.brand-divider span {
+
+  flex: 1;
+
+  height: 1px;
+
+  background: #eec9c2;
+}
+
+
+.brand-divider b {
+
+  color: #df3029;
+
+  font-size: 16px;
+
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   BRAND FEATURES
+========================================================= */
+
+.brand-features {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 17px;
+
+  position: relative;
+
+  z-index: 1;
+}
+
+
+.brand-feature {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+.feature-icon {
+
+  width: 38px;
+
+  height: 38px;
+
+  min-width: 38px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  color: #df3029;
+
+  border: 1px solid #f0d2cb;
+
   font-size: 14px;
 }
 
-input:focus{
-  outline: none;
-  border-color: #ff4d4d;
-}
 
-/* ===============================
-   BUTTON
-================================ */
-button{
-  width: 100%;
-  background: #ff4d4d;
-  color: #fff;
-  border: none;
-  padding: 12px;
-  font-size: 15px;
-  border-radius: 6px;
-  cursor: pointer;
-}
+.brand-feature strong {
 
-button:hover{
-  background: #e63c3c;
-}
-
-/* ===============================
-   BACK TO LOGIN
-================================ */
-.back-to-login{
-  margin-top: 16px;
-  font-size: 16px;
-  text-align: center;
-}
-
-.back-to-login a{
-  color: #444;
-  text-decoration: none;
-}
-
-/* ===============================
-   MOBILE
-================================ */
-@media (max-width: 480px) {
-  .card{
-    width: 100%;
-    max-width: 350px;
-  }
-}
-
-/* form validation  */
-.error {
-  color: #e53935;
-  font-size: 12px;
-  margin-bottom: 5px;
   display: block;
+
+  color: #44302a;
+
+  font-size: 13px;
+
+  margin-bottom: 3px;
 }
 
-input.ng-invalid.ng-touched {
-  border: 1px solid #e53935;
+
+.brand-feature small {
+
+  display: block;
+
+  color: #927c75;
+
+  font-size: 11px;
 }
 
-button[disabled] {
-  background: #ccc;
+
+/* =========================================================
+   RIGHT FORM AREA
+========================================================= */
+
+.register-form-area {
+
+  padding: 45px 55px;
+
+  background: #ffffff;
+}
+
+
+/* =========================================================
+   FORM HEADER
+========================================================= */
+
+.form-header {
+
+  text-align: center;
+
+  margin-bottom: 24px;
+}
+
+
+.user-icon {
+  width: 58px;
+  height: 58px;
+
+  margin: 0 auto 13px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #fff0ed;
+
+  color: #e5332d;
+
+  font-size: 27px;
+
+  box-shadow:
+    0 6px 16px rgba(229, 51, 45, 0.08);
+}
+
+.user-icon span {
+  display: block;
+  line-height: 1;
+}
+
+
+.form-label {
+
+  display: block;
+
+  color: #df3029;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 6px;
+}
+
+
+.form-header h2 {
+
+  margin: 0;
+
+  color: #342420;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 31px;
+
+  font-weight: 600;
+}
+
+
+.form-header p {
+
+  margin: 7px 0 0;
+
+  color: #8b7871;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   FORM DECORATION
+========================================================= */
+
+.form-decoration {
+
+  width: 110px;
+
+  margin: 17px auto 0;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+
+.form-decoration span {
+
+  flex: 1;
+
+  height: 1px;
+
+  background: #eedbd6;
+}
+
+
+.form-decoration b {
+
+  color: #df3029;
+
+  font-size: 15px;
+
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   SUCCESS / ERROR
+========================================================= */
+
+.alert {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 10px 12px;
+
+  border-radius: 8px;
+
+  margin-bottom: 18px;
+
+  font-size: 12px;
+
+  font-weight: 500;
+
+  text-align: left;
+}
+
+
+.alert-icon {
+
+  width: 20px;
+
+  height: 20px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  flex-shrink: 0;
+}
+
+
+.successMessage {
+
+  color: #147a4a;
+
+  background: #eefaf4;
+
+  border: 1px solid #ccebd9;
+}
+
+
+.successMessage .alert-icon {
+
+  background: #2da365;
+
+  color: #fff;
+}
+
+
+.errorMessage {
+
+  color: #b42318;
+
+  background: #fff1f0;
+
+  border: 1px solid #f5c7c3;
+}
+
+
+.errorMessage .alert-icon {
+
+  background: #d9342b;
+
+  color: #fff;
+}
+
+
+/* =========================================================
+   FORM GROUP
+========================================================= */
+
+.form-group {
+
+  margin-bottom: 17px;
+}
+
+
+.form-group label {
+
+  display: block;
+
+  color: #443530;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  margin-bottom: 7px;
+}
+
+
+.form-group label span {
+
+  color: #df3029;
+}
+
+
+/* =========================================================
+   INPUT WRAPPER
+========================================================= */
+
+.input-wrapper {
+
+  position: relative;
+
+  width: 100%;
+}
+
+
+.input-icon {
+
+  position: absolute;
+
+  left: 13px;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: #df3029;
+
+  font-size: 16px;
+
+  pointer-events: none;
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.input-wrapper input {
+
+  width: 100%;
+
+  height: 46px;
+
+  padding:
+    0 13px 0 42px;
+
+  border: 1px solid #ddd2ce;
+
+  border-radius: 9px;
+
+  background: #ffffff;
+
+  color: #443531;
+
+  font-size: 13px;
+
+  outline: none;
+
+  font-family: Arial, sans-serif;
+
+  box-sizing: border-box;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.input-wrapper input::placeholder {
+
+  color: #aaa09b;
+}
+
+
+.input-wrapper input:focus {
+
+  border-color: #e04a40;
+
+  background: #fffdfc;
+
+  box-shadow:
+    0 0 0 3px rgba(224, 74, 64, 0.08);
+}
+
+
+.input-wrapper input.ng-invalid.ng-touched {
+
+  border-color: #e53935;
+
+  box-shadow:
+    0 0 0 3px rgba(229, 57, 53, 0.06);
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.error {
+
+  display: block;
+
+  margin-top: 5px;
+
+  color: #e53935;
+
+  font-size: 11px;
+
+  line-height: 1.4;
+}
+
+
+.password-hint {
+
+  display: block;
+
+  margin-top: 5px;
+
+  color: #9a8983;
+
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   REGISTER BUTTON
+========================================================= */
+
+.register-btn {
+
+  width: 100%;
+
+  height: 48px;
+
+  margin-top: 5px;
+
+  padding: 0 18px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 20px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ef3932,
+      #d82c25
+    );
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 20px rgba(216, 44, 37, 0.18);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.register-btn strong {
+
+  font-size: 18px;
+
+  transition:
+    transform 0.2s ease;
+}
+
+
+.register-btn:hover:not(:disabled) {
+
+  background:
+    linear-gradient(
+      135deg,
+      #dc3028,
+      #c92520
+    );
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 11px 25px rgba(216, 44, 37, 0.25);
+}
+
+
+.register-btn:hover:not(:disabled) strong {
+
+  transform: translateX(4px);
+}
+
+
+.register-btn:disabled {
+
+  background: #d7d2d0;
+
+  color: #ffffff;
+
   cursor: not-allowed;
+
+  box-shadow: none;
+
+  transform: none;
+}
+
+
+/* =========================================================
+   LOGIN SECTION
+========================================================= */
+
+.login-section {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 5px;
+
+  margin-top: 20px;
+
+  color: #88756f;
+
+  font-size: 12px;
+}
+
+
+.login-section a {
+
+  color: #df3029;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+
+.login-section a:hover {
+
+  color: #b92520;
+
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 850px) {
+
+  .register-page {
+
+    min-height: calc(100vh - 70px);
+
+    padding: 25px 15px;
+  }
+
+
+  .register-card {
+
+    max-width: 560px;
+
+    grid-template-columns: 1fr;
+  }
+
+
+  .register-brand {
+
+    display: none;
+  }
+
+
+  .register-form-area {
+
+    padding: 40px 45px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 500px) {
+
+  .register-page {
+
+    padding: 15px 10px;
+  }
+
+
+  .register-card {
+
+    border-radius: 17px;
+  }
+
+
+  .register-form-area {
+
+    padding: 30px 20px;
+  }
+
+
+  .form-header h2 {
+
+    font-size: 27px;
+  }
+
+
+  .form-header p {
+
+    font-size: 12px;
+  }
+
+
+  .user-icon {
+
+    width: 52px;
+
+    height: 52px;
+
+    font-size: 22px;
+  }
+
+
+  .input-wrapper input {
+
+    height: 45px;
+
+    font-size: 13px;
+  }
+
+
+  .register-btn {
+
+    height: 46px;
+  }
+
+
+  .login-section {
+
+    font-size: 12px;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 350px) {
+
+  .register-form-area {
+
+    padding: 25px 15px;
+  }
+
+
+  .form-header h2 {
+
+    font-size: 24px;
+  }
+
+
+  .form-label {
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+  }
+
 }

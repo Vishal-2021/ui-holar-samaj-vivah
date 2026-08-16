@@ -44,16 +44,10 @@ export class LoginComponent {
         if (response.status === 'SUCCESS'){
           console.log('Login Success:', response);
           localStorage.setItem('user_id', response.user.user_id);
-          localStorage.setItem('email', response.user.email)
+          localStorage.setItem('email', response.user.email);
+          localStorage.setItem('token', response.token);
 
-          // Session expires after 60 minutes
-          const expiryTime = Date.now() + (1 * 60 * 60 * 1000);
-
-          localStorage.setItem(
-            'expiryTime',
-            expiryTime.toString()
-          );
-                    
+                            
           this.router.navigate(['/profile']);
           // Example: save token
           // localStorage.setItem('token', response.token);

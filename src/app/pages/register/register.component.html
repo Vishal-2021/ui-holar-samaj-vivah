@@ -1,91 +1,416 @@
-<div class="container">
-  <div class="card">
-   <!-- Success / Error Message -->
-    <div class="alert" [ngClass]="isSuccess ? 'successMessage' : 'errorMessage'" *ngIf="message">
-    {{ message }}
-   </div>
-   <h2>Registration</h2>
+<div class="register-page">
 
-  <form #registerForm="ngForm" (ngSubmit)="register(registerForm)" novalidate >
-    <!-- Full Name -->
-    <label>Full Name *</label>
-    <input
-      type="text"
-      name="name"
-      [(ngModel)]="name"
-      #nameCtrl="ngModel"
-      placeholder="Enter full name"
-      required
-      minlength="3"
-    />
-    <small class="error" *ngIf="nameCtrl.invalid && nameCtrl.touched">
-      <span *ngIf="nameCtrl.errors?.['required']">Name is required</span>
-      <span *ngIf="nameCtrl.errors?.['minlength']">
-        Name must be at least 3 characters
+  <!-- =====================================================
+       BACKGROUND DECORATION
+  ====================================================== -->
+
+  <div class="decor decor-one"></div>
+  <div class="decor decor-two"></div>
+
+
+  <!-- =====================================================
+       REGISTRATION CARD
+  ====================================================== -->
+
+  <div class="register-card">
+
+
+    <!-- =================================================
+         LEFT BRAND PANEL
+    ================================================== -->
+
+    <div class="register-brand">
+
+      <div class="brand-heart">
+        ♥
+      </div>
+
+      <span class="brand-label">
+        HOLAR SAMAJ VIVAH
       </span>
-    </small>
 
-    <!-- Email -->
-    <label>Your Email *</label>
-    <input
-      type="email"
-      name="email"
-      [(ngModel)]="email"
-      #emailCtrl="ngModel"
-      placeholder="Enter email"
-      required
-      email
-    />
-    <small class="error" *ngIf="emailCtrl.invalid && emailCtrl.touched">
-      <span *ngIf="emailCtrl.errors?.['required']">Email is required</span>
-      <span *ngIf="emailCtrl.errors?.['email']">Enter a valid email</span>
-    </small>
+      <h1>
+        Begin Your
+        <em>Beautiful Journey</em>
+      </h1>
 
-    <!-- Mobile -->
-    <label>Mobile No *</label>
-    <input
-      type="tel"
-      name="mobile"
-      [(ngModel)]="mobile"
-      #mobileCtrl="ngModel"
-      placeholder="Enter mobile number"
-      required
-      pattern="^[6-9][0-9]{9}$"
-    />
-    <small class="error" *ngIf="mobileCtrl.invalid && mobileCtrl.touched">
-      <span *ngIf="mobileCtrl.errors?.['required']">Mobile number is required</span>
-      <span *ngIf="mobileCtrl.errors?.['pattern']">
-        Enter valid 10-digit mobile number
-      </span>
-    </small>
+      <p>
+        Create your profile and take the first step
+        towards finding a meaningful life partner
+        within the Holar Samaj community.
+      </p>
 
-    <!-- Password -->
-    <label>Create New Password *</label>
-    <input
-      type="password"
-      name="password"
-      [(ngModel)]="password"
-      #passwordCtrl="ngModel"
-      placeholder="Create password"
-      required
-      minlength="6"
-    />
-    <small class="error" *ngIf="passwordCtrl.invalid && passwordCtrl.touched">
-      <span *ngIf="passwordCtrl.errors?.['required']">Password is required</span>
-      <span *ngIf="passwordCtrl.errors?.['minlength']">
-        Password must be at least 6 characters
-      </span>
-    </small>
 
-    <!-- Submit -->
-    <button type="submit" [disabled]="registerForm.invalid">
-      Register me
-    </button>
+      <!-- Decorative line -->
 
-    <div class="back-to-login">
-      <a routerLink="/login">← Login</a>
+      <div class="brand-divider">
+
+        <span></span>
+
+        <b>♡</b>
+
+        <span></span>
+
+      </div>
+
+
+      <!-- Trust items -->
+
+      <div class="brand-features">
+
+        <div class="brand-feature">
+
+          <div class="feature-icon">
+            ✓
+          </div>
+
+          <div>
+            <strong>Genuine Profiles</strong>
+            <small>Connect with real members</small>
+          </div>
+
+        </div>
+
+
+        <div class="brand-feature">
+
+          <div class="feature-icon">
+            ♥
+          </div>
+
+          <div>
+            <strong>Community Focused</strong>
+            <small>Made for Holar Samaj</small>
+          </div>
+
+        </div>
+
+
+        <div class="brand-feature">
+
+          <div class="feature-icon">
+            🔒
+          </div>
+
+          <div>
+            <strong>Safe & Secure</strong>
+            <small>Your information is protected</small>
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
-  </form>
+
+
+
+    <!-- =================================================
+         FORM AREA
+    ================================================== -->
+
+    <div class="register-form-area">
+
+
+      <!-- Header -->
+
+      <div class="form-header">
+
+        <div class="user-icon">
+          <i class="fa-solid fa-user"></i>
+        </div>
+
+        <span class="form-label">
+          JOIN OUR COMMUNITY
+        </span>
+
+        <h2>
+          Create Your Account
+        </h2>
+
+        <p>
+          Start your journey with Holar Samaj Vivah
+        </p>
+
+
+        <div class="form-decoration">
+
+          <span></span>
+
+          <b>♥</b>
+
+          <span></span>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- =================================================
+           SUCCESS / ERROR MESSAGE
+      ================================================== -->
+
+      <div
+        class="alert"
+        [ngClass]="isSuccess ? 'successMessage' : 'errorMessage'"
+        *ngIf="message">
+
+        <span class="alert-icon">
+          {{ isSuccess ? '✓' : '!' }}
+        </span>
+
+        {{ message }}
+
+      </div>
+
+
+
+      <!-- =================================================
+           FORM
+      ================================================== -->
+
+      <form
+        #registerForm="ngForm"
+        (ngSubmit)="register(registerForm)"
+        novalidate
+      >
+
+
+        <!-- ================= FULL NAME ================= -->
+
+        <div class="form-group">
+
+          <label for="name">
+            Full Name
+            <span>*</span>
+          </label>
+
+          <div class="input-wrapper">
+
+            <span class="input-icon">
+              <i class="fa-solid fa-user"></i>
+            </span>
+
+            <input
+              id="name"
+              type="text"
+              name="name"
+              [(ngModel)]="name"
+              #nameCtrl="ngModel"
+              placeholder="Enter your full name"
+              required
+              minlength="3"
+            />
+
+          </div>
+
+
+          <small
+            class="error"
+            *ngIf="nameCtrl.invalid && nameCtrl.touched">
+
+            <span *ngIf="nameCtrl.errors?.['required']">
+              Name is required
+            </span>
+
+            <span *ngIf="nameCtrl.errors?.['minlength']">
+              Name must be at least 3 characters
+            </span>
+
+          </small>
+
+        </div>
+
+
+
+        <!-- ================= EMAIL ================= -->
+
+        <div class="form-group">
+
+          <label for="email">
+            Email Address
+            <span>*</span>
+          </label>
+
+          <div class="input-wrapper">
+
+            <span class="input-icon">
+              ✉
+            </span>
+
+            <input
+              id="email"
+              type="email"
+              name="email"
+              [(ngModel)]="email"
+              #emailCtrl="ngModel"
+              placeholder="Enter your email"
+              required
+              email
+            />
+
+          </div>
+
+
+          <small
+            class="error"
+            *ngIf="emailCtrl.invalid && emailCtrl.touched">
+
+            <span *ngIf="emailCtrl.errors?.['required']">
+              Email is required
+            </span>
+
+            <span *ngIf="emailCtrl.errors?.['email']">
+              Enter a valid email
+            </span>
+
+          </small>
+
+        </div>
+
+
+
+        <!-- ================= MOBILE ================= -->
+
+        <div class="form-group">
+
+          <label for="mobile">
+            Mobile Number
+            <span>*</span>
+          </label>
+
+          <div class="input-wrapper">
+
+            <span class="input-icon">
+              ☎
+            </span>
+
+            <input
+              id="mobile"
+              type="tel"
+              name="mobile"
+              [(ngModel)]="mobile"
+              #mobileCtrl="ngModel"
+              placeholder="Enter 10-digit mobile number"
+              required
+              pattern="^[6-9][0-9]{9}$"
+            />
+
+          </div>
+
+
+          <small
+            class="error"
+            *ngIf="mobileCtrl.invalid && mobileCtrl.touched">
+
+            <span *ngIf="mobileCtrl.errors?.['required']">
+              Mobile number is required
+            </span>
+
+            <span *ngIf="mobileCtrl.errors?.['pattern']">
+              Enter valid 10-digit mobile number
+            </span>
+
+          </small>
+
+        </div>
+
+
+
+        <!-- ================= PASSWORD ================= -->
+
+        <div class="form-group">
+
+          <label for="password">
+            Create Password
+            <span>*</span>
+          </label>
+
+          <div class="input-wrapper">
+
+            <span class="input-icon">
+              🔒
+            </span>
+
+            <input
+              id="password"
+              type="password"
+              name="password"
+              [(ngModel)]="password"
+              #passwordCtrl="ngModel"
+              placeholder="Create a password"
+              required
+              minlength="6"
+            />
+
+          </div>
+
+
+          <small
+            class="password-hint">
+
+            Minimum 6 characters
+
+          </small>
+
+
+          <small
+            class="error"
+            *ngIf="passwordCtrl.invalid && passwordCtrl.touched">
+
+            <span *ngIf="passwordCtrl.errors?.['required']">
+              Password is required
+            </span>
+
+            <span *ngIf="passwordCtrl.errors?.['minlength']">
+              Password must be at least 6 characters
+            </span>
+
+          </small>
+
+        </div>
+
+
+
+        <!-- ================= SUBMIT ================= -->
+
+        <button
+          type="submit"
+          class="register-btn"
+          [disabled]="registerForm.invalid">
+
+          <span>
+            Create My Account
+          </span>
+
+          <strong>
+            →
+          </strong>
+
+        </button>
+
+
+
+        <!-- ================= LOGIN ================= -->
+
+        <div class="login-section">
+
+          <span>
+            Already have an account?
+          </span>
+
+          <a routerLink="/login">
+            Login
+          </a>
+
+        </div>
+
+
+      </form>
+
+    </div>
 
   </div>
+
 </div>
