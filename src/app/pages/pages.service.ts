@@ -51,14 +51,34 @@ export class PagesService {
   }
 
   //  Get Profile By ID
-getloadImage(imagePath: string): Observable<Blob> {
+  getloadImage(imagePath: string): Observable<Blob> {
 
-  const url = 'https://holarsamaj.in/api' + imagePath;
+    const url = 'https://holarsamaj.in/api' + imagePath;
 
-  return this.http.get(url, {
-    responseType: 'blob'
-  });
-}
+    return this.http.get(url, {
+      responseType: 'blob'
+    });
+  }
 
+
+  // Interest Management
   
+  getReceivedInterests(userId: number): Observable<any> {
+    return this.http.get(
+      this.apiUrl + 'interests/received?id=' + userId
+    );
+  }
+
+  sendInterest(senderId: number, receiverId: number) {
+
+    return this.http.post<any>(
+      `${this.apiUrl}interests`,
+      {
+        sender_id: senderId,
+        receiver_id: receiverId
+      }
+    );
+
+  }
+
 }

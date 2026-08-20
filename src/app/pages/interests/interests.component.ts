@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { PagesService } from '../pages.service';
 
 interface Interest {
   interest_id: number;
@@ -11,227 +11,126 @@ interface Interest {
   location: string;
   education: string;
   photo: string;
-  status: 'pending' | 'accepted' | 'rejected';
-  online?: boolean;
+  status: string;
 }
 
 @Component({
   standalone: true,
   selector: 'app-interests',
-  imports: [
-    CommonModule,
-    FormsModule,
-    RouterModule
-  ],
+  imports: [CommonModule, FormsModule],
   templateUrl: './interests.component.html',
   styleUrls: ['./interests.component.css']
 })
-export class InterestsComponent {
+export class InterestsComponent implements OnInit {
 
-  activeTab: 'received' | 'sent' = 'received';
+  currentUserId: number = 10;
+  receiverId: number = 3;
 
-  /* ==========================================
-     RECEIVED INTERESTS
-  ========================================== */
+  receivedInterests: Interest[] = [];
+  loading: boolean = false;
 
-  receivedInterests: Interest[] = [
+  constructor(private pagesService: PagesService) {}
 
-    {
-      interest_id: 1,
-      user_id: 101,
-      name: 'Priya Sharma',
-      age: 25,
-      location: 'Mumbai, Maharashtra',
-      education: 'MBA',
-      photo: 'assets/images/priya.jpg',
-      status: 'pending',
-      online: true
-    },
+  ngOnInit(): void {
+    this.getReceivedInterests();
+  }
 
-    {
-      interest_id: 2,
-      user_id: 102,
-      name: 'Rahul Patil',
-      age: 28,
-      location: 'Pune, Maharashtra',
-      education: 'MCA',
-      photo: 'assets/images/rahul.jpg',
-      status: 'pending',
-      online: false
-    },
+  // GET Received Interests
+  getReceivedInterests(): void {
+    this.loading = true;
 
-    {
-      interest_id: 3,
-      user_id: 103,
-      name: 'Neha Singh',
-      age: 26,
-      location: 'Nashik, Maharashtra',
-      education: 'M.Com',
-      photo: 'assets/images/neha.jpg',
-      status: 'accepted',
-      online: true
+    this.pagesService.getReceivedInterests(this.currentUserId).subscribe({
+      next: (response) => {
+        console.log('GET Interest Response:', response);
+
+        if (response?.status === 'SUCCESS') {
+          this.receivedInterests = (response.data || []).map(
+            (item: any) => this.mapInterest(item)
+          );
+        } else {
+          this.receivedInterests = [];
+        }
+
+        this.loading = false;
+      },
+      error: (error) => {
+        console.error('GET Interest Error:', error);
+        this.receivedInterests = [];
+        this.loading = false;
+      }
+    });
+  }
+
+  // Map API Response
+  private mapInterest(item: any): Interest {
+    return {
+      interest_id: Number(item.id),
+      user_id: Number(item.sender_id),
+      name: item.full_name || 'Unknown',
+      age: this.calculateAge(item.date_of_birth),
+      location: item.current_address || item.native_place || 'Not specified',
+      education: item.education || 'Not specified',
+      photo: this.getPhotoUrl(item.photo_url),
+      status: item.status || 'pending'
+    };
+  }
+
+  // Calculate Age
+  private calculateAge(dateOfBirth: string): number {
+    if (!dateOfBirth) {
+      return 0;
     }
 
-  ];
+    const dob = new Date(dateOfBirth);
+    const today = new Date();
 
+    let age = today.getFullYear() - dob.getFullYear();
+    const month = today.getMonth() - dob.getMonth();
 
-  /* ==========================================
-     SENT INTERESTS
-  ========================================== */
-
-  sentInterests: Interest[] = [
-
-    {
-      interest_id: 4,
-      user_id: 104,
-      name: 'Pooja More',
-      age: 24,
-      location: 'Nashik, Maharashtra',
-      education: 'MBA',
-      photo: 'assets/images/pooja.jpg',
-      status: 'pending',
-      online: false
-    },
-
-    {
-      interest_id: 5,
-      user_id: 105,
-      name: 'Ananya Patel',
-      age: 27,
-      location: 'Pune, Maharashtra',
-      education: 'B.Tech',
-      photo: 'assets/images/ananya.jpg',
-      status: 'accepted',
-      online: true
+    if (month < 0 || (month === 0 && today.getDate() < dob.getDate())) {
+      age--;
     }
 
-  ];
-
-
-  constructor(
-    private router: Router
-  ) {}
-
-
-  /* ==========================================
-     ACCEPTED COUNT
-  ========================================== */
-
-  get acceptedCount(): number {
-
-    return this.receivedInterests
-      .filter(interest => interest.status === 'accepted')
-      .length;
-
+    return age;
   }
 
-
-  /* ==========================================
-     SWITCH TAB
-  ========================================== */
-
-  showReceived(): void {
-
-    this.activeTab = 'received';
-
-  }
-
-
-  showSent(): void {
-
-    this.activeTab = 'sent';
-
-  }
-
-
-  /* ==========================================
-     ACCEPT INTEREST
-  ========================================== */
-
-  acceptInterest(interest: Interest): void {
-
-    interest.status = 'accepted';
-
-    console.log(
-      'Accepted:',
-      interest
-    );
-
-  }
-
-
-  /* ==========================================
-     REJECT INTEREST
-  ========================================== */
-
-  rejectInterest(interest: Interest): void {
-
-    const confirmReject = confirm(
-      `Reject interest from ${interest.name}?`
-    );
-
-    if (!confirmReject) {
-      return;
+  // Photo URL
+  private getPhotoUrl(photoUrl: string): string {
+    if (!photoUrl) {
+      return 'assets/images/default-profile.png';
     }
 
-    this.receivedInterests =
-      this.receivedInterests.filter(
-        item =>
-          item.interest_id !== interest.interest_id
-      );
-
-    console.log(
-      'Rejected:',
-      interest
-    );
-
-  }
-
-
-  /* ==========================================
-     WITHDRAW INTEREST
-  ========================================== */
-
-  withdrawInterest(interest: Interest): void {
-
-    const confirmWithdraw = confirm(
-      `Withdraw your interest from ${interest.name}?`
-    );
-
-    if (!confirmWithdraw) {
-      return;
+    if (photoUrl.startsWith('http')) {
+      return photoUrl;
     }
 
-    this.sentInterests =
-      this.sentInterests.filter(
-        item =>
-          item.interest_id !== interest.interest_id
-      );
-
-    console.log(
-      'Withdrawn:',
-      interest
-    );
-
+    return `https://holarsamaj.in/api${photoUrl}`;
   }
 
+  // POST Send Interest
+  sendInterest(): void {
+    console.log('Sending Interest:', {
+      sender_id: this.currentUserId,
+      receiver_id: this.receiverId
+    });
 
-  /* ==========================================
-     OPEN MESSAGE
-  ========================================== */
+    this.pagesService.sendInterest(
+      this.currentUserId,
+      this.receiverId
+    ).subscribe({
+      next: (response) => {
+        console.log('SEND Interest Response:', response);
 
-  openMessage(interest: Interest): void {
-
-    console.log(
-      'Open chat with:',
-      interest.name
-    );
-
-    this.router.navigate([
-      '/messages',
-      interest.user_id
-    ]);
-
+        if (response?.status === 'SUCCESS') {
+          alert(response.message || 'Interest sent successfully!');
+        } else {
+          alert(response?.message || 'Unable to send interest.');
+        }
+      },
+      error: (error) => {
+        console.error('SEND Interest Error:', error);
+        alert('Send interest API failed.');
+      }
+    });
   }
-
 }
