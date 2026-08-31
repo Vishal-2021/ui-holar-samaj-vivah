@@ -28,19 +28,19 @@ export class SubscriptionComponent {
 
   plans: Plan[] = [
 
-    {
-        name: 'Free Plan',
-        price: 0,
-        duration: 'Forever',
-        description: 'Basic access to our platform',
-        features: [
-            'View limited profiles',
-            'Send limited interest requests',
-            'Receive limited interest requests',
-            'Basic profile access'
-        ],
-        buttonClass: 'Current Plan'
-    },
+    // {
+    //     name: 'Free Plan',
+    //     price: 0,
+    //     duration: 'Forever',
+    //     description: 'Basic access to our platform',
+    //     features: [
+    //         'View limited profiles',
+    //         'Send limited interest requests',
+    //         'Receive limited interest requests',
+    //         'Basic profile access'
+    //     ],
+    //     buttonClass: 'Current Plan'
+    // },
 
     {
       name: 'Basic Plan',
