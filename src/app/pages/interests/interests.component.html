@@ -9,95 +9,35 @@
       <div class="interest-tabs">
         <button class="tab-btn active">
           Received
-          <span class="tab-count">3</span>
+          <span class="tab-count">1</span>
         </button>
 
         <button class="tab-btn">
           Sent
           <span class="tab-count">2</span>
         </button>
+
+        <button class="tab-btn">
+          Accepted
+          <span class="tab-count">3</span>
+        </button>
+
+        <button class="tab-btn">
+          Rejected
+          <span class="tab-count">4</span>
+        </button>
       </div>
     </div>
 
-    <!-- STATISTICS -->
-    <div class="stats-container">
-
-      <div class="stat-card">
-        <div class="stat-icon received-icon">💗</div>
-        <div>
-          <small>Received</small>
-          <strong>3</strong>
-          <span>New interests</span>
-        </div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon sent-icon">✈️</div>
-        <div>
-          <small>Sent</small>
-          <strong>2</strong>
-          <span>Requests sent</span>
-        </div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon accepted-icon">✓</div>
-        <div>
-          <small>Accepted</small>
-          <strong>1</strong>
-          <span>Connections</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
+    </section>
 
 
   <!-- MAIN CONTAINER -->
   <section class="interest-container">
 
-    <!-- FILTER BAR -->
-    <div class="filter-bar">
-
-      <div class="search-box">
-        <span>⌕</span>
-        <input
-          type="text"
-          placeholder="Search by name, location..."
-        />
-      </div>
-
-      <select class="status-filter">
-        <option>All Status</option>
-        <option>Pending</option>
-        <option>Accepted</option>
-        <option>Rejected</option>
-      </select>
-
-      <div class="sort-box">
-        <label>Sort by:</label>
-        <select>
-          <option>Newest First</option>
-          <option>Oldest First</option>
-          <option>Name A-Z</option>
-        </select>
-      </div>
-
-    </div>
-
 
     <!-- RECEIVED INTERESTS -->
     <div class="interest-section">
-
-      <div class="section-title">
-        <div>
-          <h2>
-            Received Interests
-            <span class="section-count">3</span>
-          </h2>
-          <p>People who have shown interest in you</p>
-        </div>
-      </div>
 
 
       <!-- CARD 1 -->
@@ -114,14 +54,13 @@
                 class="profile-image"
               />
 
-              <span class="online-dot"></span>
+              <!-- <span class="online-dot"></span> -->
             </div>
 
             <div class="profile-info">
 
               <div class="name-row">
                 <h3>Priya Sharma</h3>
-                <span class="new-badge">New</span>
               </div>
 
               <p>
@@ -144,14 +83,6 @@
           </div>
 
 
-          <div class="interest-status">
-            <span class="status-badge pending">
-              <span class="status-dot"></span>
-              New Interest
-            </span>
-          </div>
-
-
           <div class="interest-actions">
 
             <button class="btn accept-btn">
@@ -162,154 +93,6 @@
               Reject
             </button>
 
-            <button class="more-btn">
-              ⋮
-            </button>
-
-            <small class="time-text">
-              ◷ Received recently
-            </small>
-
-          </div>
-
-        </div>
-
-
-        <!-- CARD 2 -->
-        <div class="interest-card">
-
-          <div class="profile-section">
-
-            <div class="profile-image-wrapper">
-              <img
-                src="assets/images/neha.jpg"
-                alt="Neha Singh"
-                class="profile-image"
-              />
-
-              <span class="online-dot"></span>
-            </div>
-
-            <div class="profile-info">
-
-              <div class="name-row">
-                <h3>Neha Singh</h3>
-              </div>
-
-              <p>
-                <strong>Age:</strong>
-                26 Years
-              </p>
-
-              <p>
-                <strong>⌖ Location:</strong>
-                Nashik, Maharashtra
-              </p>
-
-              <p>
-                <strong>▣ Education:</strong>
-                M.Com
-              </p>
-
-            </div>
-
-          </div>
-
-
-          <div class="interest-status">
-            <span class="status-badge accepted">
-              <span class="status-dot"></span>
-              Accepted
-            </span>
-          </div>
-
-
-          <div class="interest-actions">
-
-            <button class="btn message-btn">
-              Message 💬
-            </button>
-
-            <button class="more-btn">
-              ⋮
-            </button>
-
-            <small class="time-text">
-              ◷ Received 2 hours ago
-            </small>
-
-          </div>
-
-        </div>
-
-
-        <!-- CARD 3 -->
-        <div class="interest-card">
-
-          <div class="profile-section">
-
-            <div class="profile-image-wrapper">
-              <img
-                src="assets/images/ananya.jpg"
-                alt="Ananya Patel"
-                class="profile-image"
-              />
-
-            </div>
-
-            <div class="profile-info">
-
-              <div class="name-row">
-                <h3>Ananya Patel</h3>
-                <span class="new-badge">New</span>
-              </div>
-
-              <p>
-                <strong>Age:</strong>
-                27 Years
-              </p>
-
-              <p>
-                <strong>⌖ Location:</strong>
-                Pune, Maharashtra
-              </p>
-
-              <p>
-                <strong>▣ Education:</strong>
-                B.Tech
-              </p>
-
-            </div>
-
-          </div>
-
-
-          <div class="interest-status">
-            <span class="status-badge pending">
-              <span class="status-dot"></span>
-              New Interest
-            </span>
-          </div>
-
-
-          <div class="interest-actions">
-
-            <button class="btn accept-btn">
-              Accept
-            </button>
-
-            <button class="btn reject-btn">
-              Reject
-            </button>
-
-            <button class="more-btn">
-              ⋮
-            </button>
-
-            <small class="time-text">
-              ◷ Received yesterday
-            </small>
-
           </div>
 
         </div>
@@ -319,191 +102,7 @@
     </div>
 
 
-    <!-- SENT INTERESTS - DUMMY -->
-    <div class="interest-section">
 
-      <div class="section-title">
-
-        <div>
-          <h2>
-            Sent Interests
-            <span class="section-count">2</span>
-          </h2>
-
-          <p>
-            People you have shown interest in
-          </p>
-        </div>
-
-      </div>
-
-
-      <div class="interest-list">
-
-        <!-- SENT CARD 1 -->
-        <div class="interest-card">
-
-          <div class="profile-section">
-
-            <div class="profile-image-wrapper">
-              <img
-                src="assets/images/pooja.jpg"
-                alt="Pooja More"
-                class="profile-image"
-              />
-            </div>
-
-            <div class="profile-info">
-
-              <div class="name-row">
-                <h3>Pooja More</h3>
-              </div>
-
-              <p>
-                <strong>Age:</strong>
-                24 Years
-              </p>
-
-              <p>
-                <strong>⌖ Location:</strong>
-                Nashik, Maharashtra
-              </p>
-
-              <p>
-                <strong>▣ Education:</strong>
-                MBA
-              </p>
-
-            </div>
-
-          </div>
-
-
-          <div class="interest-status">
-            <span class="status-badge pending">
-              <span class="status-dot"></span>
-              Pending
-            </span>
-          </div>
-
-
-          <div class="interest-actions">
-
-            <button class="btn withdraw-btn">
-              Withdraw
-            </button>
-
-            <button class="more-btn">
-              ⋮
-            </button>
-
-            <small class="time-text">
-              ◷ Sent yesterday
-            </small>
-
-          </div>
-
-        </div>
-
-
-        <!-- SENT CARD 2 -->
-        <div class="interest-card">
-
-          <div class="profile-section">
-
-            <div class="profile-image-wrapper">
-              <img
-                src="assets/images/ananya.jpg"
-                alt="Ananya Patel"
-                class="profile-image"
-              />
-
-              <span class="online-dot"></span>
-            </div>
-
-            <div class="profile-info">
-
-              <div class="name-row">
-                <h3>Ananya Patel</h3>
-              </div>
-
-              <p>
-                <strong>Age:</strong>
-                27 Years
-              </p>
-
-              <p>
-                <strong>⌖ Location:</strong>
-                Pune, Maharashtra
-              </p>
-
-              <p>
-                <strong>▣ Education:</strong>
-                B.Tech
-              </p>
-
-            </div>
-
-          </div>
-
-
-          <div class="interest-status">
-            <span class="status-badge accepted">
-              <span class="status-dot"></span>
-              Accepted
-            </span>
-          </div>
-
-
-          <div class="interest-actions">
-
-            <button class="btn message-btn">
-              Message 💬
-            </button>
-
-            <button class="more-btn">
-              ⋮
-            </button>
-
-            <small class="time-text">
-              ◷ Sent 2 days ago
-            </small>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- BOTTOM CTA -->
-    <div class="match-banner">
-
-      <div class="heart-circle">
-        💗
-      </div>
-
-      <div class="match-text">
-
-        <h3>
-          Looking for more matches?
-        </h3>
-
-        <p>
-          Explore new profiles and connect with people
-          who match your preferences.
-        </p>
-
-      </div>
-
-      <button class="search-profile-btn">
-        Search Profiles
-        <span>⌕</span>
-      </button>
-
-    </div>
 
   </section>
 

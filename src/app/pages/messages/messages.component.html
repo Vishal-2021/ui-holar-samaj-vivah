@@ -26,27 +26,6 @@
       </div>
 
 
-      <div class="header-actions">
-
-        <button
-          class="icon-button"
-          title="Filter">
-
-          ☰
-
-        </button>
-
-
-        <button
-          class="icon-button compose"
-          title="New message">
-
-          ✎
-
-        </button>
-
-      </div>
-
     </div>
 
 
@@ -64,40 +43,6 @@
         [(ngModel)]="searchText"
         placeholder="Search messages..."
       >
-
-    </div>
-
-
-
-    <!-- Filters -->
-
-    <div class="filters">
-
-      <button
-        [class.active]="activeFilter === 'all'"
-        (click)="activeFilter = 'all'">
-
-        All
-
-      </button>
-
-
-      <button
-        [class.active]="activeFilter === 'unread'"
-        (click)="activeFilter = 'unread'">
-
-        Unread
-
-      </button>
-
-
-      <button
-        [class.active]="activeFilter === 'favorite'"
-        (click)="activeFilter = 'favorite'">
-
-        Favorites
-
-      </button>
 
     </div>
 
@@ -200,32 +145,7 @@
 
 
 
-    <!-- Bottom Card -->
 
-    <div class="match-card">
-
-      <div class="match-icon">
-        ❤️
-      </div>
-
-      <div>
-
-        <h3>
-          Find your perfect match
-        </h3>
-
-        <p>
-          Explore more profiles and
-          connect with like-minded people.
-        </p>
-
-        <button>
-          Search Profiles
-        </button>
-
-      </div>
-
-    </div>
 
   </aside>
 

@@ -72,7 +72,7 @@ body {
 ========================================================= */
 
 .interest-tabs {
-    width: 420px;
+    width: 840px;
     max-width: 100%;
 
     display: flex;
@@ -1698,20 +1698,21 @@ body {
     .tab-btn {
         height: 56px;
 
-        font-size: 14px;
-
-        gap: 5px;
+        font-size: 10px;
+       
     }
 
 
     .tab-count {
-        width: 25px;
+        width: 20px;
 
-        min-width: 25px;
+        min-width: 20px;
 
-        height: 25px;
+        height: 20px;
 
-        font-size: 11px;
+        font-size: 9px;
+
+        font-weight: 600;
     }
 
 
