@@ -442,7 +442,7 @@ body {
 .interest-section {
     width: 100%;
 
-    background: #ffffff;
+
 
     border-left: 1px solid #edf0f4;
     border-right: 1px solid #edf0f4;
@@ -1186,7 +1186,8 @@ body {
 
         border-radius: 15px;
 
-        margin-bottom: 25px;
+        margin-bottom: 3px;
+        
     }
 
 
