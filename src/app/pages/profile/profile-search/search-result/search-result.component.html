@@ -33,98 +33,6 @@
   <div class="results-layout">
 
 
-    <!-- ===================================================
-         SEARCH CRITERIA SIDEBAR
-    ==================================================== -->
-
-    <aside class="criteria-card">
-
-      <div class="criteria-header">
-
-        <div>
-
-          <span class="criteria-small-title">
-            YOUR SEARCH
-          </span>
-
-          <h2>
-            Search Criteria
-          </h2>
-
-        </div>
-
-        <a
-          routerLink="/profile-search"
-          class="edit-search"
-          title="Edit Search">
-
-          ✎
-
-        </a>
-
-      </div>
-
-
-      <div class="criteria-divider"></div>
-
-
-      <div class="criteria-item">
-
-        <span class="criteria-icon">
-          👤
-        </span>
-
-        <div>
-
-          <small>
-            Looking for
-          </small>
-
-          <strong>
-            {{
-              profiles.length > 0
-                ? 'Matching profiles'
-                : 'Selected profiles'
-            }}
-          </strong>
-
-        </div>
-
-      </div>
-
-
-      <div class="criteria-item">
-
-        <span class="criteria-icon">
-          ♥
-        </span>
-
-        <div>
-
-          <small>
-            Results
-          </small>
-
-          <strong>
-            {{ totalRecords }} Profiles
-          </strong>
-
-        </div>
-
-      </div>
-
-
-      <a
-        routerLink="/profile-search"
-        class="change-search-btn">
-
-        ← Change Search
-
-      </a>
-
-    </aside>
-
-
 
     <!-- ===================================================
          RESULTS CONTENT
@@ -229,30 +137,9 @@
             />
 
 
-            <!-- VERIFIED -->
-
-            <div class="verified-badge">
-
-              <span>
-                ✓
-              </span>
-
-              Verified
-
-            </div>
 
 
-            <!-- FAVORITE ICON -->
 
-            <button
-              type="button"
-              class="favorite-btn"
-              title="Interested"
-              (click)="$event.stopPropagation()">
-
-              ♡
-
-            </button>
 
           </div>
 
