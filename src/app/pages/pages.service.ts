@@ -69,6 +69,12 @@ export class PagesService {
     );
   }
 
+  getSentInterests(userId: number): Observable<any> {
+    return this.http.get(
+      this.apiUrl + 'interests/sent?id=' + userId
+    );
+  }
+
   sendInterest(senderId: number, receiverId: number) {
 
     return this.http.post<any>(

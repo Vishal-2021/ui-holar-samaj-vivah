@@ -127,9 +127,7 @@
 
   display: grid;
 
-  grid-template-columns:
-    245px
-    minmax(0, 1fr);
+
 
   gap: 18px;
 
@@ -1197,12 +1195,7 @@
   }
 
 
-  .results-layout {
 
-    grid-template-columns:
-      210px
-      minmax(0, 1fr);
-  }
 
 
   .profiles-grid {

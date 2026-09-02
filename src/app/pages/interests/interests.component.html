@@ -7,24 +7,26 @@
       <p>Manage the people who are interested in you</p>
 
       <div class="interest-tabs">
-        <button class="tab-btn active">
+        <button class="tab-btn" [class.active]="activeTab === 'received'" (click)="getReceivedInterests(); activeTab = 'received';">
           Received
-          <span class="tab-count">1</span>
+          <span class="tab-count">{{receivedInterestsCount}}</span>
         </button>
 
-        <button class="tab-btn">
+        <button class="tab-btn" [class.active]="activeTab === 'sent'" (click)="getSentInterests(); activeTab = 'sent';">
           Sent
-          <span class="tab-count">2</span>
+          <span class="tab-count">{{sentInterestsCount}}</span>
         </button>
-
-        <button class="tab-btn">
+  
+        <!-- <button class="tab-btn" [class.active]="activeTab === 'accepted'" (click)="activeTab = 'accepted'"> -->
+        <button class="tab-btn" >
           Accepted
-          <span class="tab-count">3</span>
+          <!-- <span class="tab-count">3</span> -->
         </button>
 
+        <!-- <button class="tab-btn" [class.active]="activeTab === 'rejected'" (click)="activeTab = 'rejected'"> -->
         <button class="tab-btn">
           Rejected
-          <span class="tab-count">4</span>
+          <!-- <span class="tab-count">4</span> -->
         </button>
       </div>
     </div>
@@ -41,7 +43,7 @@
 
 
       <!-- CARD 1 -->
-      <div class="interest-list">
+      <div *ngFor="let interest of interests" class="interest-list">
 
         <div class="interest-card">
 
@@ -49,7 +51,7 @@
 
             <div class="profile-image-wrapper">
               <img
-                src="assets/images/priya.jpg"
+                [src]="interest.photo"
                 alt="Priya Sharma"
                 class="profile-image"
               />
@@ -60,22 +62,22 @@
             <div class="profile-info">
 
               <div class="name-row">
-                <h3>Priya Sharma</h3>
+                <h3> {{interest.name}}</h3>
               </div>
 
               <p>
                 <strong>Age:</strong>
-                25 Years
+                 {{ interest.age }} Years
               </p>
 
               <p>
                 <strong>⌖ Location:</strong>
-                Mumbai, Maharashtra
+                 {{interest.location}}
               </p>
 
               <p>
                 <strong>▣ Education:</strong>
-                MBA
+                {{interest.education}}
               </p>
 
             </div>

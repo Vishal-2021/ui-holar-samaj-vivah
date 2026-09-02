@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { PagesService } from '../pages.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 interface Interest {
   interest_id: number;
@@ -23,40 +24,70 @@ interface Interest {
 })
 export class InterestsComponent implements OnInit {
 
-  currentUserId: number = 10;
-  receiverId: number = 3;
+  currentUserId: number = Number(localStorage.getItem('user_id'));
 
-  receivedInterests: Interest[] = [];
-  loading: boolean = false;
+  interests: Interest[] = [];
+  receivedInterestsCount: number = 0;
+  sentInterestsCount: number = 0;
+  activeTab = 'received';
 
-  constructor(private pagesService: PagesService) {}
+  constructor(private pagesService: PagesService,
+              private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
+    this.getSentInterests();
     this.getReceivedInterests();
+  }
+
+
+  // GET Sent Interests
+  getSentInterests(): void {
+
+
+    this.pagesService.getSentInterests(this.currentUserId).subscribe({
+      next: (response) => {
+      
+
+        if (response?.status === 'SUCCESS') {
+          this.interests = (response.data || []).map(
+            (item: any) => this.mapInterest(item)
+          );
+        } else {
+          this.interests = [];
+        }
+   
+        this.sentInterestsCount = this.interests.length;
+        this.cdr.detectChanges();
+      },
+      error: (error) => {
+        console.error('GET Interest Error:', error);
+        this.interests = [];
+  
+      }
+    });
   }
 
   // GET Received Interests
   getReceivedInterests(): void {
-    this.loading = true;
 
     this.pagesService.getReceivedInterests(this.currentUserId).subscribe({
       next: (response) => {
-        console.log('GET Interest Response:', response);
+      
 
         if (response?.status === 'SUCCESS') {
-          this.receivedInterests = (response.data || []).map(
+          this.interests = (response.data || []).map(
             (item: any) => this.mapInterest(item)
           );
         } else {
-          this.receivedInterests = [];
+          this.interests = [];
         }
-
-        this.loading = false;
+        this.receivedInterestsCount = this.interests.length;
+        this.cdr.detectChanges();
       },
       error: (error) => {
         console.error('GET Interest Error:', error);
-        this.receivedInterests = [];
-        this.loading = false;
+        this.interests = [];
+
       }
     });
   }
@@ -108,29 +139,29 @@ export class InterestsComponent implements OnInit {
   }
 
   // POST Send Interest
-  sendInterest(): void {
-    console.log('Sending Interest:', {
-      sender_id: this.currentUserId,
-      receiver_id: this.receiverId
-    });
+  // sendInterest(): void {
+  //   console.log('Sending Interest:', {
+  //     sender_id: this.currentUserId,
+  //     receiver_id: this.receiverId
+  //   });
 
-    this.pagesService.sendInterest(
-      this.currentUserId,
-      this.receiverId
-    ).subscribe({
-      next: (response) => {
-        console.log('SEND Interest Response:', response);
+  //   this.pagesService.sendInterest(
+  //     this.currentUserId,
+  //     this.receiverId
+  //   ).subscribe({
+  //     next: (response) => {
+  //       console.log('SEND Interest Response:', response);
 
-        if (response?.status === 'SUCCESS') {
-          alert(response.message || 'Interest sent successfully!');
-        } else {
-          alert(response?.message || 'Unable to send interest.');
-        }
-      },
-      error: (error) => {
-        console.error('SEND Interest Error:', error);
-        alert('Send interest API failed.');
-      }
-    });
-  }
+  //       if (response?.status === 'SUCCESS') {
+  //         alert(response.message || 'Interest sent successfully!');
+  //       } else {
+  //         alert(response?.message || 'Unable to send interest.');
+  //       }
+  //     },
+  //     error: (error) => {
+  //       console.error('SEND Interest Error:', error);
+  //       alert('Send interest API failed.');
+  //     }
+  //   });
+  // }
 }
